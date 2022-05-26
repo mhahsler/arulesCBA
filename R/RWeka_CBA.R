@@ -89,8 +89,6 @@ NULL
 .rules_RWeka <- function(formula, data, what = RWeka::JRip, control = NULL,
   disc.method = "mdlp") {
 
-  if(!.installed("RWeka")) stop("Package 'RWeka' needs to be  installed!")
-
   if(is.null(control)) control <- RWeka::Weka_control()
   formula <- as.formula(formula)
 
@@ -158,12 +156,16 @@ NULL
 }
 
 #' @rdname RWeka_CBA
-RIPPER_CBA <- function(formula, data, control = NULL, disc.method = "mdlp")
+RIPPER_CBA <- function(formula, data, control = NULL, disc.method = "mdlp") {
+  if(!.installed("RWeka")) stop("Package 'RWeka' needs to be  installed!")
   .rules_RWeka(formula, data, RWeka::JRip, control, disc.method)
+}
 
 #' @rdname RWeka_CBA
-PART_CBA <- function(formula, data, control = NULL, disc.method = "mdlp")
+PART_CBA <- function(formula, data, control = NULL, disc.method = "mdlp") {
+  if(!.installed("RWeka")) stop("Package 'RWeka' needs to be  installed!")
   .rules_RWeka(formula, data, RWeka::PART, control, disc.method)
+}
 
 ### C4.5 are rules extracted from a tree
 .tree_RWeka <- function(formula, data, what = RWeka::J48, control = NULL,
@@ -227,5 +229,7 @@ PART_CBA <- function(formula, data, control = NULL, disc.method = "mdlp")
 }
 
 #' @rdname RWeka_CBA
-C4.5_CBA <- function(formula, data, control = NULL, disc.method = "mdlp")
+C4.5_CBA <- function(formula, data, control = NULL, disc.method = "mdlp") {
+  if(!.installed("RWeka")) stop("Package 'RWeka' needs to be  installed!")
   .tree_RWeka(formula, data, RWeka::J48, control, disc.method)
+}
