@@ -1,6 +1,5 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 Work
-inst/LUCS_KDD$
 README.Rmd
 ^\.github$

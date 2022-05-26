@@ -6,8 +6,6 @@
 \alias{CPAR}
 \alias{PRM}
 \alias{CMAR}
-\alias{install_LUCS_KDD_CPAR}
-\alias{install_LUCS_KDD_CMAR}
 \title{Interface to the LUCS-KDD Implementations of CMAR, PRM and CPAR}
 \usage{
 FOIL2(formula, data, best_k = 5, disc.method = "mdlp", verbose = FALSE)
@@ -24,21 +22,10 @@ CMAR(
   disc.method = "mdlp",
   verbose = FALSE
 )
-
-install_LUCS_KDD_CPAR(
-  force = FALSE,
- 
-    source = "https://cgi.csc.liv.ac.uk/~frans/KDD/Software/FOIL_PRM_CPAR/foilPrmCpar.tgz"
-)
-
-install_LUCS_KDD_CMAR(
-  force = FALSE,
-  source = "https://cgi.csc.liv.ac.uk/~frans/KDD/Software/CMAR/cmar.tgz"
-)
 }
 \arguments{
 \item{formula}{a symbolic description of the model to be fitted. Has to be
-of form \code{class ~ .} or \code{class ~ predictor1 + predictor2}.}
+of form `class ~ .` or `class ~ predictor1 + predictor2`.}
 
 \item{data}{A data.frame or a transaction set containing the training data.
 Data frames are automatically discretized and converted to transactions.}
@@ -47,66 +34,54 @@ Data frames are automatically discretized and converted to transactions.}
 per class for prediction.}
 
 \item{disc.method}{Discretization method used to discretize continuous
-variables if data is a data.frame (default: \code{"mdlp"}). See
-\code{\link{discretizeDF.supervised}} for more supervised discretization
+variables if data is a data.frame (default: `"mdlp"`). See
+[discretizeDF.supervised()] for more supervised discretization
 methods.}
 
 \item{verbose}{Show verbose output?}
 
 \item{support, confidence}{minimum support and minimum confidence thresholds
 for CMAR (range [0, 1]).}
-
-\item{force}{logical; force redownload, rebuilding and reinstallation?}
-
-\item{source}{source for the code. A local file can be specified as a URI
-starting with \code{file://} (see \code{\link[utils]{download.file}}).}
 }
 \value{
-Returns an object of class \code{\link{CBA.object}} representing the
+Returns an object of class [CBA.object]] representing the
 trained classifier.
 }
 \description{
 Interface for the LUCS-KDD Software Library Java implementations of CMAR
-(Li, Han and Pei, 2001), PRM, and CPAR (Yin and Han, 2003). \bold{Note:} The
-Java implementations is not part of \pkg{arulesCBA} and not covered by the
-packages license. It will be downloaded and compiled separately. It is
-available free of charge for \bold{non-commercial use.}
+(Li, Han and Pei, 2001), PRM, and CPAR (Yin and Han, 2003). **Note:** The
+Java implementations is not part of \pkg{arulesCBA} and
+is only free for **non-commercial use**.
 }
 \details{
-\bold{Installation:} The LUCS-KDD code is not part of the package and has to
-be downloaded, compiled and installed using \code{install_LUCS_KDD_CMAR()}
-and \code{install_LUCS_KDD_CPAR()}. You need a complete Java JDK
-installation including the \code{javac} compiler. On some systems (Windows),
-you may need to set the \code{JAVA_HOME} environment variable so the system
+**Requirement:** The code needs a
+**Java2 SDK (Software Development Kit) Version 1.4.0 (or higher)**
+installation. A **headless Java installation is not sufficient.**
+On some systems (Windows),
+you may need to set the `JAVA_HOME` environment variable so the system
 finds the compiler.
 
-\bold{Memory:} The memory for Java can be increased via R options. For
-example: \code{options(java.parameters = "-Xmx1024m")}
+**Memory:** The memory for Java can be increased via R options. For
+example: `options(java.parameters = "-Xmx1024m")`
 
-\bold{Note:} The implementation does not expose the min. gain parameter for
+**Note:** The implementation does not expose the min. gain parameter for
 CPAR, PRM and FOIL2. It is fixed at 0.7 (the value used by Yin and Han,
 2001). FOIL2 is an alternative Java implementation to the native
 implementation of FOIL already provided in the \pkg{arulesCBA}.
-\code{\link{FOIL}} exposes min. gain.
+[FOIL] exposes min. gain.
 }
 \examples{
+# make sure you have a Java SDK Version 1.4.0+ and not a headless installation.
+system("java -version")
 
-\dontrun{
 data("iris")
-
-# install and compile CMAR
-install_LUCS_KDD_CMAR()
 
 # build a classifier, inspect rules and make predictions
 cl <- CMAR(Species ~ ., iris, support = .2, confidence = .8, verbose = TRUE)
 cl
 
 inspect(rules(cl))
-
 predict(cl, head(iris))
-
-# install CPAR (also installs PRM and FOIL2)
-install_LUCS_KDD_CPAR()
 
 cl <- CPAR(Species ~ ., iris)
 cl
@@ -116,8 +91,6 @@ cl
 
 cl <- FOIL2(Species ~ ., iris)
 cl
-}
-
 }
 \references{
 Li W., Han, J. and Pei, J. CMAR: Accurate and Efficient

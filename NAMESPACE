@@ -27,8 +27,6 @@ export("CBA",
         "PART_CBA",
         "C4.5_CBA",
 
-        "install_LUCS_KDD_CMAR",
-        "install_LUCS_KDD_CPAR",
         "FOIL2",
         "CPAR",
         "PRM",
