@@ -70,27 +70,6 @@
 #' cl
 NULL
 
-# Find java and javac from http://stackoverflow.com/a/34031214/470769
-.Sys.which2 <- function(cmd) {
-  stopifnot(length(cmd) == 1)
-  if (.Platform$OS.type == "windows") {
-    suppressWarnings({
-      pathname <- shell(sprintf("where %s 2> NUL", cmd), intern = TRUE)[1]
-    })
-    if (!is.na(pathname))
-      return(dQuote(stats::setNames(pathname, cmd)))
-  }
-
-  found <- Sys.which(cmd)
-
-  if (found == "")
-    stop(cmd, " not found! Make sure it is installed correcly.")
-  found
-}
-
-.java <- function()
-  .Sys.which2("java")
-
 ### Write and read LUCS-KDD format files
 # LUCS-KDD uses item ids and the highest item ids are the class labels.
 .write_trans_LUCS_KDD <-
@@ -191,7 +170,7 @@ NULL
 
     exe <-
       paste(
-        .java(),
+        "java",
         options()$java.parameters[1],
         "-cp",
         jar,
