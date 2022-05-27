@@ -55,7 +55,7 @@ is only free for **non-commercial use**.
 }
 \details{
 **Requirement:** The code needs a
-**Java2 SDK (Software Development Kit) Version 1.4.0 (or higher)**
+**JDK (Java Software Development Kit) Version 1.8 (or higher)**
 installation. A **headless Java installation is not sufficient.**
 On some systems (Windows),
 you may need to set the `JAVA_HOME` environment variable so the system

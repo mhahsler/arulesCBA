@@ -75,67 +75,114 @@
 #' # show progress report and use 5 instead of the default 10 cross-validation folds.
 #' classifier <- RCAR(Species~., iris, cv.glmnet.args = list(nfolds = 5), verbose = TRUE)
 #'
-RCAR <- function(formula, data,
-  lambda = NULL, alpha = 1, glmnet.args = NULL, cv.glmnet.args = NULL,
-  parameter = NULL, control = NULL, balanceSupport = FALSE,
-  disc.method = 'mdlp', verbose = FALSE, ...) {
-
+RCAR <- function(formula,
+  data,
+  lambda = NULL,
+  alpha = 1,
+  glmnet.args = NULL,
+  cv.glmnet.args = NULL,
+  parameter = NULL,
+  control = NULL,
+  balanceSupport = FALSE,
+  disc.method = 'mdlp',
+  verbose = FALSE,
+  ...) {
   trans <- prepareTransactions(formula, data, disc.method)
   formula <- as.formula(formula)
   form <- .parseformula(formula, trans)
 
-
-  if(verbose) {
+  if (verbose) {
     glmnet.args$trace.it <- TRUE
     cv.glmnet.args$trace.it <- TRUE
   }
 
   # mine and prune CARs
-  if(verbose) cat("* Mining CARs...\n")
-  cars <- mineCARs(formula, trans,
-    parameter = parameter, control = control, balanceSupport = balanceSupport,
-    verbose = verbose, ...)
+  if (verbose)
+    cat("* Mining CARs...\n")
+  cars <- mineCARs(
+    formula,
+    trans,
+    parameter = parameter,
+    control = control,
+    balanceSupport = balanceSupport,
+    verbose = verbose,
+    ...
+  )
 
   # create coverage matrix
-  if(verbose) cat("* Creating model matrix\n")
+  if (verbose)
+    cat("* Creating model matrix\n")
   X <- is.superset(trans, lhs(cars))
   y <- response(formula, trans)
 
   # find lambda using cross-validation or fit the model for a fixed lambda
   cv <- NULL
-  if(is.null(lambda)) {
-    if(verbose) cat("* Fitting glmnet and determine lambda using cross-validation.\n")
-    cv <- do.call(glmnet::cv.glmnet, c(list(x = X, y = y,
-      family='multinomial', alpha=alpha), cv.glmnet.args))
+  if (is.null(lambda)) {
+    if (verbose)
+      cat("* Fitting glmnet and determine lambda using cross-validation.\n")
+    cv <- do.call(glmnet::cv.glmnet, c(
+      list(
+        x = X,
+        y = y,
+        family = 'multinomial',
+        alpha = alpha
+      ),
+      cv.glmnet.args
+    ))
     lambda <- cv$lambda.1se
-    if(verbose) cat("* Found lambda:", lambda, "\n")
+    if (verbose)
+      cat("* Found lambda:", lambda, "\n")
     model <- cv$glmnet.fit
-    weights <- sapply(model$beta, FUN = function(x) as.vector(x[,model$lambda == lambda]))
-    bias <- model$a0[model$lambda == lambda]
-  }else{
-    if(verbose) cat("* Fitting glmnet for fixed lambda.\n")
-    model <- do.call(glmnet::glmnet, c(list(x = X, y = y, family='multinomial',
-      alpha=alpha, lambda=lambda), glmnet.args))
+    best_model <- which.min(abs(model$lambda - lambda))
+    weights <- sapply(
+        model$beta,
+        FUN = function(x)
+          as.vector(x[, best_model, drop = FALSE])
+      )
+    bias <- model$a0[, best_model, drop = FALSE]
+  } else{
+    if (verbose)
+      cat("* Fitting glmnet for fixed lambda.\n")
+    model <-
+      do.call(glmnet::glmnet, c(
+        list(
+          x = X,
+          y = y,
+          family = 'multinomial',
+          alpha = alpha,
+          lambda = lambda
+        ),
+        glmnet.args
+      ))
     weights <- sapply(model$beta, as.vector)
     bias <- model$a0
   }
 
   # weights: The odds multiply by exp(beta) for every 1-unit increase of x
-  remove <- apply(weights, MARGIN = 1, FUN = function(x) all(x==0))
+  remove <- apply(
+    weights,
+    MARGIN = 1,
+    FUN = function(x)
+      all(x == 0)
+  )
   quality(cars)$weight <- apply(weights, MARGIN = 1, max)
   quality(cars)$oddsratio <- exp(quality(cars)$weight)
   rulebase <- cars[!remove]
-  weights <- weights[!remove,]
+  weights <- weights[!remove, ]
 
-  if(verbose) cat("* CARs left:", length(rulebase), "\n")
+  if (verbose)
+    cat("* CARs left:", length(rulebase), "\n")
 
+  ### default class is used for 0 rules. Use largest bias.
+  default <- factor(unname(which.max(t(bias))), levels = seq_len(nrow(bias)) , labels = rownames(bias))
 
   CBA_ruleset(
     formula = formula,
     rules = rulebase,
+    default = default,
     weights = weights,
     bias = bias,
-    method='logit',
+    method = 'logit',
     model = list(
       all_rules = cars,
       reg_model = model,

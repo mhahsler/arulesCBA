@@ -58,41 +58,50 @@
 #' uncoveredMajorityClass(Species ~ ., iris.trans, cars[1:3])
 NULL
 
+### TODO: classes can be done faster
+#' @rdname CBA_helpers
+classes <- function(formula, x)
+  levels(response(formula, x))
+
 #' @rdname CBA_helpers
 response <- function(formula, x) {
-  if(is.data.frame(x)) return(x[[all.vars(as.formula(formula))[[1]]]])
-
+  if (is.data.frame(x))
+    return(x[[all.vars(as.formula(formula))[[1]]]])
   # this will add variable info for for regular transactions
-  if(is(x, "transactions")) x <- prepareTransactions(formula, x)
-  if(is(x, "rules")) x <- items(x)
-  if(!is(x, "itemMatrix")) stop("response not implemented for the type of x!")
+  if (is(x, "transactions"))
+    x <- prepareTransactions(formula, x)
+  if (is(x, "rules"))
+    x <- items(x)
+  if (!is(x, "itemMatrix"))
+    stop("response not implemented for the type of x!")
 
   vars <- .parseformula(formula, x)
-  x <- x[,vars$class_ids]
+  x <- x[, vars$class_ids]
   l <- itemInfo(x)$levels
-  factor(unlist(LIST(x, decode = FALSE)), levels = 1:length(l), labels = l)
+
+  factor(unlist(LIST(x, decode = FALSE)),
+    levels = 1:length(l),
+    labels = l)
 }
 
 #' @rdname CBA_helpers
 classFrequency <- function(formula, x, type = "relative") {
-  x <- items(x)
-  if(is(x, "itemMatrix")) {
-    vars <- .parseformula(formula, x)
-    x <- x[,vars$class_ids]
-    itemFrequency(x, type)
-  } else { stop("Only implemented for transactions!") }
+  tbl <- table(response(formula, x))
+  if (type == "relative")
+    tbl <- tbl / sum(tbl)
+  tbl
 }
 
 #' @rdname CBA_helpers
 majorityClass <- function(formula, transactions) {
-  majorityItem <- names(which.max(classFrequency(formula, transactions)))
-  strsplit(majorityItem, "=")[[1]][2]
+  cf <- classFrequency(formula, transactions)
+  factor(unname(which.max(cf)), levels = seq(length(cf)), labels = names(cf))
 }
 
 #' @rdname CBA_helpers
 transactionCoverage <- function(transactions, rules) {
   rulesMatchLHS <- is.subset(lhs(rules), transactions,
-                             sparse = (length(transactions) * length(rules) > 150000))
+    sparse = (length(transactions) * length(rules) > 150000))
   dimnames(rulesMatchLHS) <- list(NULL, NULL)
   colSums(rulesMatchLHS)
 }
@@ -100,10 +109,9 @@ transactionCoverage <- function(transactions, rules) {
 #' @rdname CBA_helpers
 uncoveredClassExamples <- function(formula, transactions, rules) {
   transCover <- transactionCoverage(transactions, rules)
-  table(response(formula, transactions)[transCover<1])
+  table(response(formula, transactions)[transCover < 1])
 }
 
 #' @rdname CBA_helpers
 uncoveredMajorityClass <- function(formula, transactions, rules)
   names(which.max(uncoveredClassExamples(formula, transactions, rules)))
-

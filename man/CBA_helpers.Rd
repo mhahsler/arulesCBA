@@ -2,6 +2,7 @@
 % Please edit documentation in R/classFrequency.R
 \name{CBA_helpers}
 \alias{CBA_helpers}
+\alias{classes}
 \alias{response}
 \alias{classFrequency}
 \alias{majorityClass}
@@ -10,6 +11,8 @@
 \alias{uncoveredMajorityClass}
 \title{Helper Functions For Dealing with Classes}
 \usage{
+classes(formula, x)
+
 response(formula, x)
 
 classFrequency(formula, x, type = "relative")

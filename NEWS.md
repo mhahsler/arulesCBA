@@ -1,5 +1,6 @@
 # arulesCBA 1.2.3 (2022-05-27)
 * LUCS_KDD jars come now preinstalled which fixes compilation issues.
+* Fixed RCAR for 0 rule case.
 
 # arulesCBA 1.2.1 (2021-11-20)
 * mineCARs now uses by default minimum LHS-support (via parameter originalSupport = FALSE).
