@@ -1,15 +1,16 @@
 Package: arulesCBA
 Version: 1.2.3
-Date: 2022-05-24
+Date: 2022-05-27
 Title: Classification Based on Association Rules
 Authors@R: c(
   person("Michael", "Hahsler", role=c("aut", "cre", "cph"),
-  email = "mhahsler@lyle.smu.edu"),
-  person("Ian", "Johnson", role=c("aut","cph"),
-  email = "ianjjohnson@icloud.com"),
+    email = "mhahsler@lyle.smu.edu",
+    comment = c(ORCID = "0000-0003-2716-1405")),
+  person("Ian", "Johnson", role=c("aut","cph")),
   person("Tyler", "Giallanza", role=c("ctb"))
   )
-Description: Provides the infrastructure for association rule-based classification including the algorithms CBA, CMAR, CPAR, C4.5, FOIL, PART, PRM, RCAR, and RIPPER to build associative classifiers.
+Description: Provides the infrastructure for association rule-based classification including the algorithms 
+  CBA, CMAR, CPAR, C4.5, FOIL, PART, PRM, RCAR, and RIPPER to build associative classifiers.
 Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>
 Depends: R (>= 3.5.0), Matrix (>= 1.2-0), arules (>= 1.6-5) 
 Imports: methods, discretization (>= 1.0-1), glmnet (>= 3.0-0) 
