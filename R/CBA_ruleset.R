@@ -11,7 +11,7 @@
 #' @param formula A symbolic description of the model to be fitted. Has to be
 #'   of form `class ~ .`. The class is the variable name (part of the item
 #'   label before `=`).
-#' @param rules A set of class association rules mined with [mineCars()] or
+#' @param rules A set of class association rules mined with [mineCARs()] or
 #'   [apriori()] (from \pkg{arules}).
 #' @param default Default class. If not specified then objects that are
 #'   not matched by rules are classified as `NA`.
@@ -24,11 +24,6 @@
 #' @param discretization A list with discretization information used by [predict()] to discretize data
 #'   supplied as a `data.frame`.
 #' @param description Description field used when the classifier is printed.
-#' @param x,object An object of class `CBA`.
-#' @param newdata A data.frame or transactions containing rows of new entries
-#'   to be classified.
-#' @param type Predict `"class"` labels. Some classifiers can also return
-#'   `"scores"`.
 #' @param \dots Additional arguments added as list elements to the CBA object.
 #' @return A object of class `CBA` representing the trained classifier with fields:
 #'   \item{formula}{used formula.}
@@ -46,7 +41,7 @@
 #' @seealso [mineCARs()]
 #' @examples
 #' ## Example 1: create a first-matching-rule classifier with non-redundant rules
-#'   sorted by confidence.
+#' ##  sorted by confidence.
 #' data("iris")
 #'
 #' # discretize and create transactions
@@ -96,7 +91,6 @@
 #' prediction <- predict(cl, trans)
 #' table(prediction, response(Species ~ ., trans))
 #' accuracy(prediction, response(Species ~ ., trans))
-#'
 #' @export
 CBA_ruleset <- function(formula,
   rules,

@@ -29,12 +29,12 @@ a support value for each class can be specified (see Details section).}
 
 \item{verbose}{logical; report progress?}
 
-\item{`...`}{For convenience, the mining parameters for apriori can be
-specified as \code{...}. Examples are the \code{support} and \code{confidence}
+\item{\dots}{For convenience, the mining parameters for \code{\link[=apriori]{apriori()}} can be
+specified as \dots. Examples are the \code{support} and \code{confidence}
 thresholds, and the \code{maxlen} of rules.}
 }
 \value{
-Returns an object of class \link[arules:rules-class]{arules::rules}.
+Returns an object of class \link{rules}.
 }
 \description{
 Class Association Rules (CARs) are association rules that have only items

@@ -22,7 +22,7 @@ CBA_ruleset(
 of form \code{class ~ .}. The class is the variable name (part of the item
 label before \code{=}).}
 
-\item{rules}{A set of class association rules mined with \code{\link[=mineCars]{mineCars()}} or
+\item{rules}{A set of class association rules mined with \code{\link[=mineCARs]{mineCARs()}} or
 \code{\link[=apriori]{apriori()}} (from \pkg{arules}).}
 
 \item{default}{Default class. If not specified then objects that are
@@ -44,14 +44,6 @@ supplied as a \code{data.frame}.}
 \item{description}{Description field used when the classifier is printed.}
 
 \item{\dots}{Additional arguments added as list elements to the CBA object.}
-
-\item{x, object}{An object of class \code{CBA}.}
-
-\item{newdata}{A data.frame or transactions containing rows of new entries
-to be classified.}
-
-\item{type}{Predict \code{"class"} labels. Some classifiers can also return
-\code{"scores"}.}
 }
 \value{
 A object of class \code{CBA} representing the trained classifier with fields:
@@ -79,7 +71,7 @@ predictive.
 }
 \examples{
 ## Example 1: create a first-matching-rule classifier with non-redundant rules
-  sorted by confidence.
+##  sorted by confidence.
 data("iris")
 
 # discretize and create transactions
@@ -129,7 +121,6 @@ cl
 prediction <- predict(cl, trans)
 table(prediction, response(Species ~ ., trans))
 accuracy(prediction, response(Species ~ ., trans))
-
 }
 \seealso{
 \code{\link[=mineCARs]{mineCARs()}}

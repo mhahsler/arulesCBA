@@ -27,15 +27,15 @@
 #' @param data A data.frame or a transaction set containing the training data.
 #'   Data frames are automatically discretized and converted to transactions.
 #' @param support,confidence minimum support and minimum confidence thresholds
-#'   for CMAR (range [0, 1]).
-#' @param best_k use average expected accuracy (laplace) of the best k rules
+#'   for CMAR (range \eqn{[0, 1]}).
+#' @param best_k use average expected accuracy of the best k rules
 #'   per class for prediction.
 #' @param disc.method Discretization method used to discretize continuous
 #'   variables if data is a data.frame (default: `"mdlp"`). See
 #'   [discretizeDF.supervised()] for more supervised discretization
 #'   methods.
 #' @param verbose Show verbose output?
-#' @return Returns an object of class [CBA.object]] representing the
+#' @return Returns an object of class [CBA] representing the
 #'   trained classifier.
 #'
 #' @references

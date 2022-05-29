@@ -7,9 +7,9 @@
 #' You need to install package \pkg{RWeka} to use these classifiers.
 #'
 #' See R/Weka functions
-#' [JRip()] (RIPPER),
-#' [J48()] (C4.5 rules),
-#' [PART()]
+#' [RWeka::JRip()] (RIPPER),
+#' [RWeka::J48()] (C4.5 rules),
+#' [RWeka::PART()]
 #' for algorithm details and how control options can be passed on via
 #' `control`. An example is given in the Examples Section below.
 #'

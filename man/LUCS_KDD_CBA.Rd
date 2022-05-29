@@ -30,7 +30,7 @@ of form \code{class ~ .} or \code{class ~ predictor1 + predictor2}.}
 \item{data}{A data.frame or a transaction set containing the training data.
 Data frames are automatically discretized and converted to transactions.}
 
-\item{best_k}{use average expected accuracy (laplace) of the best k rules
+\item{best_k}{use average expected accuracy of the best k rules
 per class for prediction.}
 
 \item{disc.method}{Discretization method used to discretize continuous
@@ -41,10 +41,10 @@ methods.}
 \item{verbose}{Show verbose output?}
 
 \item{support, confidence}{minimum support and minimum confidence thresholds
-for CMAR (range \link{0, 1}).}
+for CMAR (range \eqn{[0, 1]}).}
 }
 \value{
-Returns an object of class \link{CBA.object}] representing the
+Returns an object of class \link{CBA} representing the
 trained classifier.
 }
 \description{

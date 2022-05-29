@@ -41,9 +41,9 @@ RWeka (Hornik et al, 2009).
 You need to install package \pkg{RWeka} to use these classifiers.
 
 See R/Weka functions
-\code{\link[=JRip]{JRip()}} (RIPPER),
-\code{\link[=J48]{J48()}} (C4.5 rules),
-\code{\link[=PART]{PART()}}
+\code{\link[RWeka:Weka_classifier_rules]{RWeka::JRip()}} (RIPPER),
+\code{\link[RWeka:Weka_classifier_trees]{RWeka::J48()}} (C4.5 rules),
+\code{\link[RWeka:Weka_classifier_rules]{RWeka::PART()}}
 for algorithm details and how control options can be passed on via
 \code{control}. An example is given in the Examples Section below.
 

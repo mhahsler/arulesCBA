@@ -49,10 +49,10 @@
 #'   counteracted by using class specific minimum support values. Alternatively,
 #'   a support value for each class can be specified (see Details section).
 #' @param verbose logical; report progress?
-#' @param `...` For convenience, the mining parameters for apriori can be
-#'   specified as `...`. Examples are the `support` and `confidence`
+#' @param \dots For convenience, the mining parameters for [apriori()] can be
+#'   specified as \dots. Examples are the `support` and `confidence`
 #' thresholds, and the `maxlen` of rules.
-#' @return Returns an object of class [arules::rules].
+#' @return Returns an object of class [rules].
 #' @author Michael Hahsler
 #' @references
 #' Liu, B. Hsu, W. and Ma, Y (1998). Integrating Classification and
