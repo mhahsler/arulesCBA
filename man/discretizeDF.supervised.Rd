@@ -2,7 +2,6 @@
 % Please edit documentation in R/discretizeDF.supervised.R
 \name{discretizeDF.supervised}
 \alias{discretizeDF.supervised}
-\alias{discretizeDF}
 \alias{discretize}
 \title{Supervised Methods to Convert Continuous Variables into Categorical
 Variables}
@@ -11,14 +10,13 @@ discretizeDF.supervised(formula, data, method = "mdlp", dig.lab = 3, ...)
 }
 \arguments{
 \item{formula}{a formula object to specify the class variable for supervised
-discretization and the predictors to be discretized in the form \code{class
-~ .} or \code{class ~ predictor1 + predictor2}.}
+discretization and the predictors to be discretized in the form
+\code{class ~ .} or \code{class ~ predictor1 + predictor2}.}
 
 \item{data}{a data.frame containing continuous variables to be discretized}
 
-\item{method}{discretization method. Available are: \code{"mdlp"},
-\code{"caim"}, \code{"cacc"}, \code{"ameva"}, \code{"chi2"},
-\code{"chimerge"}, \code{"extendedchi2"}, and \code{"modchi2"}.}
+\item{method}{discretization method. Available are: ``"mdlp"\verb{, }"caim"`, `"cacc"`, `"ameva"`, `"chi2"`,
+`"chimerge"`, `"extendedchi2"`, and `"modchi2"`.}
 
 \item{dig.lab}{integer; number of digits used to create labels.}
 
@@ -26,7 +24,7 @@ discretization and the predictors to be discretized in the form \code{class
 the chosen discretization method.}
 }
 \value{
-\code{discretizeDF} returns a discretized data.frame. Discretized
+\code{discretizeDF()} returns a discretized data.frame. Discretized
 columns have an attribute \code{"discretized:breaks"} indicating the used
 breaks or and \code{"discretized:method"} giving the used method.
 }
@@ -37,12 +35,11 @@ rule mining and building associative classifiers. A whole data.frame is
 discretized (i.e., all numeric columns are discretized).
 }
 \details{
-\code{discretizeDF.supervised} only implements supervised discretization.
-See \code{discretizeDF} in package \pkg{arules} for unsupervised
+\code{discretizeDF.supervised()} only implements supervised discretization.
+See \code{\link[=discretizeDF]{discretizeDF()}} in package \pkg{arules} for unsupervised
 discretization.
 }
 \examples{
-
 data("iris")
 summary(iris)
 
@@ -58,19 +55,21 @@ discretizeDF(head(iris), methods = iris.disc)
 # only discretize predictors Sepal.Length and Petal.Length
 iris.disc2 <- discretizeDF.supervised(Species ~ Sepal.Length + Petal.Length, iris)
 head(iris.disc2)
-
 }
 \seealso{
 Unsupervised discretization from \pkg{arules}:
-\code{\link[arules]{discretize}}, \code{\link[arules]{discretizeDF}}.
+\code{\link[=discretize]{discretize()}}, \code{\link[=discretizeDF]{discretizeDF()}}.
 
 Details about the available supervised discretization methods from
-\pkg{discretization}: \code{\link[discretization]{mdlp}},
-\code{\link[discretization]{caim}}, \code{\link[discretization]{cacc}},
-\code{\link[discretization]{ameva}}, \code{\link[discretization]{chi2}},
-\code{\link[discretization]{chiM}},
-\code{\link[discretization]{extendChi2}},
-\code{\link[discretization]{modChi2}}.
+\pkg{discretization}:
+\link[discretization:mdlp]{discretization::mdlp},
+\link[discretization:caim]{discretization::caim},
+\link[discretization:cacc]{discretization::cacc},
+\link[discretization:ameva]{discretization::ameva},
+\link[discretization:chi2]{discretization::chi2},
+\link[discretization:chiM]{discretization::chiM},
+\link[discretization:extendChi2]{discretization::extendChi2},
+\link[discretization:modChi2]{discretization::modChi2}.
 }
 \author{
 Michael Hahsler

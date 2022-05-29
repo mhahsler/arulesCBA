@@ -6,31 +6,34 @@
 #'
 #' You need to install package \pkg{RWeka} to use these classifiers.
 #'
-#' See R/Weka functions \code{\link[RWeka]{JRip}} (RIPPER),
-#' \code{\link[RWeka]{J48}} (C4.5 rules) \code{\link[RWeka]{PART}} for
-#' algorithm details and how control options can be passed on via
-#' \code{control}. An example is given in the Examples Section below.
+#' See R/Weka functions
+#' [JRip()] (RIPPER),
+#' [J48()] (C4.5 rules),
+#' [PART()]
+#' for algorithm details and how control options can be passed on via
+#' `control`. An example is given in the Examples Section below.
 #'
 #' Memory for \pkg{RWeka} can be increased using the R options (e.g.,
-#' \code{options(java.parameters = "-Xmx1024m")}) before \pkg{RWeka} or
+#' `options(java.parameters = "-Xmx1024m")`) before \pkg{RWeka} or
 #' \pkg{rJava} is loaded or any RWeka-based classigier in this package is used.
 #'
 #' @name RWeka_CBA
+#'
 #' @param formula A symbolic description of the model to be fitted. Has to be
-#' of form \code{class ~ .} or \code{class ~ predictor1 + predictor2}.
+#'   of form `class ~ .` or `class ~ predictor1 + predictor2`.
 #' @param data A data.frame or a transaction set containing the training data.
-#' Data frames are automatically discretized and converted to transactions.
+#'   Data frames are automatically discretized and converted to transactions.
 #' @param disc.method Discretization method used to discretize continuous
-#' variables if data is a data.frame (default: \code{"mdlp"}). See
-#' \code{\link{discretizeDF.supervised}} for more supervised discretization
-#' methods.
+#'   variables if data is a data.frame (default: `"mdlp"`). See
+#'   [discretizeDF.supervised()] for more supervised discretization
+#'   methods.
 #' @param control algorithmic control options for R/Weka Rule learners (see
-#' Details Section).
-#' @return Returns an object of class \code{\link{CBA.object}} representing the
-#' trained classifier.
+#'   Details Section).
+#'
+#' @return Returns an object of class [CBA] representing the
+#'   trained classifier.
 #' @author Michael Hahsler
-#' @seealso \code{\link[RWeka]{JRip}} (RIPPER), \code{\link[RWeka]{PART}},
-#' \code{\link{CBA.object}}.
+#'
 #' @references
 #' W. W. Cohen (1995). Fast effective rule induction. In A.
 #' Prieditis and S. Russell (eds.), Proceedings of the 12th International
@@ -46,11 +49,10 @@
 #' Publishers, San Mateo, CA.
 #'
 #' Hornik K, Buchta C, Zeileis A (2009). "Open-Source Machine Learning: R Meets
-#' Weka." \emph{Computational Statistics}, 24(2), 225-232.
+#' Weka." _Computational Statistics,_ 24(2), 225-232.
 #' \doi{10.1007/s00180-008-0119-7}
 #' @examples
-#'
-#' # You need to install rJava and RWeka
+#' # rJava and RWeka need to be installed
 #'
 #' \dontrun{
 #' data("iris")
@@ -60,7 +62,7 @@
 #' classifier
 #'
 #' # inspect the rule base
-#' inspect(rules(classifier))
+#' inspect(classifier$rules)
 #'
 #' # make predictions for the first few instances of iris
 #' predict(classifier, head(iris))
@@ -69,7 +71,7 @@
 #'
 #' # C4.5
 #' classifier <- C4.5_CBA(Species ~ ., iris)
-#' inspect(rules(classifier))
+#' inspect(classifier$rules)
 #'
 #' # To use algorithmic options (here for PART), you need to load RWeka
 #' library(RWeka)
@@ -80,7 +82,7 @@
 #' # build PART with control option U (Generate unpruned decision list) set to TRUE
 #' classifier <- PART_CBA(Species ~ ., data = iris, control = RWeka::Weka_control(U = TRUE))
 #' classifier
-#' inspect(rules(classifier))
+#' inspect(classifier$rules)
 #' predict(classifier, head(iris))
 #' }
 #'
@@ -156,12 +158,14 @@ NULL
 }
 
 #' @rdname RWeka_CBA
+#' @export
 RIPPER_CBA <- function(formula, data, control = NULL, disc.method = "mdlp") {
   if(!.installed("RWeka")) stop("Package 'RWeka' needs to be  installed!")
   .rules_RWeka(formula, data, RWeka::JRip, control, disc.method)
 }
 
 #' @rdname RWeka_CBA
+#' @export
 PART_CBA <- function(formula, data, control = NULL, disc.method = "mdlp") {
   if(!.installed("RWeka")) stop("Package 'RWeka' needs to be  installed!")
   .rules_RWeka(formula, data, RWeka::PART, control, disc.method)
@@ -229,6 +233,7 @@ PART_CBA <- function(formula, data, control = NULL, disc.method = "mdlp") {
 }
 
 #' @rdname RWeka_CBA
+#' @export
 C4.5_CBA <- function(formula, data, control = NULL, disc.method = "mdlp") {
   if(!.installed("RWeka")) stop("Package 'RWeka' needs to be  installed!")
   .tree_RWeka(formula, data, RWeka::J48, control, disc.method)

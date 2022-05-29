@@ -17,11 +17,11 @@ mineCARs(
 \arguments{
 \item{formula}{A symbolic description of the model to be fitted.}
 
-\item{transactions}{An object of class \code{\link[arules]{transactions}}
+\item{transactions}{An object of class \link{transactions}
 containing the training data.}
 
-\item{parameter, control}{Optional parameter and control lists for the
-\code{\link[arules]{apriori}} algorithm.}
+\item{parameter, control}{Optional parameter and control lists for
+\code{\link[=apriori]{apriori()}}.}
 
 \item{balanceSupport}{logical; if \code{TRUE}, class imbalance is
 counteracted by using class specific minimum support values. Alternatively,
@@ -29,12 +29,12 @@ a support value for each class can be specified (see Details section).}
 
 \item{verbose}{logical; report progress?}
 
-\item{...}{For convenience, the mining parameters for apriori can be
-specified as .... Examples are the \code{support} and \code{confidence}
+\item{`...`}{For convenience, the mining parameters for apriori can be
+specified as \code{...}. Examples are the \code{support} and \code{confidence}
 thresholds, and the \code{maxlen} of rules.}
 }
 \value{
-Returns an object of class \code{\link[arules]{rules}}.
+Returns an object of class \link[arules:rules-class]{arules::rules}.
 }
 \description{
 Class Association Rules (CARs) are association rules that have only items
@@ -49,16 +49,19 @@ Class association rules (CARs) are of the form
 where the LHS \eqn{P} is a pattern (i.e., an itemset) and \eqn{c_i} is a
 single items representing the class label.
 
-\bold{Mining parameters.} Mining parameters for
-\code{\link[arules]{apriori}} can be either specified as a list (or object
-of \code{\link[arules]{APparameter}}) as argument \code{parameter} or, for
-convenience, as arguments in \code{...}. \bold{Note:} \code{mineCARs} uses
+\strong{Mining parameters.}
+Mining parameters for
+\code{\link[=apriori]{apriori()}} can be either specified as a list (or object
+of \link[arules:ASparameter-classes]{arules::APparameter}) as argument \code{parameter} or, for
+convenience, as arguments in \code{...}.
+\emph{Note:} \code{\link[=mineCARs]{mineCARs()}} uses
 by default a minimum support of 0.1 (for the LHS of the rules via parameter
 \code{originalSupport = FALSE}),
 a minimum confidence of 0.5 and a \code{maxlen} (rule
 length including items in the LHS and RHS) of 5.
 
-\bold{Balancing minimum support.} Using a single minimum support threshold
+\strong{Balancing minimum support.}
+Using a single minimum support threshold
 for a highly class imbalanced dataset will lead to the problem, that
 minority classes will only be presented in very few rules. To address this
 issue, \code{balanceSupport = TRUE} can be used to adjust minimum support
@@ -66,8 +69,8 @@ for each class dependent on the prevalence of the class (i.e., the frequency
 of the \eqn{c_i} in the transactions) similar to the minimum class support
 suggested for CBA by Liu et al (2000) we use
 
-\deqn{minsupp_i = minsupp_t \frac{supp(c_i)}{max(supp(C))},}{minsupp_i =
-minsupp_t x supp(c_i)/max(supp(C)),}
+\deqn{minsupp_i = minsupp_t
+  \frac{supp(c_i)}{max(supp(C))},}{minsupp_i = minsupp_t x supp(c_i)/max(supp(C)),}
 
 where \eqn{max(supp(C))} is the support of the majority class. Therefore,
 the defined minimum support is used for the majority class and then minimum
@@ -76,7 +79,6 @@ chance to also produce a reasonable amount of rules. In addition, a named
 numerical vector with a support values for each class can be specified.
 }
 \examples{
-
 data("iris")
 
 # discretize and convert to transactions
@@ -138,10 +140,6 @@ Liu B., Ma Y., Wong C.K. (2000) Improving an Association Rule Based
 Classifier. In: Zighed D.A., Komorowski J., Zytkow J. (eds) \emph{Principles
 of Data Mining and Knowledge Discovery. PKDD 2000. Lecture Notes in Computer
 Science}, vol 1910. Springer, Berlin, Heidelberg.
-}
-\seealso{
-\code{\link[arules]{apriori}}, \code{\link[arules]{APparameter}},
-\code{\link[arules]{rules}}, \code{\link[arules]{transactions}}.
 }
 \author{
 Michael Hahsler

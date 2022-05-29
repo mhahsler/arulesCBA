@@ -13,14 +13,14 @@ prepareTransactions(formula, data, disc.method = "mdlp", match = NULL)
 
 \item{disc.method}{Discretization method used to discretize continuous
 variables if data is a data.frame (default: \code{"mdlp"}). See
-\code{\link{discretizeDF.supervised}} for more supervised discretization
+\code{\link[=discretizeDF.supervised]{discretizeDF.supervised()}} for more supervised discretization
 methods.}
 
 \item{match}{typically \code{NULL}. Only used internally if data is a
 already a set of transactions.}
 }
 \value{
-An object of class \code{\link[arules]{transactions}} from
+An object of class \link{transactions} from
 \pkg{arules} with an attribute called \code{"disc_info"} that contains
 information on the used discretization for each column.
 }
@@ -30,7 +30,6 @@ discretization and converted into transactions. For transaction data that was no
 from a data.frame, a negative class item is added to create data for a binary classifier.
 }
 \examples{
-
 # Perform discretization and convert to transactions
 data("iris")
 iris_trans <- prepareTransactions(Species ~ ., iris)
@@ -41,10 +40,9 @@ inspect(head(iris_trans))
 data("Groceries")
 g2 <- prepareTransactions(`canned beer` ~ ., Groceries)
 inspect(head(g2))
-
 }
 \seealso{
-\code{\link[arules]{transactions}}, \code{\link{transactions2DF}}.
+\link[arules:transactions-class]{arules::transactions}, \code{transactions2DF()}.
 }
 \author{
 Michael Hahsler

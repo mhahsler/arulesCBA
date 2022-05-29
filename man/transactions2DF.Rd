@@ -7,7 +7,7 @@
 transactions2DF(transactions, itemLabels = FALSE)
 }
 \arguments{
-\item{transactions}{an object of class \code{transactions}.}
+\item{transactions}{an object of class \link{transactions}.}
 
 \item{itemLabels}{logical; use the complete item labels (variable=level) as the
 levels in the data.frame? By default, only the levels are used.}
@@ -20,7 +20,6 @@ Convert transactions back into data.frames by combining the
 items for the same variable into a single column.
 }
 \examples{
-
 data("iris")
 iris_trans <- prepareTransactions(Species ~ ., iris)
 iris_trans
@@ -40,9 +39,6 @@ head(transactions2DF(Groceries), 2)
 # Conversion of transactions prepared for classification
 g2 <- prepareTransactions(`shopping bags` ~ ., Groceries)
 head(transactions2DF(g2), 2)
-}
-\seealso{
-\code{\link[arules]{transactions}}.
 }
 \author{
 Michael Hahsler

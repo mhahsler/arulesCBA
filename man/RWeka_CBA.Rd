@@ -25,11 +25,11 @@ Details Section).}
 
 \item{disc.method}{Discretization method used to discretize continuous
 variables if data is a data.frame (default: \code{"mdlp"}). See
-\code{\link{discretizeDF.supervised}} for more supervised discretization
+\code{\link[=discretizeDF.supervised]{discretizeDF.supervised()}} for more supervised discretization
 methods.}
 }
 \value{
-Returns an object of class \code{\link{CBA.object}} representing the
+Returns an object of class \link{CBA} representing the
 trained classifier.
 }
 \description{
@@ -40,9 +40,11 @@ RWeka (Hornik et al, 2009).
 \details{
 You need to install package \pkg{RWeka} to use these classifiers.
 
-See R/Weka functions \code{\link[RWeka]{JRip}} (RIPPER),
-\code{\link[RWeka]{J48}} (C4.5 rules) \code{\link[RWeka]{PART}} for
-algorithm details and how control options can be passed on via
+See R/Weka functions
+\code{\link[=JRip]{JRip()}} (RIPPER),
+\code{\link[=J48]{J48()}} (C4.5 rules),
+\code{\link[=PART]{PART()}}
+for algorithm details and how control options can be passed on via
 \code{control}. An example is given in the Examples Section below.
 
 Memory for \pkg{RWeka} can be increased using the R options (e.g.,
@@ -50,8 +52,7 @@ Memory for \pkg{RWeka} can be increased using the R options (e.g.,
 \pkg{rJava} is loaded or any RWeka-based classigier in this package is used.
 }
 \examples{
-
-# You need to install rJava and RWeka
+# rJava and RWeka need to be installed
 
 \dontrun{
 data("iris")
@@ -61,7 +62,7 @@ classifier <- RIPPER_CBA(Species ~ ., data = iris)
 classifier
 
 # inspect the rule base
-inspect(rules(classifier))
+inspect(classifier$rules)
 
 # make predictions for the first few instances of iris
 predict(classifier, head(iris))
@@ -70,7 +71,7 @@ table(predict(classifier, iris), iris$Species)
 
 # C4.5
 classifier <- C4.5_CBA(Species ~ ., iris)
-inspect(rules(classifier))
+inspect(classifier$rules)
 
 # To use algorithmic options (here for PART), you need to load RWeka
 library(RWeka)
@@ -81,7 +82,7 @@ WOW(PART)
 # build PART with control option U (Generate unpruned decision list) set to TRUE
 classifier <- PART_CBA(Species ~ ., data = iris, control = RWeka::Weka_control(U = TRUE))
 classifier
-inspect(rules(classifier))
+inspect(classifier$rules)
 predict(classifier, head(iris))
 }
 
@@ -101,12 +102,8 @@ R. Quinlan (1993). C4.5: Programs for Machine Learning. Morgan Kaufmann
 Publishers, San Mateo, CA.
 
 Hornik K, Buchta C, Zeileis A (2009). "Open-Source Machine Learning: R Meets
-Weka." \emph{Computational Statistics}, 24(2), 225-232.
+Weka." \emph{Computational Statistics,} 24(2), 225-232.
 \doi{10.1007/s00180-008-0119-7}
-}
-\seealso{
-\code{\link[RWeka]{JRip}} (RIPPER), \code{\link[RWeka]{PART}},
-\code{\link{CBA.object}}.
 }
 \author{
 Michael Hahsler

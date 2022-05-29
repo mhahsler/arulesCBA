@@ -5,42 +5,46 @@
 #' uncovered examples per class.
 #'
 #' @param formula A symbolic description of the model to be fitted.
-#' @param x,transactions An object of class \code{\link[arules]{transactions}}
-#' or \code{\link[arules]{rules}}.
-#' @param rules A set of \code{\link[arules]{rules}}.
-#' @param type \code{"relative"} or \code{"absolute"} to return proportions or
+#' @param x,transactions An object of class [transactions]
+#' or [rules].
+#' @param rules A set of [rules].
+#' @param type `"relative" or `"absolute"` to return proportions or
 #' absolute counts.
-#' @return \code{response} returns the response label as a factor.
+#' @return `response` returns the response label as a factor.
 #'
-#' \code{classFrequency} returns the item frequency for each class label as a
+#' `classFrequency` returns the item frequency for each class label as a
 #' vector.
 #'
-#' \code{majorityClass} returns the most frequent class label in the
+#' `majorityClass` returns the most frequent class label in the
 #' transactions.
 #' @name CBA_helpers
 #' @author Michael Hahsler
-#' @seealso \code{\link[arules]{itemFrequency}}, \code{\link[arules]{rules}},
-#' \code{\link[arules]{transactions}}.
+#' @seealso [itemFrequency()], [rules], [transactions].
 #' @examples
-#'
 #' data("iris")
 #'
 #' iris.disc <- discretizeDF.supervised(Species ~ ., iris)
 #' iris.trans <- as(iris.disc, "transactions")
-#' inspect(head(iris.trans, n = 2))
+#' inspect(head(iris.trans, n = 3))
 #'
 #' # convert the class items back to a class label
-#' response(Species ~ ., head(iris.trans, n = 2))
+#' response(Species ~ ., head(iris.trans, n = 3))
+#'
+#' # Class labels
+#' classes(Species ~ ., iris.trans)
 #'
 #' # Class distribution. The iris dataset is perfectly balanced.
 #' classFrequency(Species ~ ., iris.trans)
 #'
-#' # Majority Class
+#' # Majority class
 #' # (Note: since all class frequencies for iris are the same, the first one is returned)
 #' majorityClass(Species ~ ., iris.trans)
 #'
 #' # Use for CARs
 #' cars <- mineCARs(Species ~ ., iris.trans, parameter = list(support = 0.3))
+#'
+#' #' # Class labels
+#' classes(Species ~ ., cars)
 #'
 #' # Number of rules for each class
 #' classFrequency(Species ~ ., cars, type = "absolute")
@@ -60,10 +64,12 @@ NULL
 
 ### TODO: classes can be done faster
 #' @rdname CBA_helpers
+#' @export
 classes <- function(formula, x)
   levels(response(formula, x))
 
 #' @rdname CBA_helpers
+#' @export
 response <- function(formula, x) {
   if (is.data.frame(x))
     return(x[[all.vars(as.formula(formula))[[1]]]])
@@ -85,6 +91,7 @@ response <- function(formula, x) {
 }
 
 #' @rdname CBA_helpers
+#' @export
 classFrequency <- function(formula, x, type = "relative") {
   tbl <- table(response(formula, x))
   if (type == "relative")
@@ -93,12 +100,16 @@ classFrequency <- function(formula, x, type = "relative") {
 }
 
 #' @rdname CBA_helpers
+#' @export
 majorityClass <- function(formula, transactions) {
   cf <- classFrequency(formula, transactions)
-  factor(unname(which.max(cf)), levels = seq(length(cf)), labels = names(cf))
+  factor(unname(which.max(cf)),
+    levels = seq(length(cf)),
+    labels = names(cf))
 }
 
 #' @rdname CBA_helpers
+#' @export
 transactionCoverage <- function(transactions, rules) {
   rulesMatchLHS <- is.subset(lhs(rules), transactions,
     sparse = (length(transactions) * length(rules) > 150000))
@@ -107,11 +118,13 @@ transactionCoverage <- function(transactions, rules) {
 }
 
 #' @rdname CBA_helpers
+#' @export
 uncoveredClassExamples <- function(formula, transactions, rules) {
   transCover <- transactionCoverage(transactions, rules)
   table(response(formula, transactions)[transCover < 1])
 }
 
 #' @rdname CBA_helpers
+#' @export
 uncoveredMajorityClass <- function(formula, transactions, rules)
   names(which.max(uncoveredClassExamples(formula, transactions, rules)))

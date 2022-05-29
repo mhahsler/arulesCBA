@@ -5,7 +5,7 @@ data("iris")
 context("RCAR")
 rcar_classifier <- RCAR(Species ~ ., iris, supp = 0.05, conf=0.9, lambda = 0.001)
 # FIXME: For some reason, on solaris this is 21, not 22.
-# expect_equal(length(rules(rcar_classifier)), 20L)
+# expect_equal(length(rcar_classifier$rules), 20L)
 
 results <- predict(rcar_classifier, iris)
 expect_equal(results[1], factor("setosa",

@@ -30,11 +30,10 @@ rules per class for prediction.}
 
 \item{disc.method}{Discretization method used to discretize continuous
 variables if data is a data.frame (default: \code{"mdlp"}). See
-\code{\link{discretizeDF.supervised}} for more supervised discretization
-methods.}
+\code{\link[=discretizeDF.supervised]{discretizeDF.supervised()}} for more supervised discretization methods.}
 }
 \value{
-Returns an object of class \code{\link{CBA.object}} representing the
+Returns an object of class \link{CBA} representing the
 trained classifier.
 }
 \description{
@@ -50,14 +49,17 @@ For each class, we find the positive and negative examples and learn the
 rules using FOIL. Then the rules for all classes are combined and sorted by
 Laplace accuracy on the training data.
 
-Following Xiaoxin and Han (2003), we classify new examples by \enumerate{
-\item select all the rules whose bodies are satisfied by the example; \item
+Following Xiaoxin and Han (2003), we classify new examples by
+\enumerate{
+\item select all the rules whose bodies are satisfied by the example;
+\item
 from the rules select the best k rules per class (highest expected Laplace
-accuracy); \item average the expected Laplace accuracy per class and choose
-the class with the highest average. }
+accuracy);
+\item average the expected Laplace accuracy per class and choose
+the class with the highest average.
+}
 }
 \examples{
-
 data("iris")
 
 # learn a classifier using automatic default discretization
@@ -65,11 +67,10 @@ classifier <- FOIL(Species ~ ., data = iris)
 classifier
 
 # inspect the rule base
-inspect(rules(classifier))
+inspect(classifier$rules)
 
 # make predictions for the first few instances of iris
 predict(classifier, head(iris))
-
 }
 \references{
 Quinlan, J.R., Cameron-Jones, R.M. Induction of logic programs:
@@ -79,9 +80,6 @@ FOIL and related systems. NGCO 13, 287-312 (1995).
 Yin, Xiaoxin and Jiawei Han. CPAR: Classification based on Predictive
 Association Rules, SDM, 2003.
 \doi{10.1137/1.9781611972733.40}
-}
-\seealso{
-\code{\link{CBA.object}}.
 }
 \author{
 Michael Hahsler

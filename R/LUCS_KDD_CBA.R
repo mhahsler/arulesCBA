@@ -23,21 +23,23 @@
 #'
 #' @name LUCS_KDD_CBA
 #' @param formula a symbolic description of the model to be fitted. Has to be
-#' of form `class ~ .` or `class ~ predictor1 + predictor2`.
+#'   of form `class ~ .` or `class ~ predictor1 + predictor2`.
 #' @param data A data.frame or a transaction set containing the training data.
-#' Data frames are automatically discretized and converted to transactions.
+#'   Data frames are automatically discretized and converted to transactions.
 #' @param support,confidence minimum support and minimum confidence thresholds
-#' for CMAR (range [0, 1]).
+#'   for CMAR (range [0, 1]).
 #' @param best_k use average expected accuracy (laplace) of the best k rules
-#' per class for prediction.
+#'   per class for prediction.
 #' @param disc.method Discretization method used to discretize continuous
-#' variables if data is a data.frame (default: `"mdlp"`). See
-#' [discretizeDF.supervised()] for more supervised discretization
-#' methods.
+#'   variables if data is a data.frame (default: `"mdlp"`). See
+#'   [discretizeDF.supervised()] for more supervised discretization
+#'   methods.
 #' @param verbose Show verbose output?
 #' @return Returns an object of class [CBA.object]] representing the
-#' trained classifier.
-#' @references Li W., Han, J. and Pei, J. CMAR: Accurate and Efficient
+#'   trained classifier.
+#'
+#' @references
+#' Li W., Han, J. and Pei, J. CMAR: Accurate and Efficient
 #' Classification Based on Multiple Class-Association Rules, ICDM, 2001, pp.
 #' 369-376.
 #'
@@ -57,7 +59,7 @@
 #' cl <- CMAR(Species ~ ., iris, support = .2, confidence = .8, verbose = TRUE)
 #' cl
 #'
-#' inspect(rules(cl))
+#' inspect(cl$rules)
 #' predict(cl, head(iris))
 #'
 #' cl <- CPAR(Species ~ ., iris)
@@ -201,6 +203,7 @@ NULL
 ### NOTE: MIN_GAIN parameter is not exposed by LUCS-KDD CPAR implementation. It is set to 0.7
 ### NOTE: We use the most prevalent class if no rules match!
 #' @rdname LUCS_KDD_CBA
+#' @export
 FOIL2 <-
   function(formula,
     data,
@@ -234,6 +237,7 @@ FOIL2 <-
   }
 
 #' @rdname LUCS_KDD_CBA
+#' @export
 CPAR <-
   function(formula,
     data,
@@ -270,6 +274,7 @@ CPAR <-
   }
 
 #' @rdname LUCS_KDD_CBA
+#' @export
 PRM <-
   function(formula,
     data,
@@ -305,6 +310,7 @@ PRM <-
   }
 
 #' @rdname LUCS_KDD_CBA
+#' @export
 CMAR <-
   function(formula,
     data,
@@ -352,4 +358,3 @@ CMAR <-
       class = "CBA"
     )
   }
-

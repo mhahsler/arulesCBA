@@ -34,32 +34,31 @@ cross-validation is used to determine the best value (see Details section).}
 penalty (default RCAR), and \code{alpha = 0} the ridge penalty.}
 
 \item{cv.glmnet.args, glmnet.args}{A list of arguments passed on to
-\code{\link[glmnet]{cv.glmnet}} and \code{\link[glmnet]{glmnet}},
-respectively. See Example section.}
+\code{\link[=cv.glmnet]{cv.glmnet()}} and \code{\link[=glmnet]{glmnet()}}, respectively. See Example section.}
 
-\item{parameter, control}{Optional parameter and control lists for apriori.}
+\item{parameter, control}{Optional parameter and control lists for \code{\link[=apriori]{apriori()}}.}
 
-\item{balanceSupport}{balanceSupport parameter passed to
-\code{\link{mineCARs}} function.}
+\item{balanceSupport}{balanceSupport parameter passed to \code{\link[=mineCARs]{mineCARs()}}.}
 
 \item{disc.method}{Discretization method for factorizing numeric input
-(default: \code{"mdlp"}). See \code{\link{discretizeDF.supervised}} for more
+(default: \code{"mdlp"}). See \code{\link[=discretizeDF.supervised]{discretizeDF.supervised()}} for more
 supervised discretization methods.}
 
 \item{verbose}{Report progress?}
 
 \item{...}{For convenience, additional parameters are used to create the
-\code{parameter} control list for apriori (e.g., to specify the support and
+\code{parameter} control list for \code{\link[=apriori]{apriori()}} (e.g., to specify the support and
 confidence thresholds).}
 }
 \value{
-Returns an object of class \code{CBA} representing the trained
+Returns an object of class \link{CBA} representing the trained
 classifier with the additional field \code{model} containing a list with the
 following elements:
 
 \item{all_rules}{all rules used to build the classifier, including the rules
-with a weight of zero.} \item{reg_model}{them multinomial logistic
-regression model as an object of class \code{\link{glmnet}}.}
+with a weight of zero.}
+\item{reg_model}{them multinomial logistic
+regression model as an object of class \code{\link[=glmnet]{glmnet()}}.}
 \item{cv}{contains the results for the cross-validation used determine
 lambda.}
 }
@@ -75,19 +74,17 @@ using regularized multinomial logistic regression via \pkg{glmnet}.
 
 If lambda is not specified (\code{NULL}) then cross-validation with the
 largest value of lambda such that error is within 1 standard error of the
-minimum is used to determine the best value (see \code{\link{cv.glmnet}}).
-
-See \code{\link{cv.glmnet}} for performing cross-validation in parallel.
+minimum is used to determine the best value (see \code{\link[=cv.glmnet]{cv.glmnet()}} also for how to
+perform cross-validation in parallel).
 }
 \examples{
-
 data("iris")
 
 classifier <- RCAR(Species~., iris)
 classifier
 
 # inspect the rule base sorted by the larges class weight
-inspect(sort(rules(classifier), by = "weight"))
+inspect(sort(classifier$rules, by = "weight"))
 
 # make predictions for the first few instances of iris
 predict(classifier, head(iris))
@@ -100,17 +97,12 @@ plot(classifier$model$cv)
 
 # show progress report and use 5 instead of the default 10 cross-validation folds.
 classifier <- RCAR(Species~., iris, cv.glmnet.args = list(nfolds = 5), verbose = TRUE)
-
 }
 \references{
 M. Azmi, G.C. Runger, and A. Berrado (2019). Interpretable
 regularized class association rules algorithm for classification in a
 categorical data space. \emph{Information Sciences,} Volume 483, May 2019.
 Pages 313-331.
-}
-\seealso{
-\code{\link{CBA.object}}, \code{\link{mineCARs}},
-\code{\link{glmnet}} and \code{\link{cv.glmnet}}.
 }
 \author{
 Tyler Giallanza and Michael Hahsler

@@ -25,7 +25,7 @@ CMAR(
 }
 \arguments{
 \item{formula}{a symbolic description of the model to be fitted. Has to be
-of form `class ~ .` or `class ~ predictor1 + predictor2`.}
+of form \code{class ~ .} or \code{class ~ predictor1 + predictor2}.}
 
 \item{data}{A data.frame or a transaction set containing the training data.
 Data frames are automatically discretized and converted to transactions.}
@@ -34,41 +34,41 @@ Data frames are automatically discretized and converted to transactions.}
 per class for prediction.}
 
 \item{disc.method}{Discretization method used to discretize continuous
-variables if data is a data.frame (default: `"mdlp"`). See
-[discretizeDF.supervised()] for more supervised discretization
+variables if data is a data.frame (default: \code{"mdlp"}). See
+\code{\link[=discretizeDF.supervised]{discretizeDF.supervised()}} for more supervised discretization
 methods.}
 
 \item{verbose}{Show verbose output?}
 
 \item{support, confidence}{minimum support and minimum confidence thresholds
-for CMAR (range [0, 1]).}
+for CMAR (range \link{0, 1}).}
 }
 \value{
-Returns an object of class [CBA.object]] representing the
+Returns an object of class \link{CBA.object}] representing the
 trained classifier.
 }
 \description{
 Interface for the LUCS-KDD Software Library Java implementations of CMAR
-(Li, Han and Pei, 2001), PRM, and CPAR (Yin and Han, 2003). **Note:** The
+(Li, Han and Pei, 2001), PRM, and CPAR (Yin and Han, 2003). \strong{Note:} The
 Java implementations is not part of \pkg{arulesCBA} and
-is only free for **non-commercial use**.
+is only free for \strong{non-commercial use}.
 }
 \details{
-**Requirement:** The code needs a
-**JDK (Java Software Development Kit) Version 1.8 (or higher)**
-installation. A **headless Java installation is not sufficient.**
+\strong{Requirement:} The code needs a
+\strong{JDK (Java Software Development Kit) Version 1.8 (or higher)}
+installation. A \strong{headless Java installation is not sufficient.}
 On some systems (Windows),
-you may need to set the `JAVA_HOME` environment variable so the system
+you may need to set the \code{JAVA_HOME} environment variable so the system
 finds the compiler.
 
-**Memory:** The memory for Java can be increased via R options. For
-example: `options(java.parameters = "-Xmx1024m")`
+\strong{Memory:} The memory for Java can be increased via R options. For
+example: \code{options(java.parameters = "-Xmx1024m")}
 
-**Note:** The implementation does not expose the min. gain parameter for
+\strong{Note:} The implementation does not expose the min. gain parameter for
 CPAR, PRM and FOIL2. It is fixed at 0.7 (the value used by Yin and Han,
 2001). FOIL2 is an alternative Java implementation to the native
 implementation of FOIL already provided in the \pkg{arulesCBA}.
-[FOIL] exposes min. gain.
+\link{FOIL} exposes min. gain.
 }
 \examples{
 # make sure you have a Java SDK Version 1.4.0+ and not a headless installation.
@@ -80,7 +80,7 @@ data("iris")
 cl <- CMAR(Species ~ ., iris, support = .2, confidence = .8, verbose = TRUE)
 cl
 
-inspect(rules(cl))
+inspect(cl$rules)
 predict(cl, head(iris))
 
 cl <- CPAR(Species ~ ., iris)

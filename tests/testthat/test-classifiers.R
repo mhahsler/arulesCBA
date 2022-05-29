@@ -2,6 +2,8 @@ library("testthat")
 library("arulesCBA")
 data("iris")
 
+options(digits = 2)
+
 context("Test classifiers")
 
 classifiers <- c(cba = CBA, foil = FOIL, rcar = RCAR)
@@ -15,15 +17,17 @@ dat <- iris
 f <- Species ~ .
 true <- response(f, dat)
 
-### train and insample testing
+### train and in-sample testing
 for (cl in classifiers) {
   res <- cl(f, dat)
-  print(res)
+  res
 
   p <- predict(res, dat)
-  tbl <- table(p, true)
-  accuracy <- sum(diag(tbl)) / sum(tbl)
-  cat("Accuracy:", round(accuracy, 3), "\n\n")
+
+  expect_equal(length(p), nrow(dat))
+  expect_equal(levels(p), levels(true))
+
+  accuracy(p, true)
 }
 
 ### use transactions
@@ -31,12 +35,14 @@ dat <- prepareTransactions(f, iris)
 
 for (cl in classifiers) {
   res <- cl(f, dat)
-  print(res)
+  res
 
   p <- predict(res, dat)
-  tbl <- table(p, true)
-  accuracy <- sum(diag(tbl)) / sum(tbl)
-  cat("Accuracy:", round(accuracy, 3), "\n\n")
+
+  expect_equal(length(p), nrow(dat))
+  expect_equal(levels(p), levels(true))
+
+  accuracy(p, true)
 }
 
 ### use regular transactions
@@ -50,12 +56,14 @@ true <- response(f, dat)
 
 for (cl in classifiers) {
   res <- cl(f, dat)
-  print(res)
+  res
 
   p <- predict(res, dat)
-  tbl <- table(p, true)
-  accuracy <- sum(diag(tbl)) / sum(tbl)
-  cat("Accuracy:", round(accuracy, 3), "\n\n")
+
+  expect_equal(length(p), nrow(dat))
+  expect_equal(levels(p), levels(true))
+
+  accuracy(p, true)
 }
 
 ## test transactions with logical variables
@@ -75,10 +83,12 @@ true <- response(f, dat)
 
 for (cl in classifiers) {
   res <- cl(f, dat)
-  print(res)
+  res
 
   p <- predict(res, dat)
-  tbl <- table(p, true)
-  accuracy <- sum(diag(tbl)) / sum(tbl)
-  cat("Accuracy:", round(accuracy, 3), "\n\n")
+
+  expect_equal(length(p), nrow(dat))
+  expect_equal(levels(p), levels(true))
+
+  accuracy(p, true)
 }

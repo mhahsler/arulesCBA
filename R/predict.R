@@ -1,5 +1,32 @@
-#' @rdname CBA_ruleset
+#' Model Prediction for Classifiers Based on Association Rules
+#'
+#' Predicts classes for new data using a CBA classifier.
+#'
+#' @aliases predict
+#' @name predict.CBA
+#'
+#' @param object An object of class [CBA].
+#' @param newdata A data.frame or transactions containing rows of new entries
+#' to be classified.
+#' @param type Predict `"class"` labels. Some classifiers can also return
+#' \code{"scores"}.
+#' @param \dots Additional arguments are ignored.
+#' @return A factor vector with the classification result.
+#' @author Michael Hahsler
+#' @examples
+#' data("iris")
+#'
+#' train_id <- sample(seq_len(nrow(iris)), 130)
+#' iris_train <- iris[train_id, ]
+#' iris_test <- iris[-train_id, ]
+#'
+#' cl <- CBA(Species ~., iris_train)
+#' pr <- predict(cl, iris_test)
+#' pr
+#'
+#' accuracy(pr, response(Species ~., iris_test))
 #' @method predict CBA
+#' @export
 predict.CBA <-
   function(object,
     newdata,
@@ -45,7 +72,7 @@ predict.CBA <-
     # Matrix of which rules match which transactions (sparse is only better for more
     # than 150000 entries)
     rulesMatchLHS <- is.subset(lhs(object$rules), newdata,
-      sparse = (length(newdata) * length(rules(object)) > 150000))
+      sparse = (length(newdata) * length(object$rules) > 150000))
     dimnames(rulesMatchLHS) <- list(NULL, NULL)
 
     # find class label for each rule
@@ -157,3 +184,15 @@ predict.CBA <-
 
     return(output)
   }
+
+
+#' @rdname predict.CBA
+#' @param pred,true two factors with the same level representing the predictions and the ground truth (e.g., obtrained with [response()]).
+#' @export
+accuracy <- function(pred, true) {
+  if (!identical(levels(pred), levels(true)))
+    stop("pred and true need to be factors with matching levels!")
+
+  tbl <- table(pred, true)
+  sum(diag(tbl)) / sum(tbl)
+}

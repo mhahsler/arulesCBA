@@ -4,7 +4,6 @@ data("iris")
 
 context("CBA_ruleset")
 
-
 # Shuffle and split into training and test set (80/20 split)
 iris <- iris[sample(seq(nrow(iris))),]
 
@@ -21,9 +20,12 @@ trans_test <- as(iris_test_disc, "transactions")
 
 # build custom classifier
 rules <- mineCARs(Species ~ ., trans_train,
-  parameter = list(support = 0.01, confidence = 0.8))
+  parameter = list(support = 0.01, confidence = 0.8), verbose = FALSE)
 
-classifier <- arulesCBA::CBA_ruleset(Species ~ ., rules, method = "majority")
+classifier <- CBA_ruleset(Species ~ .,
+  rules = rules,
+  default = uncoveredMajorityClass(Species ~ ., trans_train, rules),
+  method = "majority")
 classifier
 
 predict(classifier, head(trans_test))

@@ -4,12 +4,17 @@
   (is.null(itemInfo(dat)$variables) ||
       is.null(itemInfo(dat)$levels))
 
+
+### data needs to be transactions, itemMatrix or associations (rules)
 .parseformula <- function(formula, data) {
   formula <- as.formula(formula)
   vars <- all.vars(formula)
 
   ### class variables and values
   class <- vars[1]
+
+  if (is(data, "associations"))
+    data <- items(data)
 
   if (is(data, "itemMatrix")) {
     # make sure we only have the variable name
