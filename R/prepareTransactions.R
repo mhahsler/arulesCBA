@@ -1,8 +1,17 @@
 #' Prepare Data for Associative Classification
 #'
-#' Data in a data.frame are discretized using class-based
-#' discretization and converted into transactions. For transaction data that was not created
-#' from a data.frame, a negative class item is added to create data for a binary classifier.
+#' Converts data.frame into transactions suitable for classification based on association rules.
+#'
+#' To convert a data.frame into items in a transaction dataset for classification,
+#' the following steps are performed:
+#'
+#' 1. All continuous features are discretized using class-based
+#'   discretization (default is MDLP) and each range is represented as an item.
+#' 2. Factors are converted into items, one item for each level.
+#' 3. Each logical is converted into an item.
+#' 4. If the class variable is a logical, then a negative class item is added.
+#'
+#' Steps 1-3 are skipped if `data` is already as [arules::transactions] object.
 #'
 #' @param formula the formula.
 #' @param data a data.frame with the data.
@@ -12,7 +21,7 @@
 #'   methods.
 #' @param match typically `NULL`. Only used internally if data is a
 #'   already a set of transactions.
-#' @return An object of class [transactions] from
+#' @return An object of class [arules::transactions] from
 #'   \pkg{arules} with an attribute called `"disc_info"` that contains
 #'   information on the used discretization for each column.
 #' @author Michael Hahsler

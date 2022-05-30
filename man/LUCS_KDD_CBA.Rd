@@ -27,8 +27,9 @@ CMAR(
 \item{formula}{a symbolic description of the model to be fitted. Has to be
 of form \code{class ~ .} or \code{class ~ predictor1 + predictor2}.}
 
-\item{data}{A data.frame or a transaction set containing the training data.
-Data frames are automatically discretized and converted to transactions.}
+\item{data}{A data.frame or \link[arules:transactions-class]{arules::transactions} containing the training data.
+Data frames are automatically discretized and converted to transactions with
+\code{\link[=prepareTransactions]{prepareTransactions()}}.}
 
 \item{best_k}{use average expected accuracy of the best k rules
 per class for prediction.}
@@ -56,7 +57,7 @@ is only free for \strong{non-commercial use}.
 \details{
 \strong{Requirement:} The code needs a
 \strong{JDK (Java Software Development Kit) Version 1.8 (or higher)}
-installation. A \strong{headless Java installation is not sufficient.}
+installation.
 On some systems (Windows),
 you may need to set the \code{JAVA_HOME} environment variable so the system
 finds the compiler.

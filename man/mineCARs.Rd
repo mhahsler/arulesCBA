@@ -17,7 +17,7 @@ mineCARs(
 \arguments{
 \item{formula}{A symbolic description of the model to be fitted.}
 
-\item{transactions}{An object of class \link{transactions}
+\item{transactions}{An object of class \link[arules:transactions-class]{arules::transactions}
 containing the training data.}
 
 \item{parameter, control}{Optional parameter and control lists for

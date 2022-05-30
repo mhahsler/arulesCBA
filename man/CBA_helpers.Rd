@@ -28,7 +28,7 @@ uncoveredMajorityClass(formula, transactions, rules)
 \arguments{
 \item{formula}{A symbolic description of the model to be fitted.}
 
-\item{x, transactions}{An object of class \link{transactions}
+\item{x, transactions}{An object of class \link[arules:transactions-class]{arules::transactions}
 or \link{rules}.}
 
 \item{type}{\verb{"relative" or }"absolute"` to return proportions or
@@ -92,7 +92,7 @@ uncoveredClassExamples(Species ~ ., iris.trans, cars[1:3])
 uncoveredMajorityClass(Species ~ ., iris.trans, cars[1:3])
 }
 \seealso{
-\code{\link[=itemFrequency]{itemFrequency()}}, \link{rules}, \link{transactions}.
+\code{\link[=itemFrequency]{itemFrequency()}}, \link{rules}, \link[arules:transactions-class]{arules::transactions}.
 }
 \author{
 Michael Hahsler

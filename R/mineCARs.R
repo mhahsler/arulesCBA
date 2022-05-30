@@ -41,7 +41,7 @@
 #' numerical vector with a support values for each class can be specified.
 #'
 #' @param formula A symbolic description of the model to be fitted.
-#' @param transactions An object of class [transactions]
+#' @param transactions An object of class [arules::transactions]
 #'   containing the training data.
 #' @param parameter,control Optional parameter and control lists for
 #'   [apriori()].

@@ -17,8 +17,9 @@ C4.5_CBA(formula, data, control = NULL, disc.method = "mdlp")
 \item{formula}{A symbolic description of the model to be fitted. Has to be
 of form \code{class ~ .} or \code{class ~ predictor1 + predictor2}.}
 
-\item{data}{A data.frame or a transaction set containing the training data.
-Data frames are automatically discretized and converted to transactions.}
+\item{data}{A data.frame or \link[arules:transactions-class]{arules::transactions} containing the training data.
+Data frames are automatically discretized and converted to transactions with
+\code{\link[=prepareTransactions]{prepareTransactions()}}.}
 
 \item{control}{algorithmic control options for R/Weka Rule learners (see
 Details Section).}

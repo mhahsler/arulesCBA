@@ -13,7 +13,7 @@ accuracy(pred, true)
 \arguments{
 \item{object}{An object of class \link{CBA}.}
 
-\item{newdata}{A data.frame or transactions containing rows of new entries
+\item{newdata}{A data.frame or \link[arules:transactions-class]{arules::transactions} containing rows of new entries
 to be classified.}
 
 \item{type}{Predict \code{"class"} labels. Some classifiers can also return

@@ -25,8 +25,9 @@
 #'
 #' @param formula A symbolic description of the model to be fitted. Has to be
 #'   of form `class ~ .` or `class ~ predictor1 + predictor2`.
-#' @param data A data.frame or a transaction set containing the training data.
-#'   Data frames are automatically discretized and converted to transactions.
+#' @param data A data.frame or [arules::transactions] containing the training data.
+#'   Data frames are automatically discretized and converted to transactions with
+#'   [prepareTransactions()].
 #' @param max_len maximal length of the LHS of the created rules.
 #' @param min_gain minimal gain required to expand a rule.
 #' @param best_k use the average expected accuracy (laplace) of the best k

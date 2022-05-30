@@ -17,7 +17,9 @@
 #'
 #' @param formula A symbolic description of the model to be fitted. Has to be
 #'   of form `class ~ .` or `class ~ predictor1 + predictor2`.
-#' @param data A data.frame containing the training data.
+#' @param data A data.frame or [arules::transactions] containing the training data.
+#'   Data frames are automatically discretized and converted to transactions with
+#'   [prepareTransactions()].
 #' @param lambda The amount of weight given to regularization during the
 #'   logistic regression learning process. If not specified (`NULL`) then
 #'   cross-validation is used to determine the best value (see Details section).

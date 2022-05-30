@@ -21,8 +21,9 @@
 #'
 #' @param formula A symbolic description of the model to be fitted. Has to be
 #'   of form `class ~ .` or `class ~ predictor1 + predictor2`.
-#' @param data A data.frame or a transaction set containing the training data.
-#'   Data frames are automatically discretized and converted to transactions.
+#' @param data A data.frame or [arules::transactions] containing the training data.
+#'   Data frames are automatically discretized and converted to transactions with
+#'   [prepareTransactions()].
 #' @param disc.method Discretization method used to discretize continuous
 #'   variables if data is a data.frame (default: `"mdlp"`). See
 #'   [discretizeDF.supervised()] for more supervised discretization

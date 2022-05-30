@@ -6,7 +6,7 @@
 #' @name predict.CBA
 #'
 #' @param object An object of class [CBA].
-#' @param newdata A data.frame or transactions containing rows of new entries
+#' @param newdata A data.frame or [arules::transactions] containing rows of new entries
 #' to be classified.
 #' @param type Predict `"class"` labels. Some classifiers can also return
 #' \code{"scores"}.

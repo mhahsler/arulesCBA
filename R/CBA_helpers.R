@@ -5,7 +5,7 @@
 #' uncovered examples per class.
 #'
 #' @param formula A symbolic description of the model to be fitted.
-#' @param x,transactions An object of class [transactions]
+#' @param x,transactions An object of class [arules::transactions]
 #' or [rules].
 #' @param rules A set of [rules].
 #' @param type `"relative" or `"absolute"` to return proportions or
@@ -19,7 +19,7 @@
 #' transactions.
 #' @name CBA_helpers
 #' @author Michael Hahsler
-#' @seealso [itemFrequency()], [rules], [transactions].
+#' @seealso [itemFrequency()], [rules], [arules::transactions].
 #' @examples
 #' data("iris")
 #'

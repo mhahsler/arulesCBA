@@ -1,3 +1,13 @@
+# arulesCBA 1.2.4 (2022-05-30)
+
+* LUCS_KDD algorithms work now in Java headless mode.
+* Function rules() is now defunct. rules are now extracted using $rules. Reason: arules has now a rules function.
+* Improved package tests.
+* NAMESPACE is now managed by roxygen.
+* Improved man pages.
+* new helper function classes.
+* CBA_ruleset now requires a default class.
+
 # arulesCBA 1.2.3 (2022-05-27)
 * LUCS_KDD jars come now preinstalled which fixes compilation issues.
 * Fixed RCAR for 0 rule case.

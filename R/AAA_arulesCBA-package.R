@@ -2,6 +2,8 @@
 #'
 #' @description `r packageDescription("arulesCBA")$Description`
 #'
+#'
+#'
 #' @author Michael Hahsler
 #' @docType package
 #' @name arulesCBA-package
