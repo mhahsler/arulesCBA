@@ -7,6 +7,7 @@
 \description{
 Provides the infrastructure for association rule-based classification including the algorithms
 CBA, CMAR, CPAR, C4.5, FOIL, PART, PRM, RCAR, and RIPPER to build associative classifiers.
+Hahsler et al (2019) \url{doi:10.32614/RJ-2019-048}.
 }
 \author{
 Michael Hahsler

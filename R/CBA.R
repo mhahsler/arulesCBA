@@ -271,7 +271,7 @@ pruneCBA_M1 <-
 #   parsedFormula <- .parseformula(formula, trans)
 #   class <- parsedFormula$class_names
 #   class_ids <- parsedFormula$class_ids
-#   vars <- parsedFormula$var_names
+#   vars <- parsedFormula$feature_names
 #
 #   quality(rules)$size <- size(rules)
 #

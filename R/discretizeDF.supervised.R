@@ -82,15 +82,13 @@ discretizeDF.supervised <- function(formula,
 
   vars <- .parseformula(formula, data)
   cl_id <- vars$class_ids
-  var_ids <- vars$var_ids
+  feature_ids <- vars$feature_ids
 
-  if (any(!sapply(data[var_ids], is.numeric)))
-    stop("Cannot discretize non-numeric column: ",
-      colnames(data)[var_ids[!sapply(data[var_ids], is.numeric)]])
+  feature_ids <- feature_ids[sapply(data[feature_ids], is.numeric)]
 
   if (method == "mdlp") {
     cps <- structure(vector("list", ncol(data)), names = colnames(data))
-    for (i in var_ids) {
+    for (i in feature_ids) {
       # cutPoints does not handle missing values!
       missing <- is.na(data[[i]])
       cPts <-
@@ -107,7 +105,7 @@ discretizeDF.supervised <- function(formula,
   } else {
     ### other methods require only numeric columns and
     ### the class to be the last column.
-    data_num_id <- var_ids
+    data_num_id <- feature_ids
     data_num <- data[, c(data_num_id, cl_id)]
 
     res <- switch(
@@ -137,7 +135,7 @@ discretizeDF.supervised <- function(formula,
       default = list(method = "none"))
 
   ### fix method attribute
-  for (i in var_ids)
+  for (i in feature_ids)
     attr(data[[i]], "discretized:method") <- method
 
   data

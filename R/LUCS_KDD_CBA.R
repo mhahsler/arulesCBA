@@ -81,7 +81,7 @@ NULL
     parsedFormula <- .parseformula(formula, trans)
     if (!all(parsedFormula$class_ids > nitems(trans) - length(parsedFormula$class_ids)))
       trans <-
-        trans[, c(parsedFormula$var_ids, parsedFormula$class_ids)]
+        trans[, c(parsedFormula$feature_ids, parsedFormula$class_ids)]
 
     l <- LIST(trans, decode = FALSE)
     l <- sapply(l, paste, collapse = ' ')
@@ -116,7 +116,7 @@ NULL
   # fix item order if class items were not the last
   parsedFormula <- .parseformula(formula, trans)
   if (!all(parsedFormula$class_ids > nitems(trans) - length(parsedFormula$class_ids))) {
-    itemOrder <- c(parsedFormula$var_ids, parsedFormula$class_ids)
+    itemOrder <- c(parsedFormula$feature_ids, parsedFormula$class_ids)
     lhs <- lapply(
       lhs,
       FUN = function(i)

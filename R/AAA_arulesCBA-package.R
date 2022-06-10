@@ -10,8 +10,8 @@
 #'
 #' @import arules
 #' @import Matrix
-#' @importFrom methods as is new slot<- slotNames
-#' @importFrom stats as.formula df
+#' @importFrom methods as is new
+#' @importFrom stats as.formula terms
 #'
 #' @useDynLib arulesCBA
 #'

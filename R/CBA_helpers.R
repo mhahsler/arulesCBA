@@ -72,8 +72,8 @@ classes <- function(formula, x)
 #' @export
 response <- function(formula, x) {
   if (is.data.frame(x))
-    return(x[[all.vars(as.formula(formula))[[1]]]])
-  # this will add variable info for for regular transactions
+    return(x[[.parseformula(formula, x)$class_ids]])
+  # this will add variable info for regular transactions
   if (is(x, "transactions"))
     x <- prepareTransactions(formula, x)
   if (is(x, "rules"))

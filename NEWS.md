@@ -1,3 +1,7 @@
+# arulesCBA 1.2.4-1 (2022-xx-xx)
+
+* Improved formula interface code.
+
 # arulesCBA 1.2.4 (2022-05-30)
 
 * LUCS_KDD algorithms work now in Java headless mode.

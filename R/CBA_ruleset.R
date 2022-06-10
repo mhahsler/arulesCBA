@@ -146,7 +146,7 @@ CBA_ruleset <- function(formula,
 
   # check if LHS is in formula!
   lhscnt <- itemFrequency(lhs(rules), type = "absolute")
-  if (sum(lhscnt[-parsedformula$var_ids]) != 0)
+  if (sum(lhscnt[-parsedformula$feature_ids]) != 0)
     warning("LHS of CARs contains items not in the formula!")
 
   structure(c(

@@ -5,87 +5,99 @@
       is.null(itemInfo(dat)$levels))
 
 
-### data needs to be transactions, itemMatrix or associations (rules)
+### data needs to be a data.frame, transactions, itemMatrix or associations (rules)
+# returns:
+#  - formula
+#  - class_names
+#  - class_ids
+#  - class_items
+#  - feature_names
+#  - feature_ids
+#  - feature_items
 .parseformula <- function(formula, data) {
   formula <- as.formula(formula)
-  vars <- all.vars(formula)
 
-  ### class variables and values
-  class <- vars[1]
-
+  ## prepare data.frame with correct colnames for terms
   if (is(data, "associations"))
-    data <- items(data)
+    data <- items(data[1])
 
   if (is(data, "itemMatrix")) {
-    # make sure we only have the variable name
-    class <- strsplit(class, "=")[[1]]
-    if (length(class) > 1) {
-      warning(
-        "lhs in formula contains a class variable with a value. Using only ",
-        sQuote(class[1]),
-        " as the class variable."
-      )
-      class <- class[1]
+    trans <- data
+    items <- itemLabels(trans)
+
+    if (.class_is_binary(trans)) {
+      ### deal with binary case (has no variables or levels in itemInfo)
+      vars <- items
+      unique_vars <- items
+      levels <- items
+      labels <- items
+    } else {
+      ### deal regular case (has variables or levels in itemInfo)
+      vars <- as.character(itemInfo(trans)[["variables"]])
+      unique_vars <- unique(vars)
+      levels <- as.character(itemInfo(trans)[["levels"]])
+      labels <- items
     }
 
-    ii <- itemInfo(data)
-    if (.class_is_binary(data)) {
-      ### regular items in transactions
-      class_ids <- which(ii$labels == class)
-      class_names <- c("TRUE", "FALSE")
-      class_items <- itemLabels(data)[class_ids]
-    } else{
-      class_ids <- which(ii$variables == class)
-      class_names <- as.character(ii$levels[class_ids])
-      class_items <- itemLabels(data)[class_ids]
-    }
+    data <-
+      as.data.frame(matrix(
+        NA,
+        nrow = 0,
+        ncol = length(unique_vars),
+        dimnames = list(row = NULL, col = unique_vars)
+      ))
   } else {
-    ### for data.frame
-    class_ids <- pmatch(class, colnames(data))
+    ### data.frame
+    if (!is.data.frame(data))
+      stop("data needs to be a data.frame, transactions, itemMatrix or associations (rules)!")
+
+    trans <- NULL
+    vars <- colnames(data)
+    items <- NULL
+  }
+
+  trms <- terms(formula, data = data)
+  features <- gsub("`", "", colnames(attr(trms, "factors")))
+  class <- gsub("`", "", rownames(attr(trms, "factors"))[attr(trms, "response")])
+
+  if (!is.null(trans)) {
+    class_ids <- which(vars %in% class)
+
+    if (.class_is_binary(trans))
+      class_names <- c("TRUE", "FALSE")
+    else
+      class_names <- levels[class_ids]
+
+    class_items <- labels[class_ids]
+
+    feature_ids <-
+      which(vars %in% features)
+    feature_names <- levels[feature_ids]
+    feature_items <- labels[feature_ids]
+  } else {
+    ### data.frame
+    class_names <- class
+    class_ids <- which(colnames(data) %in% class)
+    class_items <- NA
+
     if (!is.factor(data[[class_ids]]))
       stop("class variable needs to be a factor in the data!")
-    class_names <- colnames(data)[class_ids]
-    class_items <- NA
+
+    feature_names <- features
+    feature_ids <- which(colnames(data) %in% features)
+    feature_items <- NA
   }
 
-  if (any(is.na(class_ids)) || length(class_ids) == 0)
-    stop("Cannot identify column ",
-      sQuote(class),
-      " specified as class in the formula.")
-
-  ### predictors
-  vars <- vars[-1]
-
-  if (is(data, "itemMatrix")) {
-    ii <- itemInfo(data)
-    if (length(vars) == 1 &&
-        vars == ".")
-      var_ids <- setdiff(seq(ncol(data)), class_ids)
-    else
-      var_ids <- which(ii$variables %in% vars)
-    var_names <- ii$variables[var_ids]
-    var_items <- itemLabels(data)[var_ids]
-
-  } else {
-    ### for data.frame
-    if (length(vars) == 1 && vars == ".")
-      var_ids <- setdiff(which(sapply(data, is.numeric)), class_ids)
-    else {
-      var_ids <- pmatch(vars, colnames(data))
-      if (any(is.na(var_ids)))
-        stop(paste("Cannot identify term", vars[is.na(var_ids)], "in data!"))
-    }
-    var_names <- colnames(data)[var_ids]
-    var_items <- NA
-  }
+  if (length(class_ids) < 1L)
+    stop("Class not found in data. Only use the class name without '='!")
 
   list(
     formula = formula,
     class_ids = class_ids,
     class_names = class_names,
     class_items = class_items,
-    var_ids = var_ids,
-    var_names = var_names,
-    var_items = var_items
+    feature_ids = feature_ids,
+    feature_names = feature_names,
+    feature_items = feature_items
   )
 }

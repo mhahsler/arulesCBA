@@ -33,7 +33,8 @@
 #' inspect(head(iris_trans))
 #'
 #' # A negative class item is added for regular transaction data (here "!canned beer")
-#' # Note: backticks are needed in formulas with item labels that contain a space.
+#' # Note: backticks are needed in formulas with item labels that contain a space or special
+#' # character.
 #' data("Groceries")
 #' g2 <- prepareTransactions(`canned beer` ~ ., Groceries)
 #' inspect(head(g2))
@@ -46,21 +47,20 @@ prepareTransactions <-
     if (is(data, "transactions")) {
       ### add negative items to handle regular transaction data without variable info
       if (is.null(itemInfo(data)$variables))
-        data <- addComplement(data, all.vars(formula)[1])
+        data <- addComplement(data, .parseformula(formula, data)$class_items)
 
       ### Note: transactions might need recoding!
       if (!is.null(match))
-        return(recode(data, itemLabels = itemLabels(match)))
-      else
-        return(data)
+        data <- recode(data, itemLabels = itemLabels(match))
+
+      return(data)
     }
 
     # handle logical variables by making them into factors (so FALSE is preserved)
-    if (!is(data, "transactions")) {
-      for (i in 1:ncol(data))
-        if (is.logical(data[[i]]))
-          data[[i]] <- factor(data[[i]], levels = c(TRUE, FALSE))
-    }
+    for (i in 1:ncol(data))
+      if (is.logical(data[[i]]))
+        data[[i]] <- factor(data[[i]], levels = c(TRUE, FALSE))
+
     # disc.method is a character string with the method
     if (!is.list(disc.method)) {
       disc_info <- NULL
@@ -80,7 +80,6 @@ prepareTransactions <-
       FUN = function(x)
         list(method = "fixed", breaks = x)
     ))
-    data <- as(data, "transactions")
 
-    return(data)
+    as(data, "transactions")
   }

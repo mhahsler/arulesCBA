@@ -4,7 +4,7 @@ data("iris")
 
 options(digits = 2)
 
-context("Test classifiers")
+context("Test classifiers on data.frame")
 
 classifiers <- c(cba = CBA, foil = FOIL, rcar = RCAR)
 if ("RWeka" %in% utils::installed.packages()[, "Package"])
@@ -30,6 +30,7 @@ for (cl in classifiers) {
   accuracy(p, true)
 }
 
+context("Test classifiers on transactions")
 ### use transactions
 dat <- prepareTransactions(f, iris)
 
@@ -45,6 +46,7 @@ for (cl in classifiers) {
   accuracy(p, true)
 }
 
+context("Test classifiers on regular transactions")
 ### use regular transactions
 # NOTE: this does not work with Weka-based classifiers.
 classifiers <- c(cba = CBA, foil = FOIL, rcar = RCAR)
@@ -66,6 +68,7 @@ for (cl in classifiers) {
   accuracy(p, true)
 }
 
+context("Test classifiers on transactions with logical variables")
 ## test transactions with logical variables
 #classifiers <- c(CBA, FOIL, RCAR)
 # RCAR is too slow

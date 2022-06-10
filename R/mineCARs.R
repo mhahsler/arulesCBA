@@ -153,7 +153,7 @@ mineCARs <-
         cars <- apriori(
           transactions,
           parameter = parameter,
-          appearance = list(rhs = vars$class_items, lhs = vars$var_items),
+          appearance = list(rhs = vars$class_items, lhs = vars$feature_items),
           control = control
         )
       )
@@ -187,7 +187,7 @@ mineCARs <-
             apriori(
               transactions,
               parameter = parameter,
-              appearance = list(rhs = rhs, lhs = vars$var_items),
+              appearance = list(rhs = rhs, lhs = vars$feature_items),
               control = control
             )
           )
