@@ -1,5 +1,5 @@
-R package arulesCBA: Classification Based on Association Rules
-================
+
+# <img src='man/figures/logo.svg' align="right" height="139" /> R package arulesCBA: Classification Based on Association Rules
 
 [![CRAN
 version](http://www.r-pkg.org/badges/version/arulesCBA)](https://CRAN.R-project.org/package=arulesCBA)
@@ -66,14 +66,14 @@ classifier
     ## CBA Classifier Object
     ## Formula: Species ~ .
     ## Number of rules: 6
-    ## Default Class: NA
+    ## Default Class: versicolor
     ## Classification method: first  
     ## Description: CBA algorithm (Liu et al., 1998)
 
 Inspect the rulebase.
 
 ``` r
-inspect(rules(classifier), linebreak = TRUE)
+inspect(classifier$rules, linebreak = TRUE)
 ```
 
     ##     lhs                            rhs                  support confidence coverage lift count size coveredTransactions totalErrors

@@ -1,7 +1,9 @@
 ---
-title: "R package arulesCBA: Classification Based on Association Rules"
 output: github_document
 ---
+
+# <img src='man/figures/logo.svg' align="right" height="139" /> R package arulesCBA: Classification Based on Association Rules
+
 
 ```{r echo=FALSE}
 options(digits = 2)
@@ -62,7 +64,7 @@ classifier
 Inspect the rulebase.
 
 ```{r}
-inspect(rules(classifier), linebreak = TRUE)
+inspect(classifier$rules, linebreak = TRUE)
 ```
   
 Make predictions for the first few instances of iris.
