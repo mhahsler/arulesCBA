@@ -2,24 +2,12 @@
 output: github_document
 ---
 
-# <img src='man/figures/logo.svg' align="right" height="139" /> R package arulesCBA: Classification Based on Association Rules
-
-
-```{r echo=FALSE}
-options(digits = 2)
-knitr::opts_chunk$set(tidy = TRUE, message = FALSE)
-```
-
 ```{r echo=FALSE, results = 'asis'}
 pkg <- 'arulesCBA'
 
-library(stringr)
-
-  cat(str_interp("[![CRAN version](http://www.r-pkg.org/badges/version/${pkg})](https://CRAN.R-project.org/package=${pkg})\n"))
-  cat(str_interp("[![stream r-universe status](https://mhahsler.r-universe.dev/badges/${pkg})](https://mhahsler.r-universe.dev/ui#package:${pkg})\n"))
-  cat(str_interp("[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/grand-total/${pkg})](https://CRAN.R-project.org/package=${pkg})\n"))
+source("https://raw.githubusercontent.com/mhahsler/pkg_helpers/main/pkg_helpers.R")
+pkg_title(pkg)
 ```
-
 
 The R package [arulesCBA](https://cran.r-project.org/package=arulesCBA) (Hahsler et al, 2020) 
 is an extension of the package [arules](https://cran.r-project.org/package=arules) to perform
@@ -38,15 +26,9 @@ association rule-based classification. The package provides the infrastructure f
 The package also provides the infrastructure for associative classification (supervised discetization, mining class association rules (CARs)), and implements various association rule-based classification strategies
 (first match, majority voting, weighted voting, etc.).
 
-## Installation
-
-__Stable CRAN version:__ install from within R with
-```{r eval=FALSE}
-install.packages("arulesCBA")
+```{r echo=FALSE, results = 'asis'}
+pkg_install(pkg)
 ```
-
-__Current development version:__ Install from [r-universe.](https://mhahsler.r-universe.dev/ui#package:arulesCBA)
-
 ## Usage
 
 ```{r}

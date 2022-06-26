@@ -1,12 +1,12 @@
 
-# <img src='man/figures/logo.svg' align="right" height="139" /> R package arulesCBA: Classification Based on Association Rules
+# <img src="man/figures/logo.svg" align="right" height="139" /> R package arulesCBA - Classification Based on Association Rules
 
 [![CRAN
 version](http://www.r-pkg.org/badges/version/arulesCBA)](https://CRAN.R-project.org/package=arulesCBA)
 [![stream r-universe
 status](https://mhahsler.r-universe.dev/badges/arulesCBA)](https://mhahsler.r-universe.dev/ui#package:arulesCBA)
 [![CRAN RStudio mirror
-downloads](http://cranlogs.r-pkg.org/badges/grand-total/arulesCBA)](https://CRAN.R-project.org/package=arulesCBA)
+downloads](http://cranlogs.r-pkg.org/badges/arulesCBA)](https://CRAN.R-project.org/package=arulesCBA)
 
 The R package [arulesCBA](https://cran.r-project.org/package=arulesCBA)
 (Hahsler et al, 2020) is an extension of the package
@@ -40,7 +40,7 @@ strategies (first match, majority voting, weighted voting, etc.).
 
 ## Installation
 
-**Stable CRAN version:** install from within R with
+**Stable CRAN version:** Install from within R with
 
 ``` r
 install.packages("arulesCBA")
@@ -48,6 +48,10 @@ install.packages("arulesCBA")
 
 **Current development version:** Install from
 [r-universe.](https://mhahsler.r-universe.dev/ui#package:arulesCBA)
+
+``` r
+install.packages("arulesCBA", repos = "https://mhahsler.r-universe.dev")
+```
 
 ## Usage
 
