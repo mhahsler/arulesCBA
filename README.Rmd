@@ -55,9 +55,12 @@ Make predictions for the first few instances of iris.
 predict(classifier, head(iris))
 ```
 
-## References
+## Cite This Package AS
 
 * M. Hahsler, I. Johnson, T. Kliegr and J. Kuchar (2019). [Associative Classification in R: arc, arulesCBA, and rCBA](https://journal.r-project.org/archive/2019/RJ-2019-048/). _The R Journal_ 11(2), pp. 254-267.
+
+## References
+
 * M. Azmi, G.C. Runger, and A. Berrado (2019). Interpretable regularized class association rules algorithm for classification in a categorical data space. _Information Sciences,_ Volume 483, May 2019, pp. 313-331.
 * W. W. Cohen (1995). Fast effective rule induction. In A. Prieditis and S. Russell (eds.), _Proceedings of the 12th International Conference on Machine Learning,_ pp. 115-123. Morgan Kaufmann. ISBN 1-55860-377-8.
 * E. Frank and I. H. Witten (1998). Generating accurate rule sets without global optimization. In J. Shavlik (ed.), _Machine Learning: Proceedings of the Fifteenth International Conference,_ Morgan Kaufmann Publishers: San Francisco, CA.

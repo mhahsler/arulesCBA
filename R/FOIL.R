@@ -150,14 +150,14 @@ FOIL <-
       patterns[is.na(patterns)] <- FALSE
       lhs <-
         new("itemMatrix",
-          data = t(as(patterns, "ngCMatrix")),
+          data = t(as(as(as(patterns, "nMatrix"), "generalMatrix"), "CsparseMatrix")),
           itemInfo = itemInfo(trans))
 
       patterns[] <- FALSE
       patterns[, cid] <- TRUE
       rhs <-
         new("itemMatrix",
-          data = t(as(patterns, "ngCMatrix")),
+          data = t(as(as(as(patterns, "nMatrix"), "generalMatrix"), "CsparseMatrix")),
           itemInfo = itemInfo(trans))
 
       classrules <- new("rules", lhs = lhs, rhs = rhs)

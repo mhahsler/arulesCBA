@@ -1,6 +1,6 @@
 #######################################################################
 # Helper for using optional packages
-# Copyrigth (C) 2015 Michael Hahsler
+# Copyright (C) 2015 Michael Hahsler
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

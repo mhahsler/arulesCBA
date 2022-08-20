@@ -26,8 +26,8 @@ pruneCBA_M2(formula, rules, transactions, verbose = FALSE)
 \item{formula}{A symbolic description of the model to be fitted. Has to be
 of form \code{class ~ .} or \code{class ~ predictor1 + predictor2}.}
 
-\item{data}{A data.frame or a \link[arules:transactions-class]{arules::transactions} containing the training data.
-Data frames are automatically discretized and converted to transactions with \code{\link[=prepareTransactions]{prepareTransactions()}}.}
+\item{data}{\link[arules:transactions-class]{arules::transactions} containing the training data or a data.frame which.
+is automatically discretized and converted to transactions with \code{\link[=prepareTransactions]{prepareTransactions()}}.}
 
 \item{pruning}{Pruning strategy used: "M1" or "M2".}
 

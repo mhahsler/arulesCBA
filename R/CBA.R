@@ -153,10 +153,10 @@ pruneCBA_M1 <-
     )
 
     classes <- t(as(transactions[, class_ids], "ngCMatrix"))
-    uncoveredTrans <- as(transactions@data, "dgCMatrix")
+    uncoveredTrans <- as(transactions@data, "dsparseMatrix")
 
-    lhss <- as(lhs(rules)@data, "dgCMatrix")
-    rhss <- as(rhs(rules)@data, "dgCMatrix")
+    lhss <- as(lhs(rules)@data, "dsparseMatrix")
+    rhss <- as(rhs(rules)@data, "dsparseMatrix")
     rulesPerClassLeft <- rowSums(rhss[class_ids,])
 
     for (i in 1:length(rules)) {

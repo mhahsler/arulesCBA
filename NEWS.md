@@ -1,6 +1,7 @@
-# arulesCBA 1.2.4-1 (2022-xx-xx)
+# arulesCBA 1.2.5 (2022-08-19)
 
 * Improved formula interface code.
+* Changes for Matrix 1.4-2.
 
 # arulesCBA 1.2.4 (2022-05-30)
 
