@@ -57,12 +57,15 @@ Returns an object of class \link{CBA} representing the trained
 classifier with the additional field \code{model} containing a list with the
 following elements:
 
-\item{all_rules}{all rules used to build the classifier, including the rules
-with a weight of zero.}
 \item{reg_model}{them multinomial logistic
 regression model as an object of class \code{\link[=glmnet]{glmnet()}}.}
-\item{cv}{contains the results for the cross-validation used determine
-lambda.}
+\item{cv}{only available if \code{lambda = NULL} was specified. Contains the
+results for the cross-validation used determine
+lambda. We use by default \code{lambda.1se} to determine lambda.}
+\item{all_rules}{ the actual classifier only contains the rules with
+non-zero weights. This field contains all rules used to build the classifier,
+including the rules with a weight of zero. This is consistent with the
+model in \code{reg_model}. }
 }
 \description{
 Build a classifier based on association rules mined for an input dataset and
@@ -74,15 +77,25 @@ classifier and can use support-balanced CARs.
 RCAR+ extends RCAR from a binary classifier to a multi-class classifier
 using regularized multinomial logistic regression via \pkg{glmnet}.
 
-If lambda is not specified (\code{NULL}) then cross-validation with the
-largest value of lambda such that error is within 1 standard error of the
-minimum is used to determine the best value (see \code{\link[=cv.glmnet]{cv.glmnet()}} also for how to
+The idea is to create a coverage matrix \eqn{X} with one row per transaction and one column per
+class association rules. The matrix contains a 1 if a transaction is covered by a rules and otherwise 0.
+A regularized multinominal logistic model to predict the class \eqn{y} for each transaction is learned and the
+weights for each rule are used for the classifier. For the final classifier, we only keep the
+rules with a weight greater than 0.
+
+#' If lambda is not specified during training (\code{lambda = NULL}) then cross-validation is used
+to determine the largest value of lambda such that the error is within 1 standard error of the
+minimum (see \code{\link[=cv.glmnet]{cv.glmnet()}} for how to
 perform cross-validation in parallel).
+
+Classification is performed by checking what rules (the LHS) apply to a transaction and then using the
+logistic model to create the predicted probabilities. The class with the largest probability is
+chosen as the prediction.
 }
 \examples{
 data("iris")
 
-classifier <- RCAR(Species~., iris)
+classifier <- RCAR(Species ~ ., iris)
 classifier
 
 # inspect the rule base sorted by the larges class weight
@@ -90,15 +103,25 @@ inspect(sort(classifier$rules, by = "weight"))
 
 # make predictions for the first few instances of iris
 predict(classifier, head(iris))
+table(pred = predict(classifier, iris), true = iris$Species)
 
-# inspecting the regression model, plot the regularization path, and
-# plot the cross-validation results to determine lambda
-str(classifier$model$reg_model)
-plot(classifier$model$reg_model)
+# plot the cross-validation curve as a function of lambda and add a
+# red line at lambda.1se used to determine lambda.
 plot(classifier$model$cv)
+abline(v = log(classifier$model$cv$lambda.1se), col = "red")
+
+# plot the coefficient profile plot (regularization path) for each class
+# label. Note the line for the chosen lambda is only added to the last plot.
+# You can manually add it to the others.
+plot(classifier$model$reg_model, xvar = "lambda", label = TRUE)
+abline(v = log(classifier$model$cv$lambda.1se), col = "red")
+
+#' inspect rule 5 which has a large weight for class setosa
+inspect(classifier$model$all_rules[5])
 
 # show progress report and use 5 instead of the default 10 cross-validation folds.
-classifier <- RCAR(Species~., iris, cv.glmnet.args = list(nfolds = 5), verbose = TRUE)
+classifier <- RCAR(Species ~ ., iris, cv.glmnet.args = list(nfolds = 5), verbose = TRUE)
+inspect(classifier$rules)
 }
 \references{
 M. Azmi, G.C. Runger, and A. Berrado (2019). Interpretable

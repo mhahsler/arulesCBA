@@ -1,3 +1,8 @@
+# arulesCBA 1.2.6 (2023-xx-xx)
+
+* RCAR: Classifiers with a single rule now work
+* RCAR: Only rules where also the RHS covers the transaction are used.
+
 # arulesCBA 1.2.5 (2022-08-19)
 
 * Improved formula interface code.

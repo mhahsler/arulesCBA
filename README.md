@@ -28,8 +28,8 @@ classifiers based on the following algorithms:
     via R/Weka.
 -   **PRM**: Predictive Rule Mining (Yin and Han, 2003) via LUCS-KDD
     Software Library.
--   **RCAR**: Regularized Class Association Rules using Logistic
-    Regression (Azmi et al, 2019).
+-   **RCAR+**: Regularized Class Association Rules using Multinomial Logistic
+    Regression based on (Azmi et al, 2019).
 -   **RIPPER**: Repeated Incremental Pruning to Produce Error Reduction
     (Cohen, 1995) via R/Weka.
 

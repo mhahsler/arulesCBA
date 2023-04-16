@@ -38,7 +38,7 @@ discretization (default is MDLP) and each range is represented as an item.
 \item If the class variable is a logical, then a negative class item is added.
 }
 
-Steps 1-3 are skipped if \code{data} is already as \link[arules:transactions-class]{arules::transactions} object.
+Steps 1-3 are skipped if \code{data} is already a \link[arules:transactions-class]{arules::transactions} object.
 }
 \examples{
 # Perform discretization and convert to transactions

@@ -11,7 +11,7 @@
 #' 3. Each logical is converted into an item.
 #' 4. If the class variable is a logical, then a negative class item is added.
 #'
-#' Steps 1-3 are skipped if `data` is already as [arules::transactions] object.
+#' Steps 1-3 are skipped if `data` is already a [arules::transactions] object.
 #'
 #' @param formula the formula.
 #' @param data a data.frame with the data.
