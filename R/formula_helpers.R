@@ -80,7 +80,7 @@
     class_ids <- which(colnames(data) %in% class)
     class_items <- NA
 
-    if (!is.factor(data[[class_ids]]))
+    if (!(is.factor(data[[class_ids]]) || is.logical(data[[class_ids]])))
       stop("class variable needs to be a factor in the data!")
 
     feature_names <- features

@@ -36,7 +36,8 @@ trained classifier.
 \description{
 Provides CBA-type classifiers based on RIPPER (Cohen, 1995), C4.5 (Quinlan,
 1993) and PART (Frank and Witten, 1998) using the implementation in Weka via
-RWeka (Hornik et al, 2009).
+RWeka (Hornik et al, 2009). These classifiers do not mine CARs, but
+directly create rules.
 }
 \details{
 You need to install package \pkg{RWeka} to use these classifiers.
@@ -50,7 +51,7 @@ for algorithm details and how control options can be passed on via
 
 Memory for \pkg{RWeka} can be increased using the R options (e.g.,
 \code{options(java.parameters = "-Xmx1024m")}) before \pkg{RWeka} or
-\pkg{rJava} is loaded or any RWeka-based classigier in this package is used.
+\pkg{rJava} is loaded or any RWeka-based classifier in this package is used.
 }
 \examples{
 # rJava and RWeka need to be installed

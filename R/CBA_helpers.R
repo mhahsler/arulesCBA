@@ -71,11 +71,22 @@ classes <- function(formula, x)
 #' @rdname CBA_helpers
 #' @export
 response <- function(formula, x) {
-  if (is.data.frame(x))
-    return(x[[.parseformula(formula, x)$class_ids]])
-  # this will add variable info for regular transactions
+  # data.frame has a single column
+  if (is.data.frame(x)) {
+    r <- x[[.parseformula(formula, x)$class_ids]]
+    if (is.logical(r))
+      r <- factor(r, levels = c("TRUE", "FALSE"))
+    if (!is.factor(r))
+      stop("class variable needs to the logical or a factor!")
+
+    return(r)
+  }
+
+  # this will add variable info for regular transactions and a FALSE item
   if (is(x, "transactions"))
     x <- prepareTransactions(formula, x)
+
+  ### FIXME: check if this works!
   if (is(x, "rules"))
     x <- items(x)
   if (!is(x, "itemMatrix"))
@@ -83,11 +94,15 @@ response <- function(formula, x) {
 
   vars <- .parseformula(formula, x)
   x <- x[, vars$class_ids]
-  l <- itemInfo(x)$levels
+  l <- as.character(itemInfo(x)$levels)
 
-  factor(unlist(LIST(x, decode = FALSE)),
-    levels = 1:length(l),
-    labels = l)
+  # handle single item class_ids
+  if (length(vars$class_ids) == 1)
+    drop(as(x, "matrix"))
+  else
+    factor(unlist(LIST(x, decode = FALSE)),
+      levels = 1:length(l),
+      labels = l)
 }
 
 #' @rdname CBA_helpers

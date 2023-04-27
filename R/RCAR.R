@@ -8,21 +8,27 @@
 #' RCAR+ extends RCAR from a binary classifier to a multi-class classifier
 #' using regularized multinomial logistic regression via \pkg{glmnet}.
 #'
-#' The idea is to create a coverage matrix \eqn{X} with one row per transaction and one column per
-#' class association rules. The matrix contains a 1 if a transaction is covered by a rules and otherwise 0.
-#' A regularized multinominal logistic model to predict the class \eqn{y} for each transaction is learned and the
-#' weights for each rule are used for the classifier. For the final classifier, we only keep the
-#' rules with a weight greater than 0.
+#' RCAR mines CARs by specifying the class variable as the RHS of the
+#' rules, but then only uses the LHS of the CARs and ignores the RHS.
 #'
-#' #' If lambda is not specified during training (`lambda = NULL`) then cross-validation is used
+#' The idea is to create a coverage matrix \eqn{X}. Columns are the LHS of the
+#' class association rules and each row repents a transaction. The matrix contains
+#' a 1 if the LHS of the rule applies to the transaction, and 0 otherwise.
+#' A regularized multinominal logistic model to predict the true class \eqn{y}
+#' for each transaction given \eqn{X} is fitted.
+#'
+#' If lambda for regularization is not specified during training (`lambda = NULL`)
+#' then cross-validation is used
 #' to determine the largest value of lambda such that the error is within 1 standard error of the
-#' minimum (see [cv.glmnet()] for how to
-#' perform cross-validation in parallel).
+#' minimum (see [cv.glmnet()] for how to perform cross-validation in parallel).
 #'
-#' Classification is performed by checking what rules (the LHS) apply to a transaction and then using the
-#' logistic model to create the predicted probabilities. The class with the largest probability is
-#' chosen as the prediction.
+#' For the final classifier, we only keep the rules with a weight greater than 0.
 #'
+#' Prediction for a new transaction is performed in two steps:
+#'
+#' 1. Translate the transaction into a 0-1 vector indicating what class association
+#' rule's LHS covers the transaction.
+#' 2. Calculate the predicted label given the multinomial logistic regression model.
 #'
 #' @aliases RCAR rcar
 #'
@@ -134,14 +140,16 @@ RCAR <- function(formula,
     ...
   )
 
+  # remove the rule with the empty LHS
+  cars <- cars[size(cars)>1]
+
   # create coverage matrix
   if (verbose)
     cat("* Creating model matrix\n")
-  #X <- is.superset(trans, lhs(cars))
-  ### the whole rule inducing the rhs y has to match
-  X <- is.superset(trans, cars)
-  y <- response(formula, trans)
 
+  # Note: RCA ignores the RHS and only uses the LHS for classification!
+  X <- is.superset(trans, lhs(cars), sparse = TRUE)
+  y <- response(formula, trans)
 
   # find lambda using cross-validation or fit the model for a fixed lambda
   cv <- NULL
