@@ -70,32 +70,42 @@ model in \code{reg_model}. }
 \description{
 Build a classifier based on association rules mined for an input dataset and
 weighted with LASSO regularized logistic regression following RCAR (Azmi, et
-al., 2019). RCAR+ extends RCAR from a binary classifier to a multi-class
+al., 2019). RCAR+ extends RCAR from a binary classifier to a multi-label
 classifier and can use support-balanced CARs.
 }
 \details{
-RCAR+ extends RCAR from a binary classifier to a multi-class classifier
+RCAR+ extends RCAR from a binary classifier to a multi-label classifier
 using regularized multinomial logistic regression via \pkg{glmnet}.
 
-RCAR mines CARs by specifying the class variable as the RHS of the
-rules, but then only uses the LHS of the CARs and ignores the RHS.
+In arulesCBA, the class variable is always represented by a set of items.
+For a binary classification problem, we use an item and its compliment
+(typically called \verb{<item label>=TRUE} and \if{html}{\out{<item label>}}=FALSE). For
+a multi-label classification problem we use one item for each possible class
+label (format \verb{<class item>=<label>}). See \code{\link[=prepareTransactions]{prepareTransactions()}} for details.
 
-The idea is to create a coverage matrix \eqn{X}. Columns are the LHS of the
-class association rules and each row repents a transaction. The matrix contains
-a 1 if the LHS of the rule applies to the transaction, and 0 otherwise.
+RCAR+ first mines CARs to find itemsets (LHS of the CARs) that are related
+to the class items. Then, a transaction x lhs(CAR) coverage matrix \eqn{X} is created.
+The matrix contains
+a 1 if the LHS of the CAR applies to the transaction, and 0 otherwise.
 A regularized multinominal logistic model to predict the true class \eqn{y}
-for each transaction given \eqn{X} is fitted.
+for each transaction given \eqn{X} is fitted. Note that the RHS of the
+CARs are actually ignored in this process, so the algorithm effectively
+uses rules consisting of each LHS of a CAR paired with each class label.
+This is important to keep in mind when trying to interpret the rules used in
+the classifier.
 
 If lambda for regularization is not specified during training (\code{lambda = NULL})
 then cross-validation is used
 to determine the largest value of lambda such that the error is within 1 standard error of the
 minimum (see \code{\link[=cv.glmnet]{cv.glmnet()}} for how to perform cross-validation in parallel).
 
-For the final classifier, we only keep the rules with a weight greater than 0.
+For the final classifier, we only keep the rules that have a weight greater than
+0 for at least one class label. The rules include as the weight the beta coefficients
+of the model.
 
 Prediction for a new transaction is performed in two steps:
 \enumerate{
-\item Translate the transaction into a 0-1 vector indicating what class association
+\item Translate the transaction into a 0-1 coverage vector indicating what class association
 rule's LHS covers the transaction.
 \item Calculate the predicted label given the multinomial logistic regression model.
 }
@@ -124,12 +134,8 @@ abline(v = log(classifier$model$cv$lambda.1se), col = "red")
 plot(classifier$model$reg_model, xvar = "lambda", label = TRUE)
 abline(v = log(classifier$model$cv$lambda.1se), col = "red")
 
-#' inspect rule 5 which has a large weight for class setosa
-inspect(classifier$model$all_rules[5])
-
-# show progress report and use 5 instead of the default 10 cross-validation folds.
-classifier <- RCAR(Species ~ ., iris, cv.glmnet.args = list(nfolds = 5), verbose = TRUE)
-inspect(classifier$rules)
+#' inspect rule 11 which has a large weight for class virginica
+inspect(classifier$model$all_rules[11])
 }
 \references{
 M. Azmi, G.C. Runger, and A. Berrado (2019). Interpretable

@@ -98,11 +98,16 @@ response <- function(formula, x) {
 
   # handle single item class_ids
   if (length(vars$class_ids) == 1)
-    drop(as(x, "matrix"))
-  else
-    factor(unlist(LIST(x, decode = FALSE)),
-      levels = 1:length(l),
-      labels = l)
+    res <- drop(as(x, "matrix"))
+  else {
+    # missing item needs to return NA
+    res <- sapply(LIST(x, decode = FALSE), FUN = function(y)
+      if (length(y) == 1L) y else NA)
+    res <- factor(res, levels = 1:length(l),
+           labels = l)
+  }
+
+  res
 }
 
 #' @rdname CBA_helpers
