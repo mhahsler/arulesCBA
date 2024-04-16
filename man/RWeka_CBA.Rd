@@ -107,6 +107,16 @@ Hornik K, Buchta C, Zeileis A (2009). "Open-Source Machine Learning: R Meets
 Weka." \emph{Computational Statistics,} 24(2), 225-232.
 \doi{10.1007/s00180-008-0119-7}
 }
+\seealso{
+Other classifiers: 
+\code{\link{CBA}()},
+\code{\link{CBA_helpers}},
+\code{\link{CBA_ruleset}()},
+\code{\link{FOIL}()},
+\code{\link{LUCS_KDD_CBA}},
+\code{\link{RCAR}()}
+}
 \author{
 Michael Hahsler
 }
+\concept{classifiers}

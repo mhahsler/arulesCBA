@@ -4,7 +4,7 @@
 [![CRAN
 version](http://www.r-pkg.org/badges/version/arulesCBA)](https://CRAN.R-project.org/package=arulesCBA)
 [![stream r-universe
-status](https://mhahsler.r-universe.dev/badges/arulesCBA)](https://mhahsler.r-universe.dev/ui#package:arulesCBA)
+status](https://mhahsler.r-universe.dev/badges/arulesCBA)](https://mhahsler.r-universe.dev/arulesCBA)
 [![CRAN RStudio mirror
 downloads](http://cranlogs.r-pkg.org/badges/arulesCBA)](https://CRAN.R-project.org/package=arulesCBA)
 
@@ -15,23 +15,22 @@ association rule-based classification. The package provides the
 infrastructure for class association rules and implements associative
 classifiers based on the following algorithms:
 
--   **CBA**: Classification Based on Association Rules (Liu et al,
-    1998).
--   **CMAR**: Classification based on Multiple Association Rule (Li, Han
-    and Pei, 2001) via LUCS-KDD Software Library.
--   **CPAR**: Classification based on Predictive Association Rules (Yin
-    and Han, 2003) via LUCS-KDD Software Library.
--   **C4.5**: Rules extracted from a C4.5 decision tree (Quinlan, 1993)
-    via J48 in R/Weka.
--   **FOIL**: First-Order Inductive Learner (Yin and Han, 2003).
--   **PART**: Rules from Partial Decision Trees (Frank and Witten, 1998)
-    via R/Weka.
--   **PRM**: Predictive Rule Mining (Yin and Han, 2003) via LUCS-KDD
-    Software Library.
--   **RCAR+**: Regularized Class Association Rules using Multinomial Logistic
-    Regression based on (Azmi et al, 2019).
--   **RIPPER**: Repeated Incremental Pruning to Produce Error Reduction
-    (Cohen, 1995) via R/Weka.
+- **CBA**: Classification Based on Association Rules (Liu et al, 1998).
+- **CMAR**: Classification based on Multiple Association Rule (Li, Han
+  and Pei, 2001) via LUCS-KDD Software Library.
+- **CPAR**: Classification based on Predictive Association Rules (Yin
+  and Han, 2003) via LUCS-KDD Software Library.
+- **C4.5**: Rules extracted from a C4.5 decision tree (Quinlan, 1993)
+  via J48 in R/Weka.
+- **FOIL**: First-Order Inductive Learner (Yin and Han, 2003).
+- **PART**: Rules from Partial Decision Trees (Frank and Witten, 1998)
+  via R/Weka.
+- **PRM**: Predictive Rule Mining (Yin and Han, 2003) via LUCS-KDD
+  Software Library.
+- **RCAR**: Regularized Class Association Rules using Logistic
+  Regression (Azmi et al, 2019).
+- **RIPPER**: Repeated Incremental Pruning to Produce Error Reduction
+  (Cohen, 1995) via R/Weka.
 
 The package also provides the infrastructure for associative
 classification (supervised discetization, mining class association rules
@@ -47,10 +46,11 @@ install.packages("arulesCBA")
 ```
 
 **Current development version:** Install from
-[r-universe.](https://mhahsler.r-universe.dev/ui#package:arulesCBA)
+[r-universe.](https://mhahsler.r-universe.dev/arulesCBA)
 
 ``` r
-install.packages("arulesCBA", repos = "https://mhahsler.r-universe.dev")
+install.packages("arulesCBA",
+    repos = c("https://mhahsler.r-universe.dev". "https://cloud.r-project.org/"))
 ```
 
 ## Usage
@@ -100,34 +100,36 @@ predict(classifier, head(iris))
     ## [1] setosa setosa setosa setosa setosa setosa
     ## Levels: setosa versicolor virginica
 
+## Cite This Package AS
+
+- M. Hahsler, I. Johnson, T. Kliegr and J. Kuchar (2019). [Associative
+  Classification in R: arc, arulesCBA, and
+  rCBA](https://journal.r-project.org/archive/2019/RJ-2019-048/). *The R
+  Journal* 11(2), pp. 254-267.
+
 ## References
 
--   M. Hahsler, I. Johnson, T. Kliegr and J. Kuchar (2019). [Associative
-    Classification in R: arc, arulesCBA, and
-    rCBA](https://journal.r-project.org/archive/2019/RJ-2019-048/). *The
-    R Journal* 11(2), pp. 254-267.
--   M. Azmi, G.C. Runger, and A. Berrado (2019). Interpretable
-    regularized class association rules algorithm for classification in
-    a categorical data space. *Information Sciences,* Volume 483, May
-    2019, pp. 313-331.
--   W. W. Cohen (1995). Fast effective rule induction. In A. Prieditis
-    and S. Russell (eds.), *Proceedings of the 12th International
-    Conference on Machine Learning,* pp. 115-123. Morgan Kaufmann. ISBN
-    1-55860-377-8.
--   E. Frank and I. H. Witten (1998). Generating accurate rule sets
-    without global optimization. In J. Shavlik (ed.), *Machine Learning:
-    Proceedings of the Fifteenth International Conference,* Morgan
-    Kaufmann Publishers: San Francisco, CA.
--   W. Li, J. Han and J. Pei (2001). CMAR: accurate and efficient
-    classification based on multiple class-association rules,
-    *Proceedings 2001 IEEE International Conference on Data Mining,* San
-    Jose, CA, USA, pp. 369-376.
--   B. Liu, W. Hsu and Y. Ma (1998). Integrating Classification and
-    Association Rule Mining. *KDD’98 Proceedings of the Fourth
-    International Conference on Knowledge Discovery and Data Mining,*
-    New York, AAAI, pp. 80-86.
--   R. Quinlan (1993). *C4.5: Programs for Machine Learning.* Morgan
-    Kaufmann Publishers, San Mateo, CA.
--   X. Yin and J. Han (2003). CPAR: Classification based on Predictive
-    Association Rules, *Proceedings of the 2003 SIAM International
-    Conference on Data Minin,* pp. 331-235.
+- M. Azmi, G.C. Runger, and A. Berrado (2019). Interpretable regularized
+  class association rules algorithm for classification in a categorical
+  data space. *Information Sciences,* Volume 483, May 2019, pp. 313-331.
+- W. W. Cohen (1995). Fast effective rule induction. In A. Prieditis
+  and S. Russell (eds.), *Proceedings of the 12th International
+  Conference on Machine Learning,* pp. 115-123. Morgan Kaufmann. ISBN
+  1-55860-377-8.
+- E. Frank and I. H. Witten (1998). Generating accurate rule sets
+  without global optimization. In J. Shavlik (ed.), *Machine Learning:
+  Proceedings of the Fifteenth International Conference,* Morgan
+  Kaufmann Publishers: San Francisco, CA.
+- W. Li, J. Han and J. Pei (2001). CMAR: accurate and efficient
+  classification based on multiple class-association rules, *Proceedings
+  2001 IEEE International Conference on Data Mining,* San Jose, CA, USA,
+  pp. 369-376.
+- B. Liu, W. Hsu and Y. Ma (1998). Integrating Classification and
+  Association Rule Mining. *KDD’98 Proceedings of the Fourth
+  International Conference on Knowledge Discovery and Data Mining,* New
+  York, AAAI, pp. 80-86.
+- R. Quinlan (1993). *C4.5: Programs for Machine Learning.* Morgan
+  Kaufmann Publishers, San Mateo, CA.
+- X. Yin and J. Han (2003). CPAR: Classification based on Predictive
+  Association Rules, *Proceedings of the 2003 SIAM International
+  Conference on Data Minin,* pp. 331-235.

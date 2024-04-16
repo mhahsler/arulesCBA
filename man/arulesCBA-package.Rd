@@ -2,13 +2,32 @@
 % Please edit documentation in R/AAA_arulesCBA-package.R
 \docType{package}
 \name{arulesCBA-package}
+\alias{arulesCBA}
 \alias{arulesCBA-package}
 \title{arulesCBA: Classification Based on Association Rules}
 \description{
-Provides the infrastructure for association rule-based classification including the algorithms
-CBA, CMAR, CPAR, C4.5, FOIL, PART, PRM, RCAR, and RIPPER to build associative classifiers.
-Hahsler et al (2019) \url{doi:10.32614/RJ-2019-048}.
+Provides the infrastructure for association rule-based classification including the algorithms CBA, CMAR, CPAR, C4.5, FOIL, PART, PRM, RCAR, and RIPPER to build associative classifiers. Hahsler et al (2019) \doi{10.32614/RJ-2019-048}.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/mhahsler/arulesCBA}
+  \item Report bugs at \url{https://github.com/mhahsler/arulesCBA}
+}
+
 }
 \author{
-Michael Hahsler
+\strong{Maintainer}: Michael Hahsler \email{mhahsler@lyle.smu.edu} (\href{https://orcid.org/0000-0003-2716-1405}{ORCID}) [copyright holder]
+
+Authors:
+\itemize{
+  \item Ian Johnson [copyright holder]
 }
+
+Other contributors:
+\itemize{
+  \item Tyler Giallanza [contributor]
+}
+
+}
+\keyword{internal}

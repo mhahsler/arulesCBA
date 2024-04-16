@@ -70,8 +70,15 @@ Details about the available supervised discretization methods from
 \link[discretization:chiM]{discretization::chiM},
 \link[discretization:extendChi2]{discretization::extendChi2},
 \link[discretization:modChi2]{discretization::modChi2}.
+
+Other preparation: 
+\code{\link{CBA_ruleset}()},
+\code{\link{mineCARs}()},
+\code{\link{prepareTransactions}()},
+\code{\link{transactions2DF}()}
 }
 \author{
 Michael Hahsler
 }
+\concept{preparation}
 \keyword{manip}

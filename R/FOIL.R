@@ -22,6 +22,7 @@
 #' }
 #'
 #' @aliases FOIL foil
+#' @family classifiers
 #'
 #' @param formula A symbolic description of the model to be fitted. Has to be
 #'   of form `class ~ .` or `class ~ predictor1 + predictor2`.

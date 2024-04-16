@@ -70,7 +70,14 @@ ii[ii[["variables"]] == "canned beer", ]
 }
 \seealso{
 \link[arules:transactions-class]{arules::transactions}, \code{transactions2DF()}.
+
+Other preparation: 
+\code{\link{CBA_ruleset}()},
+\code{\link{discretizeDF.supervised}()},
+\code{\link{mineCARs}()},
+\code{\link{transactions2DF}()}
 }
 \author{
 Michael Hahsler
 }
+\concept{preparation}

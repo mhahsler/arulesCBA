@@ -6,8 +6,8 @@
 #'
 #' @param formula A symbolic description of the model to be fitted.
 #' @param x,transactions An object of class [arules::transactions]
-#' or [rules].
-#' @param rules A set of [rules].
+#' or [arules::rules].
+#' @param rules A set of [arules::rules].
 #' @param type `"relative" or `"absolute"` to return proportions or
 #' absolute counts.
 #' @return `response` returns the response label as a factor.
@@ -18,8 +18,11 @@
 #' `majorityClass` returns the most frequent class label in the
 #' transactions.
 #' @name CBA_helpers
+#'
+#' @family classifiers
+#'
 #' @author Michael Hahsler
-#' @seealso [itemFrequency()], [rules], [arules::transactions].
+#' @seealso [arules::itemFrequency()], [arules::rules], [arules::transactions].
 #' @examples
 #' data("iris")
 #'

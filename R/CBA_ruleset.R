@@ -8,11 +8,14 @@
 #' to make sure that the rules are predictive and sorted from most to least
 #' predictive.
 #'
+#' @family classifiers
+#' @family preparation
+#'
 #' @param formula A symbolic description of the model to be fitted. Has to be
 #'   of form `class ~ .`. The class is the variable name (part of the item
 #'   label before `=`).
 #' @param rules A set of class association rules mined with [mineCARs()] or
-#'   [apriori()] (from \pkg{arules}).
+#'   [arules::apriori()] (from \pkg{arules}).
 #' @param default Default class. If not specified then objects that are
 #'   not matched by rules are classified as `NA`.
 #' @param method Classification method `"first"` found rule or `"majority"`.

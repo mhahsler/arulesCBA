@@ -98,8 +98,15 @@ International Conference on Knowledge Discovery and Data Mining,} New York,
 \url{https://dl.acm.org/doi/10.5555/3000292.3000305}
 }
 \seealso{
-\link{CBA}, \code{\link[=mineCARs]{mineCARs()}}.
+Other classifiers: 
+\code{\link{CBA_helpers}},
+\code{\link{CBA_ruleset}()},
+\code{\link{FOIL}()},
+\code{\link{LUCS_KDD_CBA}},
+\code{\link{RCAR}()},
+\code{\link{RWeka_CBA}}
 }
 \author{
 Ian Johnson and Michael Hahsler
 }
+\concept{classifiers}

@@ -45,3 +45,4 @@ accuracy(pr, response(Species ~., iris_test))
 \author{
 Michael Hahsler
 }
+\concept{classifier}

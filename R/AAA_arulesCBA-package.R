@@ -1,12 +1,4 @@
-#' @title `r packageDescription("arulesCBA")$Package`: `r packageDescription("arulesCBA")$Title`
-#'
-#' @description `r packageDescription("arulesCBA")$Description`
-#'
-#'
-#'
-#' @author Michael Hahsler
-#' @docType package
-#' @name arulesCBA-package
+#' @keywords internal
 #'
 #' @import arules
 #' @import Matrix
@@ -14,5 +6,4 @@
 #' @importFrom stats as.formula terms
 #'
 #' @useDynLib arulesCBA
-#'
-NULL
+"_PACKAGE"

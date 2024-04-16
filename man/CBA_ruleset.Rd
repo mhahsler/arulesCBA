@@ -23,7 +23,7 @@ of form \code{class ~ .}. The class is the variable name (part of the item
 label before \code{=}).}
 
 \item{rules}{A set of class association rules mined with \code{\link[=mineCARs]{mineCARs()}} or
-\code{\link[=apriori]{apriori()}} (from \pkg{arules}).}
+\code{\link[arules:apriori]{arules::apriori()}} (from \pkg{arules}).}
 
 \item{default}{Default class. If not specified then objects that are
 not matched by rules are classified as \code{NA}.}
@@ -124,7 +124,23 @@ accuracy(prediction, response(Species ~ ., trans))
 }
 \seealso{
 \code{\link[=mineCARs]{mineCARs()}}
+
+Other classifiers: 
+\code{\link{CBA}()},
+\code{\link{CBA_helpers}},
+\code{\link{FOIL}()},
+\code{\link{LUCS_KDD_CBA}},
+\code{\link{RCAR}()},
+\code{\link{RWeka_CBA}}
+
+Other preparation: 
+\code{\link{discretizeDF.supervised}()},
+\code{\link{mineCARs}()},
+\code{\link{prepareTransactions}()},
+\code{\link{transactions2DF}()}
 }
 \author{
 Michael Hahsler
 }
+\concept{classifiers}
+\concept{preparation}

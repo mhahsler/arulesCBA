@@ -36,9 +36,9 @@ cross-validation is used to determine the best value (see Details section).}
 penalty (default RCAR), and \code{alpha = 0} the ridge penalty.}
 
 \item{cv.glmnet.args, glmnet.args}{A list of arguments passed on to
-\code{\link[=cv.glmnet]{cv.glmnet()}} and \code{\link[=glmnet]{glmnet()}}, respectively. See Example section.}
+\code{\link[glmnet:cv.glmnet]{glmnet::cv.glmnet()}} and \code{\link[glmnet:glmnet]{glmnet::glmnet()}}, respectively. See Example section.}
 
-\item{parameter, control}{Optional parameter and control lists for \code{\link[=apriori]{apriori()}}.}
+\item{parameter, control}{Optional parameter and control lists for \code{\link[arules:apriori]{arules::apriori()}}.}
 
 \item{balanceSupport}{balanceSupport parameter passed to \code{\link[=mineCARs]{mineCARs()}}.}
 
@@ -49,7 +49,7 @@ supervised discretization methods.}
 \item{verbose}{Report progress?}
 
 \item{...}{For convenience, additional parameters are used to create the
-\code{parameter} control list for \code{\link[=apriori]{apriori()}} (e.g., to specify the support and
+\code{parameter} control list for \code{\link[arules:apriori]{arules::apriori()}} (e.g., to specify the support and
 confidence thresholds).}
 }
 \value{
@@ -58,7 +58,7 @@ classifier with the additional field \code{model} containing a list with the
 following elements:
 
 \item{reg_model}{them multinomial logistic
-regression model as an object of class \code{\link[=glmnet]{glmnet()}}.}
+regression model as an object of class \link[glmnet:glmnet]{glmnet::glmnet}.}
 \item{cv}{only available if \code{lambda = NULL} was specified. Contains the
 results for the cross-validation used determine
 lambda. We use by default \code{lambda.1se} to determine lambda.}
@@ -79,7 +79,7 @@ using regularized multinomial logistic regression via \pkg{glmnet}.
 
 In arulesCBA, the class variable is always represented by a set of items.
 For a binary classification problem, we use an item and its compliment
-(typically called \verb{<item label>=TRUE} and \if{html}{\out{<item label>}}=FALSE). For
+(typically called \verb{<item label>=TRUE} and \verb{<item label>=FALSE}). For
 a multi-label classification problem we use one item for each possible class
 label (format \verb{<class item>=<label>}). See \code{\link[=prepareTransactions]{prepareTransactions()}} for details.
 
@@ -97,7 +97,7 @@ the classifier.
 If lambda for regularization is not specified during training (\code{lambda = NULL})
 then cross-validation is used
 to determine the largest value of lambda such that the error is within 1 standard error of the
-minimum (see \code{\link[=cv.glmnet]{cv.glmnet()}} for how to perform cross-validation in parallel).
+minimum (see \code{\link[glmnet:cv.glmnet]{glmnet::cv.glmnet()}} for how to perform cross-validation in parallel).
 
 For the final classifier, we only keep the rules that have a weight greater than
 0 for at least one class label. The rules include as the weight the beta coefficients
@@ -143,6 +143,16 @@ regularized class association rules algorithm for classification in a
 categorical data space. \emph{Information Sciences,} Volume 483, May 2019.
 Pages 313-331.
 }
+\seealso{
+Other classifiers: 
+\code{\link{CBA}()},
+\code{\link{CBA_helpers}},
+\code{\link{CBA_ruleset}()},
+\code{\link{FOIL}()},
+\code{\link{LUCS_KDD_CBA}},
+\code{\link{RWeka_CBA}}
+}
 \author{
 Tyler Giallanza and Michael Hahsler
 }
+\concept{classifiers}

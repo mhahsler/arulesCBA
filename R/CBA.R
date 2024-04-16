@@ -12,6 +12,8 @@
 #' size. Then either the M1 or M2 algorithm are used to perform database
 #' coverage pruning and default rule pruning.
 #'
+#' @family classifiers
+#'
 #' @param formula A symbolic description of the model to be fitted. Has to be
 #'   of form `class ~ .` or `class ~ predictor1 + predictor2`.
 #' @param data [arules::transactions] containing the training data or a data.frame which.
@@ -30,7 +32,6 @@
 #' @param verbose Show progress?
 #' @return Returns an object of class [CBA] representing the trained classifier.
 #' @author Ian Johnson and Michael Hahsler
-#' @seealso [CBA], [mineCARs()].
 #' @references Liu, B. Hsu, W. and Ma, Y (1998). Integrating Classification and
 #' Association Rule Mining. __KDD'98 Proceedings of the Fourth
 #' International Conference on Knowledge Discovery and Data Mining,__ New York,

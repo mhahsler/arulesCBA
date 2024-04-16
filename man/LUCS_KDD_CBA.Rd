@@ -102,6 +102,15 @@ Yin, Xiaoxin and Jiawei Han. CPAR: Classification based on Predictive
 Association Rules, SDM, 2003.
 \doi{10.1137/1.9781611972733.40}
 
-Frans Coenen et al. The LUCS-KDD Software Library,
-\url{https://cgi.csc.liv.ac.uk/~frans/KDD/Software/}
+Frans Coenen et al. The LUCS-KDD Software Library, University of Liverpool, 2013.
 }
+\seealso{
+Other classifiers: 
+\code{\link{CBA}()},
+\code{\link{CBA_helpers}},
+\code{\link{CBA_ruleset}()},
+\code{\link{FOIL}()},
+\code{\link{RCAR}()},
+\code{\link{RWeka_CBA}}
+}
+\concept{classifiers}

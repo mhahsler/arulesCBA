@@ -11,6 +11,7 @@
 #' discretization.
 #'
 #' @aliases discretize
+#' @family preparation
 #'
 #' @param formula a formula object to specify the class variable for supervised
 #'   discretization and the predictors to be discretized in the form

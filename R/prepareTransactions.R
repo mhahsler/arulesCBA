@@ -13,6 +13,8 @@
 #'
 #' Steps 1-3 are skipped if `data` is already a [arules::transactions] object.
 #'
+#' @family preparation
+#'
 #' @param formula the formula.
 #' @param data a data.frame with the data.
 #' @param disc.method Discretization method used to discretize continuous

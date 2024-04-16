@@ -21,7 +21,7 @@ mineCARs(
 containing the training data.}
 
 \item{parameter, control}{Optional parameter and control lists for
-\code{\link[=apriori]{apriori()}}.}
+\code{\link[arules:apriori]{arules::apriori()}}.}
 
 \item{balanceSupport}{logical; if \code{TRUE}, class imbalance is
 counteracted by using class specific minimum support values. Alternatively,
@@ -29,12 +29,12 @@ a support value for each class can be specified (see Details section).}
 
 \item{verbose}{logical; report progress?}
 
-\item{\dots}{For convenience, the mining parameters for \code{\link[=apriori]{apriori()}} can be
+\item{\dots}{For convenience, the mining parameters for \code{\link[arules:apriori]{arules::apriori()}} can be
 specified as \dots. Examples are the \code{support} and \code{confidence}
 thresholds, and the \code{maxlen} of rules.}
 }
 \value{
-Returns an object of class \link{rules}.
+Returns an object of class \link[arules:rules-class]{arules::rules}.
 }
 \description{
 Class Association Rules (CARs) are association rules that have only items
@@ -51,7 +51,7 @@ single items representing the class label.
 
 \strong{Mining parameters.}
 Mining parameters for
-\code{\link[=apriori]{apriori()}} can be either specified as a list (or object
+\code{\link[arules:apriori]{arules::apriori()}} can be either specified as a list (or object
 of \link[arules:ASparameter-classes]{arules::APparameter}) as argument \code{parameter} or, for
 convenience, as arguments in \code{...}.
 \emph{Note:} \code{\link[=mineCARs]{mineCARs()}} uses
@@ -141,6 +141,14 @@ Classifier. In: Zighed D.A., Komorowski J., Zytkow J. (eds) \emph{Principles
 of Data Mining and Knowledge Discovery. PKDD 2000. Lecture Notes in Computer
 Science}, vol 1910. Springer, Berlin, Heidelberg.
 }
+\seealso{
+Other preparation: 
+\code{\link{CBA_ruleset}()},
+\code{\link{discretizeDF.supervised}()},
+\code{\link{prepareTransactions}()},
+\code{\link{transactions2DF}()}
+}
 \author{
 Michael Hahsler
 }
+\concept{preparation}

@@ -13,7 +13,7 @@
 #'
 #' **Mining parameters.**
 #' Mining parameters for
-#' [apriori()] can be either specified as a list (or object
+#' [arules::apriori()] can be either specified as a list (or object
 #' of [arules::APparameter]) as argument `parameter` or, for
 #' convenience, as arguments in `...`.
 #' _Note:_ [mineCARs()] uses
@@ -40,19 +40,21 @@
 #' chance to also produce a reasonable amount of rules. In addition, a named
 #' numerical vector with a support values for each class can be specified.
 #'
+#' @family preparation
+#'
 #' @param formula A symbolic description of the model to be fitted.
 #' @param transactions An object of class [arules::transactions]
 #'   containing the training data.
 #' @param parameter,control Optional parameter and control lists for
-#'   [apriori()].
+#'   [arules::apriori()].
 #' @param balanceSupport logical; if `TRUE`, class imbalance is
 #'   counteracted by using class specific minimum support values. Alternatively,
 #'   a support value for each class can be specified (see Details section).
 #' @param verbose logical; report progress?
-#' @param \dots For convenience, the mining parameters for [apriori()] can be
+#' @param \dots For convenience, the mining parameters for [arules::apriori()] can be
 #'   specified as \dots. Examples are the `support` and `confidence`
 #' thresholds, and the `maxlen` of rules.
-#' @return Returns an object of class [rules].
+#' @return Returns an object of class [arules::rules].
 #' @author Michael Hahsler
 #' @references
 #' Liu, B. Hsu, W. and Ma, Y (1998). Integrating Classification and

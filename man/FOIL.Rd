@@ -82,6 +82,16 @@ Yin, Xiaoxin and Jiawei Han. CPAR: Classification based on Predictive
 Association Rules, SDM, 2003.
 \doi{10.1137/1.9781611972733.40}
 }
+\seealso{
+Other classifiers: 
+\code{\link{CBA}()},
+\code{\link{CBA_helpers}},
+\code{\link{CBA_ruleset}()},
+\code{\link{LUCS_KDD_CBA}},
+\code{\link{RCAR}()},
+\code{\link{RWeka_CBA}}
+}
 \author{
 Michael Hahsler
 }
+\concept{classifiers}

@@ -22,6 +22,9 @@
 #' [FOIL] exposes min. gain.
 #'
 #' @name LUCS_KDD_CBA
+#'
+#' @family classifiers
+#'
 #' @param formula a symbolic description of the model to be fitted. Has to be
 #'   of form `class ~ .` or `class ~ predictor1 + predictor2`.
 #' @param data A data.frame or [arules::transactions] containing the training data.
@@ -48,8 +51,7 @@
 #' Association Rules, SDM, 2003.
 #' \doi{10.1137/1.9781611972733.40}
 #'
-#' Frans Coenen et al. The LUCS-KDD Software Library,
-#' \url{https://cgi.csc.liv.ac.uk/~frans/KDD/Software/}
+#' Frans Coenen et al. The LUCS-KDD Software Library, University of Liverpool, 2013.
 #' @examples
 #' # make sure you have a Java SDK Version 1.4.0+ and not a headless installation.
 #' system("java -version")

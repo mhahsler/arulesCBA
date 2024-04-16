@@ -10,7 +10,7 @@
 #'
 #' In arulesCBA, the class variable is always represented by a set of items.
 #' For a binary classification problem, we use an item and its compliment
-#' (typically called `<item label>=TRUE` and <item label>=FALSE). For
+#' (typically called `<item label>=TRUE` and `<item label>=FALSE`). For
 #' a multi-label classification problem we use one item for each possible class
 #' label (format `<class item>=<label>`). See [prepareTransactions()] for details.
 #'
@@ -28,7 +28,7 @@
 #' If lambda for regularization is not specified during training (`lambda = NULL`)
 #' then cross-validation is used
 #' to determine the largest value of lambda such that the error is within 1 standard error of the
-#' minimum (see [cv.glmnet()] for how to perform cross-validation in parallel).
+#' minimum (see [glmnet::cv.glmnet()] for how to perform cross-validation in parallel).
 #'
 #' For the final classifier, we only keep the rules that have a weight greater than
 #' 0 for at least one class label. The rules include as the weight the beta coefficients
@@ -42,6 +42,8 @@
 #'
 #' @aliases RCAR rcar
 #'
+#' @family classifiers
+#'
 #' @param formula A symbolic description of the model to be fitted. Has to be
 #'   of form `class ~ .` or `class ~ predictor1 + predictor2`.
 #' @param data A data.frame or [arules::transactions] containing the training data.
@@ -53,22 +55,22 @@
 #' @param alpha The elastic net mixing parameter. `alpha = 1` is the lasso
 #'   penalty (default RCAR), and `alpha = 0` the ridge penalty.
 #' @param cv.glmnet.args,glmnet.args A list of arguments passed on to
-#'   [cv.glmnet()] and [glmnet()], respectively. See Example section.
-#' @param parameter,control Optional parameter and control lists for [apriori()].
+#'   [glmnet::cv.glmnet()] and [glmnet::glmnet()], respectively. See Example section.
+#' @param parameter,control Optional parameter and control lists for [arules::apriori()].
 #' @param balanceSupport balanceSupport parameter passed to [mineCARs()].
 #' @param disc.method Discretization method for factorizing numeric input
 #'   (default: `"mdlp"`). See [discretizeDF.supervised()] for more
 #'   supervised discretization methods.
 #' @param verbose Report progress?
 #' @param ... For convenience, additional parameters are used to create the
-#' \code{parameter} control list for [apriori()] (e.g., to specify the support and
+#' \code{parameter} control list for [arules::apriori()] (e.g., to specify the support and
 #'   confidence thresholds).
 #' @return Returns an object of class [CBA] representing the trained
 #'   classifier with the additional field `model` containing a list with the
 #'   following elements:
 #'
 #' \item{reg_model}{them multinomial logistic
-#'   regression model as an object of class [glmnet()].}
+#'   regression model as an object of class [glmnet::glmnet].}
 #' \item{cv}{only available if `lambda = NULL` was specified. Contains the
 #'   results for the cross-validation used determine
 #'   lambda. We use by default `lambda.1se` to determine lambda.}

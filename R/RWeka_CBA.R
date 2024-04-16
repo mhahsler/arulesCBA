@@ -20,6 +20,8 @@
 #'
 #' @name RWeka_CBA
 #'
+#' @family classifiers
+#'
 #' @param formula A symbolic description of the model to be fitted. Has to be
 #'   of form `class ~ .` or `class ~ predictor1 + predictor2`.
 #' @param data A data.frame or [arules::transactions] containing the training data.
