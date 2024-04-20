@@ -189,7 +189,7 @@ predict.CBA <-
 
 
 #' @rdname predict.CBA
-#' @param pred,true two factors with the same level representing the predictions and the ground truth (e.g., obtrained with [response()]).
+#' @param pred,true two factors with the same level representing the predictions and the ground truth (e.g., obtained with [response()]).
 #' @export
 accuracy <- function(pred, true) {
   if (!identical(levels(pred), levels(true)))

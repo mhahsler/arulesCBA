@@ -7,7 +7,7 @@
 #' discretized (i.e., all numeric columns are discretized).
 #'
 #' `discretizeDF.supervised()` only implements supervised discretization.
-#' See [discretizeDF()] in package \pkg{arules} for unsupervised
+#' See [arules::discretizeDF()] in package \pkg{arules} for unsupervised
 #' discretization.
 #'
 #' @aliases discretize
@@ -28,7 +28,7 @@
 #' breaks or and `"discretized:method"` giving the used method.
 #' @author Michael Hahsler
 #' @seealso Unsupervised discretization from \pkg{arules}:
-#' [discretize()], [discretizeDF()].
+#' [arules::discretize()], [arules::discretizeDF()].
 #'
 #' Details about the available supervised discretization methods from
 #' \pkg{discretization}:

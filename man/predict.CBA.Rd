@@ -21,7 +21,7 @@ to be classified.}
 
 \item{\dots}{Additional arguments are ignored.}
 
-\item{pred, true}{two factors with the same level representing the predictions and the ground truth (e.g., obtrained with \code{\link[=response]{response()}}).}
+\item{pred, true}{two factors with the same level representing the predictions and the ground truth (e.g., obtained with \code{\link[=response]{response()}}).}
 }
 \value{
 A factor vector with the classification result.

@@ -87,7 +87,7 @@ RCAR+ first mines CARs to find itemsets (LHS of the CARs) that are related
 to the class items. Then, a transaction x lhs(CAR) coverage matrix \eqn{X} is created.
 The matrix contains
 a 1 if the LHS of the CAR applies to the transaction, and 0 otherwise.
-A regularized multinominal logistic model to predict the true class \eqn{y}
+A regularized multinomial logistic model to predict the true class \eqn{y}
 for each transaction given \eqn{X} is fitted. Note that the RHS of the
 CARs are actually ignored in this process, so the algorithm effectively
 uses rules consisting of each LHS of a CAR paired with each class label.

@@ -36,7 +36,7 @@ discretized (i.e., all numeric columns are discretized).
 }
 \details{
 \code{discretizeDF.supervised()} only implements supervised discretization.
-See \code{\link[=discretizeDF]{discretizeDF()}} in package \pkg{arules} for unsupervised
+See \code{\link[arules:discretize]{arules::discretizeDF()}} in package \pkg{arules} for unsupervised
 discretization.
 }
 \examples{
@@ -58,7 +58,7 @@ head(iris.disc2)
 }
 \seealso{
 Unsupervised discretization from \pkg{arules}:
-\code{\link[=discretize]{discretize()}}, \code{\link[=discretizeDF]{discretizeDF()}}.
+\code{\link[arules:discretize]{arules::discretize()}}, \code{\link[arules:discretize]{arules::discretizeDF()}}.
 
 Details about the available supervised discretization methods from
 \pkg{discretization}:
