@@ -1,4 +1,4 @@
-# arulesCBA 1.2.6.1 (2024-xx-xx)
+# arulesCBA 1.2.7 (2024-05-15)
 
 * fixed some missing package anchors in the man pages.
 

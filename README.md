@@ -1,10 +1,10 @@
 
 # <img src="man/figures/logo.svg" align="right" height="139" /> R package arulesCBA - Classification Based on Association Rules
 
-[![CRAN
-version](http://www.r-pkg.org/badges/version/arulesCBA)](https://CRAN.R-project.org/package=arulesCBA)
-[![stream r-universe
+[![r-universe
 status](https://mhahsler.r-universe.dev/badges/arulesCBA)](https://mhahsler.r-universe.dev/arulesCBA)
+[![Package on
+CRAN](http://www.r-pkg.org/badges/version/arulesCBA)](https://CRAN.R-project.org/package=arulesCBA)
 [![CRAN RStudio mirror
 downloads](http://cranlogs.r-pkg.org/badges/arulesCBA)](https://CRAN.R-project.org/package=arulesCBA)
 
