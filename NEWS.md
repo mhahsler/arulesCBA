@@ -1,3 +1,7 @@
+# arulesCBA 1.2.7-1 (2024-xx-xx)
+
+* fixed link for bug reports (reported by Kurt Hornik).
+
 # arulesCBA 1.2.7 (2024-05-15)
 
 * fixed some missing package anchors in the man pages.
