@@ -4,9 +4,9 @@
 [![r-universe
 status](https://mhahsler.r-universe.dev/badges/arulesCBA)](https://mhahsler.r-universe.dev/arulesCBA)
 [![Package on
-CRAN](http://www.r-pkg.org/badges/version/arulesCBA)](https://CRAN.R-project.org/package=arulesCBA)
+CRAN](https://www.r-pkg.org/badges/version/arulesCBA)](https://CRAN.R-project.org/package=arulesCBA)
 [![CRAN RStudio mirror
-downloads](http://cranlogs.r-pkg.org/badges/arulesCBA)](https://CRAN.R-project.org/package=arulesCBA)
+downloads](https://cranlogs.r-pkg.org/badges/arulesCBA)](https://CRAN.R-project.org/package=arulesCBA)
 
 The R package [arulesCBA](https://cran.r-project.org/package=arulesCBA)
 (Hahsler et al, 2020) is an extension of the package
@@ -50,7 +50,8 @@ install.packages("arulesCBA")
 
 ``` r
 install.packages("arulesCBA",
-    repos = c("https://mhahsler.r-universe.dev". "https://cloud.r-project.org/"))
+    repos = c("https://mhahsler.r-universe.dev",
+              "https://cloud.r-project.org/"))
 ```
 
 ## Usage
