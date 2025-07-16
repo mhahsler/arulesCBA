@@ -95,3 +95,4 @@ for (cl in classifiers) {
 
   accuracy(p, true)
 }
+

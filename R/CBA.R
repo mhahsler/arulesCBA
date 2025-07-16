@@ -158,7 +158,7 @@ pruneCBA_M1 <-
 
     lhss <- as(lhs(rules)@data, "dsparseMatrix")
     rhss <- as(rhs(rules)@data, "dsparseMatrix")
-    rulesPerClassLeft <- rowSums(rhss[class_ids,])
+    rulesPerClassLeft <- rowSums(rhss[class_ids, , drop = FALSE])
 
     for (i in 1:length(rules)) {
       lhs <- lhss[, i, drop = FALSE]

@@ -12,7 +12,7 @@ Provides the infrastructure for association rule-based classification including 
 Useful links:
 \itemize{
   \item \url{https://github.com/mhahsler/arulesCBA}
-  \item Report bugs at \url{https://github.com/mhahsler/arulesCBA}
+  \item Report bugs at \url{https://github.com/mhahsler/arulesCBA/issues}
 }
 
 }
