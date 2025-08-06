@@ -1,3 +1,7 @@
+# arulesCBA 1.2.8.1 (2025-xx-xx)
+
+* Fixed partial argument matches.
+
 # arulesCBA 1.2.8 (2025-07-16)
 
 * fixed link for bug reports (reported by Kurt Hornik).

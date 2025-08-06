@@ -263,7 +263,7 @@ CPAR <-
     structure(
       list(
         formula = formula,
-        class = parsed_formula$class_name,
+        class = parsed_formula$class_names,
         rules = rules,
         default = majorityClass(formula, trans),
         discretization = attr(trans, "disc_info"),

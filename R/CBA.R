@@ -160,7 +160,7 @@ pruneCBA_M1 <-
     rhss <- as(rhs(rules)@data, "dsparseMatrix")
     rulesPerClassLeft <- rowSums(rhss[class_ids, , drop = FALSE])
 
-    for (i in 1:length(rules)) {
+    for (i in seq_along(rules)) {
       lhs <- lhss[, i, drop = FALSE]
       rhs <- rhss[, i, drop = FALSE]
 
@@ -178,7 +178,7 @@ pruneCBA_M1 <-
         next
 
       coveredTrans <-  uncoveredTrans[, covered[, 1], drop = FALSE]
-      uncoveredTrans <- uncoveredTrans[,!covered[, 1], drop = FALSE]
+      uncoveredTrans <- uncoveredTrans[, !covered[, 1], drop = FALSE]
 
       numTrue <- sum(crossprod(coveredTrans, rhs) > 0)
       numFalse <- numCovered - numTrue
@@ -190,7 +190,7 @@ pruneCBA_M1 <-
       numDefaultError <- sum(defaultClassDist[-defaultClass])
 
       ruleStats$coveredTrans[i] <- numCovered
-      ruleStats$errorRule[i] <- numFalse
+      ruleStats$errorRules[i] <- numFalse
       ruleStats$errorDefault[i] = numDefaultError
       ruleStats$defaultClass[i] = defaultClass
 
@@ -219,7 +219,7 @@ pruneCBA_M1 <-
     strongRules <- which(ruleStats$coveredTrans > 0)
     ruleStats <- ruleStats[strongRules, , drop = FALSE]
     ruleStats$errorTotal <-
-      cumsum(ruleStats$errorRule) + ruleStats$errorDefault
+      cumsum(ruleStats$errorRules) + ruleStats$errorDefault
 
     cutoff <- which.min(ruleStats$errorTotal)
 
