@@ -65,22 +65,18 @@ discretizeDF.supervised <- function(formula,
   ...) {
   if (!is(data, "data.frame"))
     stop("data needs to be a data.frame")
-
-  methods = c("mdlp",
-    "caim",
-    "cacc",
-    "ameva",
-    "chi2",
-    "chimerge",
-    "extendedchi2",
-    "modchi2")
-  method <- methods[pmatch(tolower(method), methods)]
-  if (is.na(method))
-    stop(paste(
-      "Unknown method! Available methods are",
-      paste(methods, collapse = ", ")
-    ))
-
+  
+  method <- match.arg(tolower(method), 
+                      c("mdlp",
+                        "caim",
+                        "cacc",
+                        "ameva",
+                        "chi2",
+                        "chimerge",
+                        "extendedchi2",
+                        "modchi2")
+  )
+  
   vars <- .parseformula(formula, data)
   cl_id <- vars$class_ids
   feature_ids <- vars$feature_ids

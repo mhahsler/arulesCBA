@@ -106,11 +106,7 @@ CBA_ruleset <- function(formula,
   description = "Custom rule set",
   ...) {
   # method (need to match with predict!)
-  methods <- c("first", "majority", "weighted", "logit")
-  m <- pmatch(method, methods)
-  if (is.na(m))
-    stop("Unknown method")
-  method <- methods[m]
+  method <- match.arg(method, c("first", "majority", "weighted", "logit"))
 
   # add weights
   if (!is.null(weights)) {

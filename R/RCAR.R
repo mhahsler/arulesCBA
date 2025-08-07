@@ -138,6 +138,7 @@ RCAR <- function(formula,
   # mine and prune CARs
   if (verbose)
     cat("* Mining CARs...\n")
+  
   cars <- mineCARs(
     formula,
     trans,

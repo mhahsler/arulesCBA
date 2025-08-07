@@ -35,21 +35,14 @@ predict.CBA <-
     type = c("class", "score"),
     ...) {
     type <- match.arg(type)
-
-    method <- object$method
-    if (is.null(method))
-      method <- "majority"
-
-    methods <- c("first", "majority", "weighted", "logit")
-    m <- pmatch(method, methods)
-    if (is.na(m))
-      stop("Unknown method")
-    method <- methods[m]
+    
+    method <- object$method %||% "majority"
+    method <- match.arg(method, c("first", "majority", "weighted", "logit"))
 
     # no rules. Always predict the default class
     ### FIXME: Implement score.
     ### FIXME: class should return a factor.
-    if (length(object$rules) == 0) {
+    if (length(object$rules) < 1L) {
       if (type == "class")
         return(rep(object$default, nrow(newdata)))
       # score

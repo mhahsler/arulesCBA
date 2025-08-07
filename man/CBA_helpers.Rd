@@ -31,18 +31,18 @@ uncoveredMajorityClass(formula, transactions, rules)
 \item{x, transactions}{An object of class \link[arules:transactions-class]{arules::transactions}
 or \link[arules:rules-class]{arules::rules}.}
 
-\item{type}{\verb{"relative" or }"absolute"` to return proportions or
+\item{type}{\code{"relative"} or \code{"absolute"} to return proportions or
 absolute counts.}
 
 \item{rules}{A set of \link[arules:rules-class]{arules::rules}.}
 }
 \value{
-\code{response} returns the response label as a factor.
+\code{response()} returns the response label as a factor.
 
-\code{classFrequency} returns the item frequency for each class label as a
+\code{classFrequency()} returns the item frequency for each class label as a
 vector.
 
-\code{majorityClass} returns the most frequent class label in the
+\code{majorityClass()} returns the most frequent class label in the
 transactions.
 }
 \description{

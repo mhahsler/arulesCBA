@@ -87,19 +87,19 @@ CBA <- function(formula,
     ...
   )
 
-  if (length(rulebase) > 0L) {
-    if (verbose)
-      cat("\nPruning CARs...\n")
-    if (pruning == "M1")
-      rulebase <- pruneCBA_M1(formula, rulebase, trans)
-    else
-      rulebase <- pruneCBA_M2(formula, rulebase, trans)
-    default <- info(rulebase)$defaultClass
-    if (verbose)
-      cat("CARs left:", length(rulebase), "\n")
-  } else {
-    default <- majorityClass(formula, trans)
-  }
+  pruning <- match.arg(pruning, c("M1", "M2"))
+  
+  if (verbose)
+    cat("\nPruning CARs...\n")
+  
+  rulebase <- switch (pruning,
+                      M1 = pruneCBA_M1(formula, rulebase, trans),
+                      M2 = pruneCBA_M2(formula, rulebase, trans)
+  )
+  default <- info(rulebase)$defaultClass
+  
+  if (verbose)
+    cat("CARs left:", length(rulebase), "\n")
 
   # assemble classifier
   CBA_ruleset(
@@ -131,6 +131,13 @@ pruneCBA_M1 <-
     parsedFormula <- .parseformula(formula, transactions)
     class_ids <- parsedFormula$class_ids
 
+    if (length(rules) < 1L) {
+      rulebase <- rules
+      info(rulebase)$defaultClass <- majorityClass(formula, transactions)
+      info(rulebase)$pruning <- "CBA_M1"
+      return(rulebase)
+    }
+    
     # Pre Step: Get rid of redundant rules since they can never cover transactions
     rules <- rules[!is.redundant(rules)]
     if (verbose)
@@ -257,10 +264,9 @@ pruneCBA_M1 <-
     else
       stop("unrecognized in default class", defaultClass)
 
-
     info(rulebase)$defaultClass <- defaultClass
-
     info(rulebase)$pruning <- "CBA_M1"
+    
     return(rulebase)
   }
 
@@ -344,9 +350,17 @@ pruneCBA_M2 <-
   function(formula, rules, transactions, verbose = FALSE) {
     if (verbose)
       warning("verbose not implemented yet for pruneCBA_M2.")
+    
     formula <- as.formula(formula)
     class <- .parseformula(formula, transactions)$class_items
 
+    if (length(rules) < 1L) {
+      rulebase <- rules
+      info(rulebase)$defaultClass <- majorityClass(formula, transactions)
+      info(rulebase)$pruning <- "CBA_M2"
+      return(rulebase)
+    }
+    
     quality(rules)$size <- size(rules)
 
     # Step 1: Sort rules by confidence, support and size.
@@ -457,11 +471,12 @@ pruneCBA_M2 <-
         coveredTransactions = length(transactions) - sum(quality(rulebase)$coveredTransactions),
         totalErrors = min(totalErrors[strongRules])
       )
+    
+    # add default rule
     rulebase <- c(rulebase, default_rule)
-
     info(rulebase)$defaultClass <-
       strsplit(defaultClass, "=")[[1L]][2]
-
     info(rulebase)$pruning <- "CBA_M2"
+    
     return(rulebase)
   }

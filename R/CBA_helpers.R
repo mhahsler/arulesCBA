@@ -8,14 +8,14 @@
 #' @param x,transactions An object of class [arules::transactions]
 #' or [arules::rules].
 #' @param rules A set of [arules::rules].
-#' @param type `"relative" or `"absolute"` to return proportions or
+#' @param type `"relative"` or `"absolute"` to return proportions or
 #' absolute counts.
-#' @return `response` returns the response label as a factor.
+#' @return `response()` returns the response label as a factor.
 #'
-#' `classFrequency` returns the item frequency for each class label as a
-#' vector.
+#' `classFrequency()` returns the item frequency for each class label as a
+#' vector. 
 #'
-#' `majorityClass` returns the most frequent class label in the
+#' `majorityClass()` returns the most frequent class label in the
 #' transactions.
 #' @name CBA_helpers
 #'
@@ -116,6 +116,8 @@ response <- function(formula, x) {
 #' @rdname CBA_helpers
 #' @export
 classFrequency <- function(formula, x, type = "relative") {
+  type <- match.arg(type, c("relative", "absolute"))
+  
   tbl <- table(response(formula, x))
   if (type == "relative")
     tbl <- tbl / sum(tbl)
