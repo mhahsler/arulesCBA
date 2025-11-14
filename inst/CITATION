@@ -11,13 +11,11 @@ bibentry(bibtype = "article",
       person("Jaroslav", "Kucha\\v{r}")
     )
   },
-  year = 2020,
+  year = 2019,
   journal = "{The R Journal}",
-  volume = 12,
-  number = 1,
-  pages = "",
-  month = "February",
+  volume = 11,
+  issue = 2,
+  pages = "254-267",
   issn = "2073-4859",
-#  doi = "10.32614/RJ-2019-048", # not registered yet
-  url = "https://journal.r-project.org/archive/2019/RJ-2019-048/"
+  doi = "10.32614/RJ-2019-048"
   )

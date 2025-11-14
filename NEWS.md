@@ -1,6 +1,7 @@
-# arulesCBA 1.2.8.1 (2025-xx-xx)
+# arulesCBA 1.2.9 (2025-11-04)
 
 * Fixed partial argument matches.
+* Fixed broken tests.
 
 # arulesCBA 1.2.8 (2025-07-16)
 

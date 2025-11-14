@@ -15,7 +15,7 @@ expect_equal(levels(r), cls)
 expect_equal(classes(f, dat), cls)
 
 r <- classFrequency(f, dat)
-expect(length(r), length(cls) )
+expect_equal(length(r), length(cls))
 
 r <- majorityClass(f, dat)
 expect_equal(length(r), 1L)
@@ -32,7 +32,7 @@ expect_equal(levels(r), cls)
 expect_equal(classes(f, trans), cls)
 
 r <- classFrequency(f, trans)
-expect(length(r), length(cls) )
+expect_equal(length(r), length(cls))
 
 r <- majorityClass(f, trans)
 expect_equal(length(r), 1L)
@@ -48,7 +48,7 @@ expect_equal(levels(r), cls)
 expect_equal(classes(f, trans), cls)
 
 r <- classFrequency(f, trans)
-expect(length(r), length(cls) )
+expect_equal(length(r), length(cls))
 
 r <- majorityClass(f, trans)
 expect_equal(length(r), 1L)
@@ -65,7 +65,7 @@ expect_equal(length(r), nrow(dat))
 expect_equal(levels(r), cls)
 
 r <- classFrequency(f, trans)
-expect(length(r), length(cls) )
+expect_equal(length(r), length(cls))
 
 r <- majorityClass(f, trans)
 expect_equal(length(r), 1L)
@@ -83,7 +83,7 @@ expect_equal(length(r), nrow(dat))
 expect_equal(levels(r), cls)
 
 r <- classFrequency(f, dat)
-expect(length(r), length(cls) )
+expect_equal(length(r), length(cls))
 
 r <- majorityClass(f, dat)
 expect_equal(length(r), 1L)
@@ -99,7 +99,7 @@ expect_equal(length(r), nrow(dat))
 expect_equal(levels(r), cls)
 
 r <- classFrequency(f, trans)
-expect(length(r), length(cls) )
+expect_equal(length(r), length(cls))
 
 r <- majorityClass(f, trans)
 expect_equal(length(r), 1L)
@@ -119,7 +119,7 @@ expect_equal(length(r), nrow(dat))
 expect_equal(levels(r), cls)
 
 r <- classFrequency(f, dat)
-expect(length(r), length(cls) )
+expect_equal(length(r), length(cls))
 
 r <- majorityClass(f, dat)
 expect_equal(length(r), 1L)
@@ -136,7 +136,7 @@ expect_equal(length(r), nrow(dat))
 expect_equal(levels(r), cls)
 
 r <- classFrequency(f, trans)
-expect(length(r), length(cls) )
+expect_equal(length(r), length(cls))
 
 r <- majorityClass(f, trans)
 expect_equal(length(r), 1L)

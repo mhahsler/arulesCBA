@@ -1,5 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 Work
+docs
 README.Rmd
 ^\.github$
