@@ -146,7 +146,7 @@ entry-spacing="0">
 Azmi, Mohamed, George C. Runger, and Abdelaziz Berrado. 2019.
 “Interpretable Regularized Class Association Rules Algorithm for
 Classification in a Categorical Data Space.” *Information Sciences* 483:
-313–31. <https://doi.org/0.1016/j.ins.2019.01.047>.
+313–31. <https://doi.org/10.1016/j.ins.2019.01.047>.
 
 </div>
 
