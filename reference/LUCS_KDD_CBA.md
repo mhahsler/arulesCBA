@@ -116,16 +116,16 @@ data("iris")
 # build a classifier, inspect rules and make predictions
 cl <- CMAR(Species ~ ., iris, support = .2, confidence = .8, verbose = TRUE)
 #> LUCS-KDD: CMAR 
-#> Call: java  -cp /home/runner/work/_temp/Library/arulesCBA/LUCS_KDD/CMAR.jar runCMAR -N3 -F/tmp/RtmpSIF6rR/file1ca547f2ae3f.num -S20 -C80 
+#> Call: java  -cp /home/runner/work/_temp/Library/arulesCBA/LUCS_KDD/CMAR.jar runCMAR -N3 -F/tmp/RtmpgW9HBZ/file1b7b7f51ae65.num -S20 -C80 
 #> 
 #>  [1] "SETTINGS"                                                                      
 #>  [2] "--------"                                                                      
-#>  [3] "Training file name            = /tmp/RtmpSIF6rR/file1ca547f2ae3f.num"          
+#>  [3] "Training file name            = /tmp/RtmpgW9HBZ/file1b7b7f51ae65.num"          
 #>  [4] "Support (default 20%)         = 20.0"                                          
 #>  [5] "Confidence (default 80%)      = 80.0"                                          
 #>  [6] "Number of classes             = 3"                                             
 #>  [7] ""                                                                              
-#>  [8] "Reading input file: /tmp/RtmpSIF6rR/file1ca547f2ae3f.num"                      
+#>  [8] "Reading input file: /tmp/RtmpgW9HBZ/file1b7b7f51ae65.num"                      
 #>  [9] "Number of records = 150"                                                       
 #> [10] "Number of columns = 15"                                                        
 #> [11] "Min support       = 30.0 (records)"                                            
