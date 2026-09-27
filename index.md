@@ -1,0 +1,205 @@
+# R package arulesCBA - Classification Based on Association Rules
+
+[![Package on
+CRAN](https://www.r-pkg.org/badges/version/arulesCBA)](https://CRAN.R-project.org/package=arulesCBA)
+[![CRAN RStudio mirror
+downloads](https://cranlogs.r-pkg.org/badges/arulesCBA)](https://CRAN.R-project.org/package=arulesCBA)
+![License](https://img.shields.io/cran/l/arulesCBA)[![r-universe
+status](https://mhahsler.r-universe.dev/badges/arulesCBA)](https://mhahsler.r-universe.dev/arulesCBA)
+
+**Maintainer:** [Michael Hahsler](https://michael.hahsler.net)
+
+The R package [arulesCBA](https://cran.r-project.org/package=arulesCBA)
+([Hahsler et al. 2019](#ref-Hahsler.Johnson.ea:2019)) is an extension of
+the package [arules](https://cran.r-project.org/package=arules)
+([Hahsler et al. 2005](#ref-Hahsler.Gr%C3%BCn.ea:2005)) to perform
+association rule-based classification. The package provides the
+infrastructure for class association rules and implements associative
+classifiers based on the following algorithms:
+
+- **CBA**: Classification Based on Association Rules ([Liu et al.
+  1998](#ref-Liu.Hsu.ea:1998)).
+- **CMAR**: Classification based on Multiple Association Rule ([Li et
+  al. 2001](#ref-Li.Han.ea:2001)) via LUCS-KDD Software Library.
+- **CPAR**: Classification based on Predictive Association Rules ([Yin
+  and Han 2003](#ref-Yin.Han:2003)) via LUCS-KDD Software Library.
+- **C4.5**: Rules extracted from a C4.5 decision tree ([Quinlan
+  1993](#ref-Quinlan:1993)) via J48 in R/Weka.
+- **FOIL**: First-Order Inductive Learner ([Quinlan and Cameron-Jones
+  1993](#ref-Quinlan.Cameron-Jones:1993); [Yin and Han
+  2003](#ref-Yin.Han:2003)).
+- **PART**: Rules from Partial Decision Trees ([Frank and Witten
+  1998](#ref-Frank.Witten:1998)) via R/Weka.
+- **PRM**: Predictive Rule Mining ([Yin and Han
+  2003](#ref-Yin.Han:2003)) via LUCS-KDD Software Library.
+- **RCAR**: Regularized Class Association Rules using Logistic
+  Regression ([Azmi et al. 2019](#ref-Azmi.Runger.ea:2019)).
+- **RIPPER**: Repeated Incremental Pruning to Produce Error Reduction
+  ([Cohen 1995](#ref-Cohen:1995)) via R/Weka.
+
+The package also provides the infrastructure for associative
+classification (supervised discetization, mining class association rules
+(CARs)), and implements various association rule-based classification
+strategies (first match, majority voting, weighted voting, etc.). Some
+algorithms are interfaced by the R package R/Weka ([Hornik et al.
+2009](#ref-Hornik.Buchta.ea:2009)) and the LUCS-KDD Software Library
+([Coenen 2013](#ref-Coenen:2013)).
+
+The following R packages use `arulesCBA`:
+[arules](https://CRAN.R-project.org/package=arules),
+[qCBA](https://CRAN.R-project.org/package=qCBA),
+[tidybins](https://CRAN.R-project.org/package=tidybins)
+
+## Installation
+
+**Stable CRAN version:** Install from within R with
+
+``` r
+
+install.packages("arulesCBA")
+```
+
+**Current development version:** Install from
+[r-universe.](https://mhahsler.r-universe.dev/arulesCBA)
+
+``` r
+
+install.packages("arulesCBA",
+    repos = c("https://mhahsler.r-universe.dev",
+              "https://cloud.r-project.org/"))
+```
+
+## Usage
+
+``` r
+
+library("arulesCBA")
+data("iris")
+```
+
+Learn a classifier.
+
+``` r
+
+classifier <- CBA(Species ~ ., data = iris)
+classifier
+```
+
+``` R
+## CBA Classifier Object
+## Formula: Species ~ .
+## Number of rules: 6
+## Default Class: versicolor
+## Classification method: first  
+## Description: CBA algorithm (Liu et al., 1998)
+```
+
+Inspect the rulebase.
+
+``` r
+
+inspect(classifier$rules, linebreak = TRUE)
+```
+
+``` R
+##     lhs                            rhs                  support confidence coverage lift count size coveredTransactions totalErrors
+## [1] {Petal.Length=[-Inf,2.45)}  => {Species=setosa}        0.33       1.00     0.33  3.0    50    2                  50          50
+## [2] {Sepal.Length=[6.15, Inf],                                                                                                     
+##      Petal.Width=[1.75, Inf]}   => {Species=virginica}     0.25       1.00     0.25  3.0    37    3                  37          13
+## [3] {Sepal.Length=[5.55,6.15),                                                                                                     
+##      Petal.Length=[2.45,4.75)}  => {Species=versicolor}    0.14       1.00     0.14  3.0    21    3                  21          13
+## [4] {Sepal.Width=[-Inf,2.95),                                                                                                      
+##      Petal.Width=[1.75, Inf]}   => {Species=virginica}     0.11       1.00     0.11  3.0    17    3                   5           8
+## [5] {Petal.Width=[1.75, Inf]}   => {Species=virginica}     0.30       0.98     0.31  2.9    45    2                   4           6
+## [6] {}                          => {Species=versicolor}    0.33       0.33     1.00  1.0   150    1                  33           6
+```
+
+Make predictions for the first few instances of iris.
+
+``` r
+
+predict(classifier, head(iris))
+```
+
+``` R
+## [1] setosa setosa setosa setosa setosa setosa
+## Levels: setosa versicolor virginica
+```
+
+## Citation request
+
+To cite package ‘arulesCBA’ in publications use:
+
+> Hahsler M, Johnson I, Kliegr T, Kuchař J (2019). “Associative
+> Classification in R: arc, arulesCBA, and rCBA.” *The R Journal*, *11*,
+> 254-267. ISSN 2073-4859. <doi:10.32614/RJ-2019-048>
+> <https://doi.org/10.32614/RJ-2019-048>.
+
+``` R
+@Article{,
+  title = {{Associative Classification in R: arc, arulesCBA, and rCBA}},
+  author = {Michael Hahsler and Ian Johnson and Tom{\'{a}}\v{s} Kliegr and Jaroslav Kucha\v{r}},
+  year = {2019},
+  journal = {{The R Journal}},
+  volume = {11},
+  issue = {2},
+  pages = {254-267},
+  issn = {2073-4859},
+  doi = {10.32614/RJ-2019-048},
+}
+```
+
+## References
+
+Azmi, Mohamed, George C. Runger, and Abdelaziz Berrado. 2019.
+“Interpretable Regularized Class Association Rules Algorithm for
+Classification in a Categorical Data Space.” *Information Sciences* 483:
+313–31. <https://doi.org/10.1016/j.ins.2019.01.047>.
+
+Coenen, Frans. 2013. *The LUCS-KDD Software Library*. University of
+Liverpool.
+
+Cohen, William W. 1995. “Fast Effective Rule Induction.” In *Machine
+Learning Proceedings 1995, Proceedings of the Twelfth International
+Conference on Machine Learning*. Elsevier.
+<https://doi.org/10.1016/B978-1-55860-377-6.50023-2>.
+
+Frank, Eibe, and Ian H. Witten. 1998. “Generating Accurate Rule Sets
+Without Global Optimization.” *Proceedings of the Fifteenth
+International Conference on Machine Learning* (San Francisco, CA, USA),
+ICML ’98, 144–51.
+
+Hahsler, Michael, Bettina Grün, and Kurt Hornik. 2005. “Arules - a
+Computational Environment for Mining Association Rules and Frequent Item
+Sets.” *Journal of Statistical Software* 14 (15): 1–25.
+<https://doi.org/10.18637/jss.v014.i15>.
+
+Hahsler, Michael, Ian Johnson, Tomáš Kliegr, and Jaroslav Kuchař. 2019.
+“Associative Classification in R: arc, arulesCBA, and rCBA.” *The R
+Journal* 11: 254–67. <https://doi.org/10.32614/RJ-2019-048>.
+
+Hornik, Kurt, Christian Buchta, and Achim Zeileis. 2009. “Open-Source
+Machine Learning: R Meets Weka.” *Computational Statistics* 24 (2):
+225–32. <https://doi.org/10.1007/s00180-008-0119-7>.
+
+Li, Wenmin, Jiawei Han, and Jian Pei. 2001. “CMAR: Accurate and
+Efficient Classification Based on Multiple Class-Association Rules.”
+*Proceedings of the 2001 IEEE International Conference on Data Mining*
+(Washington, DC, USA), ICDM ’01, 369–76.
+<https://doi.org/10.1109/ICDM.2001.989541>.
+
+Liu, Bing, Wynne Hsu, and Yiming Ma. 1998. “Integrating Classification
+and Association Rule Mining.” *Proceedings of the Fourth International
+Conference on Knowledge Discovery and Data Mining*, KDD’98, 80–86.
+
+Quinlan, J Ross. 1993. “C4.5: Programs for Machine Learning.” *Morgan
+Kaufmann Publishers*.
+
+Quinlan, J. R., and R. M. Cameron-Jones. 1993. “FOIL: A Midterm Report.”
+*Proceedings of the 6th European Conference on Machine Learning*
+(Berlin, Heidelberg), ECML’93, 1–20.
+<https://doi.org/10.1007/3-540-56602-3_124>.
+
+Yin, Xiaoxin, and Jiawei Han. 2003. “CPAR: Classification Based on
+Predictive Association Rules.” *Proceedings of the SIAM International
+Conference on Data Mining* (San Franciso), 369–76.
