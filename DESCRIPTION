@@ -15,7 +15,8 @@ Description: Provides the infrastructure for association rule-based classificati
 Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>
 Depends: R (>= 4.0.0), Matrix (>= 1.4-0), arules (>= 1.7-4)
 Imports: methods, discretization (>= 1.0-1), glmnet (>= 3.0-0) 
-Suggests: testthat, mlbench, rJava, RWeka
+Suggests: testthat, mlbench, rJava, RWeka, knitr, rmarkdown
+VignetteBuilder: knitr
 SystemRequirements: Java (>= 8)
 License: GPL-3
 URL: https://github.com/mhahsler/arulesCBA, http://michael.hahsler.net/arulesCBA/
