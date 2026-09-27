@@ -27,7 +27,7 @@ CMAR(
 \item{formula}{a symbolic description of the model to be fitted. Has to be
 of form \code{class ~ .} or \code{class ~ predictor1 + predictor2}.}
 
-\item{data}{A data.frame or \link[arules:transactions-class]{arules::transactions} containing the training data.
+\item{data}{A data.frame or \link[arules:transactions]{arules::transactions} containing the training data.
 Data frames are automatically discretized and converted to transactions with
 \code{\link[=prepareTransactions]{prepareTransactions()}}.}
 
@@ -105,12 +105,12 @@ Association Rules, SDM, 2003.
 Frans Coenen et al. The LUCS-KDD Software Library, University of Liverpool, 2013.
 }
 \seealso{
-Other classifiers: 
-\code{\link{CBA}()},
-\code{\link{CBA_helpers}},
-\code{\link{CBA_ruleset}()},
-\code{\link{FOIL}()},
-\code{\link{RCAR}()},
-\code{\link{RWeka_CBA}}
+Other classifiers:
+\code{\link[=CBA]{CBA()}},
+\code{\link[=CBA_ruleset]{CBA_ruleset()}},
+\code{\link[=FOIL]{FOIL()}},
+\code{\link[=RCAR]{RCAR()}},
+\code{\link{RWeka_CBA}},
+\code{\link[=predict.CBA]{predict.CBA()}}
 }
 \concept{classifiers}

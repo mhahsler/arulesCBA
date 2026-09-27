@@ -1,0 +1,40 @@
+url: http://michael.hahsler.net/arulesCBA/
+template:
+  bootstrap: 5
+
+reference:
+- title: Package Overview
+  desc: Learn about the package and its association rule-based classification infrastructure.
+  contents:
+  - arulesCBA-package
+- title: Data Preparation and Rule Mining
+  desc: Discretize data, convert it to transactions, and mine class association rules for classification.
+  contents:
+  - prepareTransactions
+  - discretizeDF.supervised
+  - mineCARs
+  - transactions2DF
+  - has_concept("preparation")
+- title: Classifiers
+  desc: Build classifiers from association rules using CBA and alternative rule-learning algorithms.
+  contents:
+  - CBA
+  - CBA_ruleset
+  - RCAR
+  - FOIL
+  - LUCS_KDD_CBA
+  - RWeka_CBA
+  - has_concept("classifiers")
+- title: Prediction and Evaluation
+  desc: Predict class labels for ne objects and evaluate classifiers.
+  contents:
+  - predict.CBA
+- title: Utilities
+  desc: Extract classes and responses, analyze rule coverage, and determine default classes.
+  contents:
+  - has_concept("utilities")
+- title: Data Sets
+  desc: Example classification data sets from the UCI Machine Learning Repository.
+  contents:
+  - Lymphography
+  - Mushroom

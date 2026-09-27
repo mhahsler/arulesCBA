@@ -9,7 +9,6 @@
 #' predictive.
 #'
 #' @family classifiers
-#' @family preparation
 #'
 #' @param formula A symbolic description of the model to be fitted. Has to be
 #'   of form `class ~ .`. The class is the variable name (part of the item

@@ -125,22 +125,15 @@ accuracy(prediction, response(Species ~ ., trans))
 \seealso{
 \code{\link[=mineCARs]{mineCARs()}}
 
-Other classifiers: 
-\code{\link{CBA}()},
-\code{\link{CBA_helpers}},
-\code{\link{FOIL}()},
+Other classifiers:
+\code{\link[=CBA]{CBA()}},
+\code{\link[=FOIL]{FOIL()}},
 \code{\link{LUCS_KDD_CBA}},
-\code{\link{RCAR}()},
-\code{\link{RWeka_CBA}}
-
-Other preparation: 
-\code{\link{discretizeDF.supervised}()},
-\code{\link{mineCARs}()},
-\code{\link{prepareTransactions}()},
-\code{\link{transactions2DF}()}
+\code{\link[=RCAR]{RCAR()}},
+\code{\link{RWeka_CBA}},
+\code{\link[=predict.CBA]{predict.CBA()}}
 }
 \author{
 Michael Hahsler
 }
 \concept{classifiers}
-\concept{preparation}

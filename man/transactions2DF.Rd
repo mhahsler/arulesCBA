@@ -7,7 +7,7 @@
 transactions2DF(transactions, itemLabels = FALSE)
 }
 \arguments{
-\item{transactions}{an object of class \link[arules:transactions-class]{arules::transactions}.}
+\item{transactions}{an object of class \link[arules:transactions]{arules::transactions}.}
 
 \item{itemLabels}{logical; use the complete item labels (variable=level) as the
 levels in the data.frame? By default, only the levels are used.}
@@ -41,11 +41,10 @@ g2 <- prepareTransactions(`shopping bags` ~ ., Groceries)
 head(transactions2DF(g2), 2)
 }
 \seealso{
-Other preparation: 
-\code{\link{CBA_ruleset}()},
-\code{\link{discretizeDF.supervised}()},
-\code{\link{mineCARs}()},
-\code{\link{prepareTransactions}()}
+Other preparation:
+\code{\link[=discretizeDF.supervised]{discretizeDF.supervised()}},
+\code{\link[=mineCARs]{mineCARs()}},
+\code{\link[=prepareTransactions]{prepareTransactions()}}
 }
 \author{
 Michael Hahsler

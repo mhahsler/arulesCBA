@@ -29,7 +29,7 @@ be recoded as factor with TRUE/FALSE to generate positive and negative items?}
 already a set of transactions.}
 }
 \value{
-An object of class \link[arules:transactions-class]{arules::transactions} from
+An object of class \link[arules:transactions]{arules::transactions} from
 \pkg{arules} with an attribute called \code{"disc_info"} that contains
 information on the used discretization for each column.
 }
@@ -47,7 +47,7 @@ discretization (default is MDLP) and each range is represented as an item.
 \item If the class variable is a logical, then a negative class item is added.
 }
 
-Steps 1-3 are skipped if \code{data} is already a \link[arules:transactions-class]{arules::transactions} object.
+Steps 1-3 are skipped if \code{data} is already a \link[arules:transactions]{arules::transactions} object.
 }
 \examples{
 # Perform discretization and convert to transactions
@@ -69,13 +69,12 @@ ii <- itemInfo(g2)
 ii[ii[["variables"]] == "canned beer", ]
 }
 \seealso{
-\link[arules:transactions-class]{arules::transactions}, \code{transactions2DF()}.
+\link[arules:transactions]{arules::transactions}, \code{transactions2DF()}.
 
-Other preparation: 
-\code{\link{CBA_ruleset}()},
-\code{\link{discretizeDF.supervised}()},
-\code{\link{mineCARs}()},
-\code{\link{transactions2DF}()}
+Other preparation:
+\code{\link[=discretizeDF.supervised]{discretizeDF.supervised()}},
+\code{\link[=mineCARs]{mineCARs()}},
+\code{\link[=transactions2DF]{transactions2DF()}}
 }
 \author{
 Michael Hahsler

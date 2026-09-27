@@ -28,13 +28,13 @@ uncoveredMajorityClass(formula, transactions, rules)
 \arguments{
 \item{formula}{A symbolic description of the model to be fitted.}
 
-\item{x, transactions}{An object of class \link[arules:transactions-class]{arules::transactions}
-or \link[arules:rules-class]{arules::rules}.}
+\item{x, transactions}{An object of class \link[arules:transactions]{arules::transactions}
+or \link[arules:rules]{arules::rules}.}
 
 \item{type}{\code{"relative"} or \code{"absolute"} to return proportions or
 absolute counts.}
 
-\item{rules}{A set of \link[arules:rules-class]{arules::rules}.}
+\item{rules}{A set of \link[arules:rules]{arules::rules}.}
 }
 \value{
 \code{response()} returns the response label as a factor.
@@ -92,17 +92,9 @@ uncoveredClassExamples(Species ~ ., iris.trans, cars[1:3])
 uncoveredMajorityClass(Species ~ ., iris.trans, cars[1:3])
 }
 \seealso{
-\code{\link[arules:itemFrequency]{arules::itemFrequency()}}, \link[arules:rules-class]{arules::rules}, \link[arules:transactions-class]{arules::transactions}.
-
-Other classifiers: 
-\code{\link{CBA}()},
-\code{\link{CBA_ruleset}()},
-\code{\link{FOIL}()},
-\code{\link{LUCS_KDD_CBA}},
-\code{\link{RCAR}()},
-\code{\link{RWeka_CBA}}
+\code{\link[arules:itemFrequency]{arules::itemFrequency()}}, \link[arules:rules]{arules::rules}, \link[arules:transactions]{arules::transactions}.
 }
 \author{
 Michael Hahsler
 }
-\concept{classifiers}
+\concept{utilities}

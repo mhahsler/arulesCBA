@@ -5,7 +5,7 @@
 #' @aliases predict
 #' @name predict.CBA
 #'
-#' @family classifier
+#' @family classifiers
 #'
 #' @param object An object of class [CBA].
 #' @param newdata A data.frame or [arules::transactions] containing rows of new entries

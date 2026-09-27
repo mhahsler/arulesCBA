@@ -26,7 +26,7 @@ pruneCBA_M2(formula, rules, transactions, verbose = FALSE)
 \item{formula}{A symbolic description of the model to be fitted. Has to be
 of form \code{class ~ .} or \code{class ~ predictor1 + predictor2}.}
 
-\item{data}{\link[arules:transactions-class]{arules::transactions} containing the training data or a data.frame which.
+\item{data}{\link[arules:transactions]{arules::transactions} containing the training data or a data.frame which.
 is automatically discretized and converted to transactions with \code{\link[=prepareTransactions]{prepareTransactions()}}.}
 
 \item{pruning}{Pruning strategy used: "M1" or "M2".}
@@ -98,13 +98,13 @@ International Conference on Knowledge Discovery and Data Mining,} New York,
 \url{https://dl.acm.org/doi/10.5555/3000292.3000305}
 }
 \seealso{
-Other classifiers: 
-\code{\link{CBA_helpers}},
-\code{\link{CBA_ruleset}()},
-\code{\link{FOIL}()},
+Other classifiers:
+\code{\link[=CBA_ruleset]{CBA_ruleset()}},
+\code{\link[=FOIL]{FOIL()}},
 \code{\link{LUCS_KDD_CBA}},
-\code{\link{RCAR}()},
-\code{\link{RWeka_CBA}}
+\code{\link[=RCAR]{RCAR()}},
+\code{\link{RWeka_CBA}},
+\code{\link[=predict.CBA]{predict.CBA()}}
 }
 \author{
 Ian Johnson and Michael Hahsler

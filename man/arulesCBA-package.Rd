@@ -6,12 +6,15 @@
 \alias{arulesCBA-package}
 \title{arulesCBA: Classification Based on Association Rules}
 \description{
+\if{html}{\figure{logo.svg}{options: style='float: right' alt='logo' width='120'}}
+
 Provides the infrastructure for association rule-based classification including the algorithms CBA, CMAR, CPAR, C4.5, FOIL, PART, PRM, RCAR, and RIPPER to build associative classifiers. Hahsler et al (2019) \doi{10.32614/RJ-2019-048}.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/mhahsler/arulesCBA}
+  \item \url{http://michael.hahsler.net/arulesCBA/}
   \item Report bugs at \url{https://github.com/mhahsler/arulesCBA/issues}
 }
 
@@ -21,6 +24,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Michael Hahsler \email{mhahsler@lyle.smu.edu} (\href{https://orcid.org/0000-0003-2716-1405}{ORCID}) [copyright holder]
   \item Ian Johnson [copyright holder]
 }
 

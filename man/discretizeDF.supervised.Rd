@@ -36,7 +36,7 @@ discretized (i.e., all numeric columns are discretized).
 }
 \details{
 \code{discretizeDF.supervised()} only implements supervised discretization.
-See \code{\link[arules:discretize]{arules::discretizeDF()}} in package \pkg{arules} for unsupervised
+See \code{\link[arules:discretizeDF]{arules::discretizeDF()}} in package \pkg{arules} for unsupervised
 discretization.
 }
 \examples{
@@ -58,7 +58,7 @@ head(iris.disc2)
 }
 \seealso{
 Unsupervised discretization from \pkg{arules}:
-\code{\link[arules:discretize]{arules::discretize()}}, \code{\link[arules:discretize]{arules::discretizeDF()}}.
+\code{\link[arules:discretize]{arules::discretize()}}, \code{\link[arules:discretizeDF]{arules::discretizeDF()}}.
 
 Details about the available supervised discretization methods from
 \pkg{discretization}:
@@ -71,11 +71,10 @@ Details about the available supervised discretization methods from
 \link[discretization:extendChi2]{discretization::extendChi2},
 \link[discretization:modChi2]{discretization::modChi2}.
 
-Other preparation: 
-\code{\link{CBA_ruleset}()},
-\code{\link{mineCARs}()},
-\code{\link{prepareTransactions}()},
-\code{\link{transactions2DF}()}
+Other preparation:
+\code{\link[=mineCARs]{mineCARs()}},
+\code{\link[=prepareTransactions]{prepareTransactions()}},
+\code{\link[=transactions2DF]{transactions2DF()}}
 }
 \author{
 Michael Hahsler

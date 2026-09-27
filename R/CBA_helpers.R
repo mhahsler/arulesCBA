@@ -19,7 +19,7 @@
 #' transactions.
 #' @name CBA_helpers
 #'
-#' @family classifiers
+#' @family utilities
 #'
 #' @author Michael Hahsler
 #' @seealso [arules::itemFrequency()], [arules::rules], [arules::transactions].

@@ -13,7 +13,7 @@ accuracy(pred, true)
 \arguments{
 \item{object}{An object of class \link{CBA}.}
 
-\item{newdata}{A data.frame or \link[arules:transactions-class]{arules::transactions} containing rows of new entries
+\item{newdata}{A data.frame or \link[arules:transactions]{arules::transactions} containing rows of new entries
 to be classified.}
 
 \item{type}{Predict \code{"class"} labels. Some classifiers can also return
@@ -42,7 +42,16 @@ pr
 
 accuracy(pr, response(Species ~., iris_test))
 }
+\seealso{
+Other classifiers:
+\code{\link[=CBA]{CBA()}},
+\code{\link[=CBA_ruleset]{CBA_ruleset()}},
+\code{\link[=FOIL]{FOIL()}},
+\code{\link{LUCS_KDD_CBA}},
+\code{\link[=RCAR]{RCAR()}},
+\code{\link{RWeka_CBA}}
+}
 \author{
 Michael Hahsler
 }
-\concept{classifier}
+\concept{classifiers}

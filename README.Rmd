@@ -1,6 +1,6 @@
 ---
 output: github_document
-bibliography: docs/arulesCBA.bib
+bibliography: vignettes/arulesCBA.bib
 link-citations: yes
 ---
 
@@ -34,10 +34,6 @@ Some algorithms are interfaced by the R package R/Weka [@Hornik.Buchta.ea:2009] 
 pkg_usage(pkg)
 ```
 
-```{r echo=FALSE, results = 'asis'}
-pkg_citation(pkg, 2)
-```       
-
 
 ```{r echo=FALSE, results = 'asis'}
 pkg_install(pkg)
@@ -67,6 +63,14 @@ Make predictions for the first few instances of iris.
 ```{r}
 predict(classifier, head(iris))
 ```
+
+## Citation request
+
+
+```{r echo=FALSE, results = 'asis'}
+pkg_citation(pkg, 2)
+```       
+
 
 ## References
 

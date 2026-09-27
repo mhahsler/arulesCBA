@@ -24,7 +24,7 @@ RCAR(
 \item{formula}{A symbolic description of the model to be fitted. Has to be
 of form \code{class ~ .} or \code{class ~ predictor1 + predictor2}.}
 
-\item{data}{A data.frame or \link[arules:transactions-class]{arules::transactions} containing the training data.
+\item{data}{A data.frame or \link[arules:transactions]{arules::transactions} containing the training data.
 Data frames are automatically discretized and converted to transactions with
 \code{\link[=prepareTransactions]{prepareTransactions()}}.}
 
@@ -144,13 +144,13 @@ categorical data space. \emph{Information Sciences,} Volume 483, May 2019.
 Pages 313-331.
 }
 \seealso{
-Other classifiers: 
-\code{\link{CBA}()},
-\code{\link{CBA_helpers}},
-\code{\link{CBA_ruleset}()},
-\code{\link{FOIL}()},
+Other classifiers:
+\code{\link[=CBA]{CBA()}},
+\code{\link[=CBA_ruleset]{CBA_ruleset()}},
+\code{\link[=FOIL]{FOIL()}},
 \code{\link{LUCS_KDD_CBA}},
-\code{\link{RWeka_CBA}}
+\code{\link{RWeka_CBA}},
+\code{\link[=predict.CBA]{predict.CBA()}}
 }
 \author{
 Tyler Giallanza and Michael Hahsler

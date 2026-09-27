@@ -17,7 +17,7 @@ mineCARs(
 \arguments{
 \item{formula}{A symbolic description of the model to be fitted.}
 
-\item{transactions}{An object of class \link[arules:transactions-class]{arules::transactions}
+\item{transactions}{An object of class \link[arules:transactions]{arules::transactions}
 containing the training data.}
 
 \item{parameter, control}{Optional parameter and control lists for
@@ -34,7 +34,7 @@ specified as \dots. Examples are the \code{support} and \code{confidence}
 thresholds, and the \code{maxlen} of rules.}
 }
 \value{
-Returns an object of class \link[arules:rules-class]{arules::rules}.
+Returns an object of class \link[arules:rules]{arules::rules}.
 }
 \description{
 Class Association Rules (CARs) are association rules that have only items
@@ -52,7 +52,7 @@ single items representing the class label.
 \strong{Mining parameters.}
 Mining parameters for
 \code{\link[arules:apriori]{arules::apriori()}} can be either specified as a list (or object
-of \link[arules:ASparameter-classes]{arules::APparameter}) as argument \code{parameter} or, for
+of \link[arules:APparameter]{arules::APparameter}) as argument \code{parameter} or, for
 convenience, as arguments in \code{...}.
 \emph{Note:} \code{\link[=mineCARs]{mineCARs()}} uses
 by default a minimum support of 0.1 (for the LHS of the rules via parameter
@@ -142,11 +142,10 @@ of Data Mining and Knowledge Discovery. PKDD 2000. Lecture Notes in Computer
 Science}, vol 1910. Springer, Berlin, Heidelberg.
 }
 \seealso{
-Other preparation: 
-\code{\link{CBA_ruleset}()},
-\code{\link{discretizeDF.supervised}()},
-\code{\link{prepareTransactions}()},
-\code{\link{transactions2DF}()}
+Other preparation:
+\code{\link[=discretizeDF.supervised]{discretizeDF.supervised()}},
+\code{\link[=prepareTransactions]{prepareTransactions()}},
+\code{\link[=transactions2DF]{transactions2DF()}}
 }
 \author{
 Michael Hahsler
