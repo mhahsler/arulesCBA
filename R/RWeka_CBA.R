@@ -5,14 +5,14 @@
 #' RWeka (Hornik et al, 2009). These classifiers do not mine CARs, but
 #' directly create rules.
 #'
-#' You need to install package \pkg{RWeka} to use these classifiers.
+#' You need to install the \pkg{RWeka} package to use these classifiers.
 #'
 #' See R/Weka functions
 #' [RWeka::JRip()] (RIPPER),
 #' [RWeka::J48()] (C4.5 rules),
 #' [RWeka::PART()]
 #' for algorithm details and how control options can be passed on via
-#' `control`. An example is given in the Examples Section below.
+#' `control`. An example is given in the Examples section below.
 #'
 #' Memory for \pkg{RWeka} can be increased using the R options (e.g.,
 #' `options(java.parameters = "-Xmx1024m")`) before \pkg{RWeka} or
@@ -31,8 +31,8 @@
 #'   variables if data is a data.frame (default: `"mdlp"`). See
 #'   [discretizeDF.supervised()] for more supervised discretization
 #'   methods.
-#' @param control algorithmic control options for R/Weka Rule learners (see
-#'   Details Section).
+#' @param control Algorithmic control options for R/Weka rule learners (see
+#'   the Details section).
 #'
 #' @return Returns an object of class [CBA] representing the
 #'   trained classifier.

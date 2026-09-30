@@ -31,7 +31,7 @@
 #'   [prepareTransactions()].
 #' @param max_len maximal length of the LHS of the created rules.
 #' @param min_gain minimal gain required to expand a rule.
-#' @param best_k use the average expected accuracy (laplace) of the best k
+#' @param best_k Use the average expected accuracy (Laplace) of the best k
 #'   rules per class for prediction.
 #' @param disc.method Discretization method used to discretize continuous
 #'   variables if data is a data.frame (default: `"mdlp"`). See

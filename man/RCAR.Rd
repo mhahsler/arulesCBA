@@ -57,10 +57,10 @@ Returns an object of class \link{CBA} representing the trained
 classifier with the additional field \code{model} containing a list with the
 following elements:
 
-\item{reg_model}{them multinomial logistic
+\item{reg_model}{the multinomial logistic
 regression model as an object of class \link[glmnet:glmnet]{glmnet::glmnet}.}
 \item{cv}{only available if \code{lambda = NULL} was specified. Contains the
-results for the cross-validation used determine
+results of the cross-validation used to determine
 lambda. We use by default \code{lambda.1se} to determine lambda.}
 \item{all_rules}{ the actual classifier only contains the rules with
 non-zero weights. This field contains all rules used to build the classifier,
@@ -69,18 +69,18 @@ model in \code{reg_model}. }
 }
 \description{
 Build a classifier based on association rules mined for an input dataset and
-weighted with LASSO regularized logistic regression following RCAR (Azmi, et
-al., 2019). RCAR+ extends RCAR from a binary classifier to a multi-label
+weighted with LASSO-regularized logistic regression following RCAR (Azmi et
+al., 2019). RCAR+ extends RCAR from a binary classifier to a multiclass
 classifier and can use support-balanced CARs.
 }
 \details{
-RCAR+ extends RCAR from a binary classifier to a multi-label classifier
+RCAR+ extends RCAR from a binary classifier to a multiclass classifier
 using regularized multinomial logistic regression via \pkg{glmnet}.
 
 In arulesCBA, the class variable is always represented by a set of items.
-For a binary classification problem, we use an item and its compliment
+For a binary classification problem, we use an item and its complement
 (typically called \verb{<item label>=TRUE} and \verb{<item label>=FALSE}). For
-a multi-label classification problem we use one item for each possible class
+a multiclass classification problem, we use one item for each possible class
 label (format \verb{<class item>=<label>}). See \code{\link[=prepareTransactions]{prepareTransactions()}} for details.
 
 RCAR+ first mines CARs to find itemsets (LHS of the CARs) that are related
@@ -94,19 +94,18 @@ uses rules consisting of each LHS of a CAR paired with each class label.
 This is important to keep in mind when trying to interpret the rules used in
 the classifier.
 
-If lambda for regularization is not specified during training (\code{lambda = NULL})
-then cross-validation is used
-to determine the largest value of lambda such that the error is within 1 standard error of the
-minimum (see \code{\link[glmnet:cv.glmnet]{glmnet::cv.glmnet()}} for how to perform cross-validation in parallel).
+If lambda for regularization is not specified during training (\code{lambda = NULL}),
+cross-validation determines the largest value of lambda whose error is within
+one standard error of the minimum (see \code{\link[glmnet:cv.glmnet]{glmnet::cv.glmnet()}} for how to perform
+cross-validation in parallel).
 
 For the final classifier, we only keep the rules that have a weight greater than
-0 for at least one class label. The rules include as the weight the beta coefficients
-of the model.
+zero for at least one class label. The rule weights are the model's beta coefficients.
 
 Prediction for a new transaction is performed in two steps:
 \enumerate{
-\item Translate the transaction into a 0-1 coverage vector indicating what class association
-rule's LHS covers the transaction.
+\item Translate the transaction into a 0-1 coverage vector indicating which class association
+rules have an LHS that covers the transaction.
 \item Calculate the predicted label given the multinomial logistic regression model.
 }
 }
@@ -116,7 +115,7 @@ data("iris")
 classifier <- RCAR(Species ~ ., iris)
 classifier
 
-# inspect the rule base sorted by the larges class weight
+# inspect the rule base sorted by the largest class weight
 inspect(sort(classifier$rules, by = "weight"))
 
 # make predictions for the first few instances of iris

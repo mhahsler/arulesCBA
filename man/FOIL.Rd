@@ -26,7 +26,7 @@ Data frames are automatically discretized and converted to transactions with
 
 \item{min_gain}{minimal gain required to expand a rule.}
 
-\item{best_k}{use the average expected accuracy (laplace) of the best k
+\item{best_k}{Use the average expected accuracy (Laplace) of the best k
 rules per class for prediction.}
 
 \item{disc.method}{Discretization method used to discretize continuous

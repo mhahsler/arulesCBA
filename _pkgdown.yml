@@ -26,7 +26,7 @@ reference:
   - RWeka_CBA
   - has_concept("classifiers")
 - title: Prediction and Evaluation
-  desc: Predict class labels for ne objects and evaluate classifiers.
+  desc: Predict class labels for new objects and evaluate classifiers.
   contents:
   - predict.CBA
 - title: Utilities

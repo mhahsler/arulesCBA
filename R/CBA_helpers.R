@@ -1,4 +1,4 @@
-#' Helper Functions For Dealing with Classes
+#' Helper Functions for Dealing with Classes
 #'
 #' Helper functions to extract the response from transactions or rules, determine the
 #' class frequency, majority class, transaction coverage and the
@@ -55,7 +55,7 @@
 #' # conclusion (item in the RHS) of the rule as a class label
 #' response(Species ~ ., cars)
 #'
-#' # How many rules (using the first three rules) cover each transactions?
+#' # How many rules (using the first three rules) cover each transaction?
 #' transactionCoverage(iris.trans, cars[1:3])
 #'
 #' # Number of transactions per class not covered by the first three rules
@@ -80,7 +80,7 @@ response <- function(formula, x) {
     if (is.logical(r))
       r <- factor(r, levels = c("TRUE", "FALSE"))
     if (!is.factor(r))
-      stop("class variable needs to the logical or a factor!")
+      stop("class variable must be logical or a factor!")
 
     return(r)
   }

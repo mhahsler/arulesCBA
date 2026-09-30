@@ -29,9 +29,13 @@ export(uncoveredClassExamples)
 export(uncoveredMajorityClass)
 import(Matrix)
 import(arules)
-importFrom(methods,as)
-importFrom(methods,is)
-importFrom(methods,new)
-importFrom(stats,as.formula)
-importFrom(stats,terms)
+importFrom(methods,
+  as,
+  is,
+  new
+)
+importFrom(stats,
+  as.formula,
+  terms
+)
 useDynLib(arulesCBA)

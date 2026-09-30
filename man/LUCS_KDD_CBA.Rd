@@ -51,12 +51,12 @@ trained classifier.
 \description{
 Interface for the LUCS-KDD Software Library Java implementations of CMAR
 (Li, Han and Pei, 2001), PRM, and CPAR (Yin and Han, 2003). \strong{Note:} The
-Java implementations is not part of \pkg{arulesCBA} and
-is only free for \strong{non-commercial use}.
+Java implementations are not part of \pkg{arulesCBA} and
+are free only for \strong{non-commercial use}.
 }
 \details{
 \strong{Requirement:} The code needs a
-\strong{JDK (Java Software Development Kit) Version 1.8 (or higher)}
+\strong{JDK (Java Development Kit) version 1.8 (or higher)}
 installation.
 On some systems (Windows),
 you may need to set the \code{JAVA_HOME} environment variable so the system

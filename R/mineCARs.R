@@ -9,7 +9,7 @@
 #' \deqn{P \Rightarrow c_i,}{P => c_i,}
 #'
 #' where the LHS \eqn{P} is a pattern (i.e., an itemset) and \eqn{c_i} is a
-#' single items representing the class label.
+#' single item representing the class label.
 #'
 #' **Mining parameters.**
 #' Mining parameters for
@@ -24,21 +24,20 @@
 #'
 #' **Balancing minimum support.**
 #' Using a single minimum support threshold
-#' for a highly class imbalanced dataset will lead to the problem, that
-#' minority classes will only be presented in very few rules. To address this
-#' issue, `balanceSupport = TRUE` can be used to adjust minimum support
-#' for each class dependent on the prevalence of the class (i.e., the frequency
-#' of the \eqn{c_i} in the transactions) similar to the minimum class support
-#' suggested for CBA by Liu et al (2000) we use
+#' for a highly imbalanced dataset can leave minority classes represented by
+#' very few rules. To address this issue, `balanceSupport = TRUE` adjusts the
+#' minimum support for each class according to its prevalence (i.e., the frequency
+#' of \eqn{c_i} in the transactions). Following the minimum class support
+#' suggested for CBA by Liu et al. (2000), we use
 #'
 #' \deqn{minsupp_i = minsupp_t
 #'   \frac{supp(c_i)}{max(supp(C))},}{minsupp_i = minsupp_t x supp(c_i)/max(supp(C)),}
 #'
 #' where \eqn{max(supp(C))} is the support of the majority class. Therefore,
 #' the defined minimum support is used for the majority class and then minimum
-#' support is scaled down for classes which are less prevalent, giving them a
-#' chance to also produce a reasonable amount of rules. In addition, a named
-#' numerical vector with a support values for each class can be specified.
+#' support is scaled down for less prevalent classes, giving them a
+#' chance to produce a reasonable number of rules. A named
+#' numeric vector with a support value for each class can also be specified.
 #'
 #' @family preparation
 #'
@@ -73,7 +72,7 @@
 #' iris.trans <- prepareTransactions(Species ~ ., iris)
 #'
 #' # mine CARs with items for "Species" in the RHS.
-#' # Note: mineCars uses a default a minimum coverage (lhs support) of 0.1, a
+#' # Note: mineCARs uses a default minimum coverage (LHS support) of 0.1, a
 #' #       minimum confidence of .5 and maxlen of 5
 #' cars <- mineCARs(Species ~ ., iris.trans)
 #' inspect(head(cars))

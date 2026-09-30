@@ -9,7 +9,7 @@
 \alias{transactionCoverage}
 \alias{uncoveredClassExamples}
 \alias{uncoveredMajorityClass}
-\title{Helper Functions For Dealing with Classes}
+\title{Helper Functions for Dealing with Classes}
 \usage{
 classes(formula, x)
 
@@ -82,7 +82,7 @@ classFrequency(Species ~ ., cars, type = "absolute")
 # conclusion (item in the RHS) of the rule as a class label
 response(Species ~ ., cars)
 
-# How many rules (using the first three rules) cover each transactions?
+# How many rules (using the first three rules) cover each transaction?
 transactionCoverage(iris.trans, cars[1:3])
 
 # Number of transactions per class not covered by the first three rules

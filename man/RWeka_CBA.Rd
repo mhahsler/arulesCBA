@@ -21,8 +21,8 @@ of form \code{class ~ .} or \code{class ~ predictor1 + predictor2}.}
 Data frames are automatically discretized and converted to transactions with
 \code{\link[=prepareTransactions]{prepareTransactions()}}.}
 
-\item{control}{algorithmic control options for R/Weka Rule learners (see
-Details Section).}
+\item{control}{Algorithmic control options for R/Weka rule learners (see
+the Details section).}
 
 \item{disc.method}{Discretization method used to discretize continuous
 variables if data is a data.frame (default: \code{"mdlp"}). See
@@ -40,14 +40,14 @@ RWeka (Hornik et al, 2009). These classifiers do not mine CARs, but
 directly create rules.
 }
 \details{
-You need to install package \pkg{RWeka} to use these classifiers.
+You need to install the \pkg{RWeka} package to use these classifiers.
 
 See R/Weka functions
 \code{\link[RWeka:JRip]{RWeka::JRip()}} (RIPPER),
 \code{\link[RWeka:J48]{RWeka::J48()}} (C4.5 rules),
 \code{\link[RWeka:PART]{RWeka::PART()}}
 for algorithm details and how control options can be passed on via
-\code{control}. An example is given in the Examples Section below.
+\code{control}. An example is given in the Examples section below.
 
 Memory for \pkg{RWeka} can be increased using the R options (e.g.,
 \code{options(java.parameters = "-Xmx1024m")}) before \pkg{RWeka} or

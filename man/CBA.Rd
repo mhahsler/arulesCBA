@@ -26,8 +26,8 @@ pruneCBA_M2(formula, rules, transactions, verbose = FALSE)
 \item{formula}{A symbolic description of the model to be fitted. Has to be
 of form \code{class ~ .} or \code{class ~ predictor1 + predictor2}.}
 
-\item{data}{\link[arules:transactions]{arules::transactions} containing the training data or a data.frame which.
-is automatically discretized and converted to transactions with \code{\link[=prepareTransactions]{prepareTransactions()}}.}
+\item{data}{\link[arules:transactions]{arules::transactions} containing the training data, or a data.frame
+that is automatically discretized and converted to transactions with \code{\link[=prepareTransactions]{prepareTransactions()}}.}
 
 \item{pruning}{Pruning strategy used: "M1" or "M2".}
 
@@ -53,16 +53,16 @@ Returns an object of class \link{CBA} representing the trained classifier.
 }
 \description{
 Build a classifier based on association rules using the ranking, pruning and
-classification strategy of the CBA algorithm by Liu, et al. (1998).
+classification strategy of the CBA algorithm by Liu et al. (1998).
 }
 \details{
-Implementation the CBA algorithm with the M1 or M2 pruning strategy
-introduced by Liu, et al. (1998).
+Implements the CBA algorithm with the M1 or M2 pruning strategy
+introduced by Liu et al. (1998).
 
 Candidate classification association rules (CARs) are mined with the
 APRIORI algorithm but minimum support is only checked for the LHS (rule coverage)
 and not the whole rule. Rules are ranked by confidence, support and
-size. Then either the M1 or M2 algorithm are used to perform database
+size. Then either the M1 or M2 algorithm is used to perform database
 coverage pruning and default rule pruning.
 }
 \examples{

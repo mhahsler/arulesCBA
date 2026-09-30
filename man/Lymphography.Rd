@@ -33,7 +33,7 @@ The data set was obtained from the UCI Machine Learning Repository
 at \url{http://archive.ics.uci.edu/ml/datasets/Lymphography}.
 }
 \description{
-This is lymphography domain obtained from the University Medical Centre,
+This lymphography data set was obtained from the University Medical Centre,
 Institute of Oncology, Ljubljana, Yugoslavia. It was repeatedly used in the
 machine learning literature.
 }

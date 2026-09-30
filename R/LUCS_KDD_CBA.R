@@ -2,11 +2,11 @@
 #'
 #' Interface for the LUCS-KDD Software Library Java implementations of CMAR
 #' (Li, Han and Pei, 2001), PRM, and CPAR (Yin and Han, 2003). **Note:** The
-#' Java implementations is not part of \pkg{arulesCBA} and
-#' is only free for **non-commercial use**.
+#' Java implementations are not part of \pkg{arulesCBA} and
+#' are free only for **non-commercial use**.
 #'
 #' **Requirement:** The code needs a
-#' **JDK (Java Software Development Kit) Version 1.8 (or higher)**
+#' **JDK (Java Development Kit) version 1.8 (or higher)**
 #' installation.
 #' On some systems (Windows),
 #' you may need to set the `JAVA_HOME` environment variable so the system
@@ -94,7 +94,7 @@ NULL
   k <- grep("Num.*classes.*=", ret, fixed = FALSE, value = TRUE)
   k <- as.numeric(sub('.*= (\\d+)', '\\1', k))
   r <- grep("\\}\\s+->\\s+\\{", ret, fixed = FALSE, value = TRUE)
-  # we calulate laplace below
+  # we calculate Laplace accuracy below
   #laplace <- as.numeric(sapply(r, FUN = function(r) gsub('.*\\s(\\S+)%', '\\1', r)))
   r <- strsplit(r, "->")
   r <- lapply(

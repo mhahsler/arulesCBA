@@ -25,14 +25,14 @@ label before \code{=}).}
 \item{rules}{A set of class association rules mined with \code{\link[=mineCARs]{mineCARs()}} or
 \code{\link[arules:apriori]{arules::apriori()}} (from \pkg{arules}).}
 
-\item{default}{Default class. If not specified then objects that are
+\item{default}{Default class. If not specified, objects that are
 not matched by rules are classified as \code{NA}.}
 
-\item{method}{Classification method \code{"first"} found rule or \code{"majority"}.}
+\item{method}{Classification method: \code{"first"} matching rule or \code{"majority"} vote.}
 
-\item{weights}{Rule weights for the majority voting method. Either a quality measure
-available in the classification rule set or a numeric vector of the same length are
-the classification rule set can be specified. If missing, then equal weights are used}
+\item{weights}{Rule weights for the majority voting method. Specify either a quality
+measure available in the classification rule set or a numeric vector with one
+weight per rule. If missing, equal weights are used.}
 
 \item{bias}{Class bias vector.}
 
@@ -46,7 +46,7 @@ supplied as a \code{data.frame}.}
 \item{\dots}{Additional arguments added as list elements to the CBA object.}
 }
 \value{
-A object of class \code{CBA} representing the trained classifier with fields:
+An object of class \code{CBA} representing the trained classifier with fields:
 \item{formula}{used formula.}
 \item{rules}{the classifier rule base.}
 \item{default}{default class label (uses partial matching against the class labels).}
@@ -55,7 +55,7 @@ A object of class \code{CBA} representing the trained classifier with fields:
 \item{bias}{class bias vector if available.}
 \item{model}{list with model description.}
 \item{discretization}{discretization information.}
-\item{description}{description in human readable form.}
+\item{description}{description in human-readable form.}
 
 \code{rules} returns the rule base.
 }
@@ -65,7 +65,7 @@ A creator function \code{CBA_ruleset()} and several methods are provided.
 }
 \details{
 \code{CBA_ruleset()} creates a new object of class \code{CBA} using the
-provides rules as the rule base.  For method \code{"first"}, the user needs
+provided rules as the rule base. For method \code{"first"}, the user needs
 to make sure that the rules are predictive and sorted from most to least
 predictive.
 }

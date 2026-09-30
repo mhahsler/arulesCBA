@@ -1,6 +1,6 @@
 #' The Lymphography Domain Data Set (UCI)
 #'
-#' This is lymphography domain obtained from the University Medical Centre,
+#' This lymphography data set was obtained from the University Medical Centre,
 #' Institute of Oncology, Ljubljana, Yugoslavia. It was repeatedly used in the
 #' machine learning literature.
 #'
@@ -51,7 +51,7 @@ NULL
 #'
 #' The \code{Mushroom} data set includes descriptions of hypothetical samples
 #' corresponding to 23 species of gilled mushrooms in the Agaricus and Lepiota
-#' Family.  It contains information about 8123 mushrooms.  4208 (51.8\%) are
+#' family. It contains information about 8123 mushrooms. 4208 (51.8\%) are
 #' edible and 3916 (48.2\%) are poisonous. The data contains 22 nominal
 #' features plus the class attribute (edible or not).
 #'
@@ -96,7 +96,6 @@ NULL
 #' summary(Mushroom)
 #'
 NULL
-
 
 
 

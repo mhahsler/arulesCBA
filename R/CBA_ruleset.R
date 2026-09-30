@@ -4,7 +4,7 @@
 #' A creator function `CBA_ruleset()` and several methods are provided.
 #'
 #' `CBA_ruleset()` creates a new object of class `CBA` using the
-#' provides rules as the rule base.  For method `"first"`, the user needs
+#' provided rules as the rule base. For method `"first"`, the user needs
 #' to make sure that the rules are predictive and sorted from most to least
 #' predictive.
 #'
@@ -15,19 +15,19 @@
 #'   label before `=`).
 #' @param rules A set of class association rules mined with [mineCARs()] or
 #'   [arules::apriori()] (from \pkg{arules}).
-#' @param default Default class. If not specified then objects that are
+#' @param default Default class. If not specified, objects that are
 #'   not matched by rules are classified as `NA`.
-#' @param method Classification method `"first"` found rule or `"majority"`.
-#' @param weights Rule weights for the majority voting method. Either a quality measure
-#'   available in the classification rule set or a numeric vector of the same length are
-#'   the classification rule set can be specified. If missing, then equal weights are used
+#' @param method Classification method: `"first"` matching rule or `"majority"` vote.
+#' @param weights Rule weights for the majority voting method. Specify either a quality
+#'   measure available in the classification rule set or a numeric vector with one
+#'   weight per rule. If missing, equal weights are used.
 #' @param bias Class bias vector.
 #' @param model An optional list with model information (e.g., parameters).
 #' @param discretization A list with discretization information used by [predict()] to discretize data
 #'   supplied as a `data.frame`.
 #' @param description Description field used when the classifier is printed.
 #' @param \dots Additional arguments added as list elements to the CBA object.
-#' @return A object of class `CBA` representing the trained classifier with fields:
+#' @return An object of class `CBA` representing the trained classifier with fields:
 #'   \item{formula}{used formula.}
 #'   \item{rules}{the classifier rule base.}
 #'   \item{default}{default class label (uses partial matching against the class labels).}
@@ -36,7 +36,7 @@
 #'   \item{bias}{class bias vector if available.}
 #'   \item{model}{list with model description.}
 #'   \item{discretization}{discretization information.}
-#'   \item{description}{description in human readable form.}
+#'   \item{description}{description in human-readable form.}
 #'
 #' \code{rules} returns the rule base.
 #' @author Michael Hahsler

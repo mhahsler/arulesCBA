@@ -2,7 +2,7 @@
 #' Variables
 #'
 #' This function implements several supervised methods to convert continuous
-#' variables into a categorical variables (factor) suitable for association
+#' variables into categorical variables (factors) suitable for association
 #' rule mining and building associative classifiers. A whole data.frame is
 #' discretized (i.e., all numeric columns are discretized).
 #'
@@ -17,15 +17,15 @@
 #'   discretization and the predictors to be discretized in the form
 #'   `class ~ .` or `class ~ predictor1 + predictor2`.
 #' @param data a data.frame containing continuous variables to be discretized
-#' @param method discretization method. Available are: ``"mdlp"`,
+#' @param method Discretization method. Available methods are `"mdlp"`,
 #' `"caim"`, `"cacc"`, `"ameva"`, `"chi2"`,
 #' `"chimerge"`, `"extendedchi2"`, and `"modchi2"`.
 #' @param dig.lab integer; number of digits used to create labels.
 #' @param \dots Additional parameters are passed on to the implementation of
 #' the chosen discretization method.
 #' @return `discretizeDF()` returns a discretized data.frame. Discretized
-#' columns have an attribute `"discretized:breaks"` indicating the used
-#' breaks or and `"discretized:method"` giving the used method.
+#' columns have an attribute `"discretized:breaks"` indicating the
+#' breaks used and `"discretized:method"` giving the method used.
 #' @author Michael Hahsler
 #' @seealso Unsupervised discretization from \pkg{arules}:
 #' [arules::discretize()], [arules::discretizeDF()].

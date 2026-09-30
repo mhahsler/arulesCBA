@@ -1,11 +1,11 @@
-#' Convert Transactions to a Data.Frame
+#' Convert Transactions to a Data Frame
 #'
-#' Convert transactions back into data.frames by combining the
+#' Convert transactions back into data frames by combining the
 #' items for the same variable into a single column.
 #'
 #' @family preparation
 #'
-#' @param transactions an object of class [arules::transactions].
+#' @param transactions An object of class [arules::transactions].
 #' @param itemLabels logical; use the complete item labels (variable=level) as the
 #'    levels in the data.frame? By default, only the levels are used.
 #' @return Returns a data.frame.
