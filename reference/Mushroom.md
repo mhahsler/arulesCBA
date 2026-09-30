@@ -2,7 +2,7 @@
 
 The `Mushroom` data set includes descriptions of hypothetical samples
 corresponding to 23 species of gilled mushrooms in the Agaricus and
-Lepiota Family. It contains information about 8123 mushrooms. 4208
+Lepiota family. It contains information about 8123 mushrooms. 4208
 (51.8\\ edible and 3916 (48.2\\ features plus the class attribute
 (edible or not).
 

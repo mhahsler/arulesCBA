@@ -1,7 +1,7 @@
 # Supervised Methods to Convert Continuous Variables into Categorical Variables
 
 This function implements several supervised methods to convert
-continuous variables into a categorical variables (factor) suitable for
+continuous variables into categorical variables (factors) suitable for
 association rule mining and building associative classifiers. A whole
 data.frame is discretized (i.e., all numeric columns are discretized).
 
@@ -25,9 +25,9 @@ discretizeDF.supervised(formula, data, method = "mdlp", dig.lab = 3, ...)
 
 - method:
 
-  discretization method. Available are: “"mdlp"`, `"caim"\`, \`"cacc"\`,
-  \`"ameva"\`, \`"chi2"\`, \`"chimerge"\`, \`"extendedchi2"\`, and
-  \`"modchi2"\`.
+  Discretization method. Available methods are `"mdlp"`, `"caim"`,
+  `"cacc"`, `"ameva"`, `"chi2"`, `"chimerge"`, `"extendedchi2"`, and
+  `"modchi2"`.
 
 - dig.lab:
 
@@ -42,8 +42,8 @@ discretizeDF.supervised(formula, data, method = "mdlp", dig.lab = 3, ...)
 
 [`discretizeDF()`](https://rdrr.io/pkg/arules/man/discretize.html)
 returns a discretized data.frame. Discretized columns have an attribute
-`"discretized:breaks"` indicating the used breaks or and
-`"discretized:method"` giving the used method.
+`"discretized:breaks"` indicating the breaks used and
+`"discretized:method"` giving the method used.
 
 ## Details
 

@@ -19,10 +19,10 @@ classifiers based on the following algorithms:
 
 - **CBA**: Classification Based on Association Rules ([Liu et al.
   1998](#ref-Liu.Hsu.ea:1998)).
-- **CMAR**: Classification based on Multiple Association Rule ([Li et
-  al. 2001](#ref-Li.Han.ea:2001)) via LUCS-KDD Software Library.
+- **CMAR**: Classification based on Multiple Association Rules ([Li et
+  al. 2001](#ref-Li.Han.ea:2001)) via the LUCS-KDD Software Library.
 - **CPAR**: Classification based on Predictive Association Rules ([Yin
-  and Han 2003](#ref-Yin.Han:2003)) via LUCS-KDD Software Library.
+  and Han 2003](#ref-Yin.Han:2003)) via the LUCS-KDD Software Library.
 - **C4.5**: Rules extracted from a C4.5 decision tree ([Quinlan
   1993](#ref-Quinlan:1993)) via J48 in R/Weka.
 - **FOIL**: First-Order Inductive Learner ([Quinlan and Cameron-Jones
@@ -31,17 +31,17 @@ classifiers based on the following algorithms:
 - **PART**: Rules from Partial Decision Trees ([Frank and Witten
   1998](#ref-Frank.Witten:1998)) via R/Weka.
 - **PRM**: Predictive Rule Mining ([Yin and Han
-  2003](#ref-Yin.Han:2003)) via LUCS-KDD Software Library.
+  2003](#ref-Yin.Han:2003)) via the LUCS-KDD Software Library.
 - **RCAR**: Regularized Class Association Rules using Logistic
   Regression ([Azmi et al. 2019](#ref-Azmi.Runger.ea:2019)).
 - **RIPPER**: Repeated Incremental Pruning to Produce Error Reduction
   ([Cohen 1995](#ref-Cohen:1995)) via R/Weka.
 
-The package also provides the infrastructure for associative
-classification (supervised discetization, mining class association rules
-(CARs)), and implements various association rule-based classification
-strategies (first match, majority voting, weighted voting, etc.). Some
-algorithms are interfaced by the R package R/Weka ([Hornik et al.
+The package also provides infrastructure for associative classification
+(supervised discretization and mining class association rules (CARs))
+and implements various association rule-based classification strategies
+(first match, majority voting, weighted voting, etc.). Some algorithms
+are interfaced by the R package R/Weka ([Hornik et al.
 2009](#ref-Hornik.Buchta.ea:2009)) and the LUCS-KDD Software Library
 ([Coenen 2013](#ref-Coenen:2013)).
 
@@ -94,7 +94,7 @@ classifier
 ## Description: CBA algorithm (Liu et al., 1998)
 ```
 
-Inspect the rulebase.
+Inspect the rule base.
 
 ``` r
 

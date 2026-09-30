@@ -1,8 +1,8 @@
 # The Lymphography Domain Data Set (UCI)
 
-This is lymphography domain obtained from the University Medical Centre,
-Institute of Oncology, Ljubljana, Yugoslavia. It was repeatedly used in
-the machine learning literature.
+This lymphography data set was obtained from the University Medical
+Centre, Institute of Oncology, Ljubljana, Yugoslavia. It was repeatedly
+used in the machine learning literature.
 
 ## Format
 

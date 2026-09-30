@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">arulesCBA</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.9</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.10</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,23 +33,28 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.2.10" id="arulescba-1210-unreleased">arulesCBA 1.2.10 (unreleased)<a class="anchor" aria-label="anchor" href="#arulescba-1210-unreleased"></a></h2>
+<ul><li>Modernized and added tests.</li>
+<li>Corrected spelling and grammar.</li>
+</ul></div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.9" id="arulescba-129-2025-11-04">arulesCBA 1.2.9 (2025-11-04)<a class="anchor" aria-label="anchor" href="#arulescba-129-2025-11-04"></a></h2><p class="text-muted">CRAN release: 2025-11-14</p>
 <ul><li>Fixed partial argument matches.</li>
 <li>Fixed broken tests.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.8" id="arulescba-128-2025-07-16">arulesCBA 1.2.8 (2025-07-16)<a class="anchor" aria-label="anchor" href="#arulescba-128-2025-07-16"></a></h2><p class="text-muted">CRAN release: 2025-07-17</p>
-<ul><li>fixed link for bug reports (reported by Kurt Hornik).</li>
-<li>fixed rowSums bug in pruneCBA_M1.</li>
+<ul><li>Fixed the bug report link (reported by Kurt Hornik).</li>
+<li>Fixed a rowSums bug in pruneCBA_M1.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.7" id="arulescba-127-2024-05-15">arulesCBA 1.2.7 (2024-05-15)<a class="anchor" aria-label="anchor" href="#arulescba-127-2024-05-15"></a></h2><p class="text-muted">CRAN release: 2024-05-15</p>
-<ul><li>fixed some missing package anchors in the man pages.</li>
+<ul><li>Fixed missing package anchors in the help pages.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.6" id="arulescba-126-2024-04-15">arulesCBA 1.2.6 (2024-04-15)<a class="anchor" aria-label="anchor" href="#arulescba-126-2024-04-15"></a></h2><p class="text-muted">CRAN release: 2024-04-16</p>
-<ul><li>RCAR: Classifiers with a single rule now work</li>
-<li>prepareTransactions gained parameter logical2factor.</li>
+<ul><li>RCAR: Classifiers with a single rule now work.</li>
+<li>prepareTransactions gained the logical2factor parameter.</li>
 <li>Updated man pages.</li>
 </ul></div>
     <div class="section level2">
@@ -59,18 +64,18 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.4" id="arulescba-124-2022-05-30">arulesCBA 1.2.4 (2022-05-30)<a class="anchor" aria-label="anchor" href="#arulescba-124-2022-05-30"></a></h2><p class="text-muted">CRAN release: 2022-05-30</p>
-<ul><li>LUCS_KDD algorithms work now in Java headless mode.</li>
-<li>Function rules() is now defunct. rules are now extracted using $rules. Reason: arules has now a rules function.</li>
+<ul><li>LUCS_KDD algorithms now work in Java headless mode.</li>
+<li>The rules() function is now defunct. Rules are extracted using $rules because arules has a rules() function.</li>
 <li>Improved package tests.</li>
 <li>NAMESPACE is now managed by roxygen.</li>
 <li>Improved man pages.</li>
-<li>new helper function classes.</li>
+<li>Added the classes() helper function.</li>
 <li>CBA_ruleset now requires a default class.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.3" id="arulescba-123-2022-05-27">arulesCBA 1.2.3 (2022-05-27)<a class="anchor" aria-label="anchor" href="#arulescba-123-2022-05-27"></a></h2><p class="text-muted">CRAN release: 2022-05-27</p>
-<ul><li>LUCS_KDD jars come now preinstalled which fixes compilation issues.</li>
-<li>Fixed RCAR for 0 rule case.</li>
+<ul><li>LUCS_KDD JARs are now bundled, fixing compilation issues.</li>
+<li>Fixed RCAR for the zero-rule case.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.1" id="arulescba-121-2021-11-20">arulesCBA 1.2.1 (2021-11-20)<a class="anchor" aria-label="anchor" href="#arulescba-121-2021-11-20"></a></h2><p class="text-muted">CRAN release: 2021-11-20</p>
@@ -81,7 +86,7 @@
 <li>added uncoveredMajorityClass.</li>
 <li>added transactions2DF to convert transactions to a data.frame.</li>
 <li>RCAR is now faster (does not run glmnet again for the chosen lambda) and returns the whole regularization path.</li>
-<li>prepareTransactions now automatically add a negative class item if needed.</li>
+<li>prepareTransactions now automatically adds a negative class item if needed.</li>
 <li>moved the experimental algorithms wCBA and bCBA to Work.</li>
 <li>R/Weka-based classifiers have now a default class.</li>
 </ul></div>
@@ -121,7 +126,7 @@
 <h2 class="pkg-version" data-toc-text="1.1.3-1" id="arulescba-113-1-2018-04-23">arulesCBA 1.1.3-1 (2018-04-23)<a class="anchor" aria-label="anchor" href="#arulescba-113-1-2018-04-23"></a></h2><p class="text-muted">CRAN release: 2018-04-23</p>
 <ul><li>added new function discretizeDF.supervised for supervised discretization.</li>
 <li>added new convenience function mineCARs to mine class association rules.</li>
-<li>the formula interface now parsed the right hand side to restrict the used predictors.</li>
+<li>the formula interface now parses the right-hand side to restrict the predictors used.</li>
 </ul></div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>

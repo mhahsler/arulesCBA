@@ -42,7 +42,7 @@ FOIL(
 
 - best_k:
 
-  use the average expected accuracy (laplace) of the best k rules per
+  Use the average expected accuracy (Laplace) of the best k rules per
   class for prediction.
 
 - disc.method:

@@ -1,9 +1,9 @@
 # Regularized Class Association Rules for Multi-class Problems (RCAR+)
 
 Build a classifier based on association rules mined for an input dataset
-and weighted with LASSO regularized logistic regression following RCAR
-(Azmi, et al., 2019). RCAR+ extends RCAR from a binary classifier to a
-multi-label classifier and can use support-balanced CARs.
+and weighted with LASSO-regularized logistic regression following RCAR
+(Azmi et al., 2019). RCAR+ extends RCAR from a binary classifier to a
+multiclass classifier and can use support-balanced CARs.
 
 ## Usage
 
@@ -54,9 +54,8 @@ RCAR(
 - cv.glmnet.args, glmnet.args:
 
   A list of arguments passed on to
-  [`glmnet::cv.glmnet()`](https://glmnet.stanford.edu/reference/cv.glmnet.html)
-  and
-  [`glmnet::glmnet()`](https://glmnet.stanford.edu/reference/glmnet.html),
+  [`glmnet::cv.glmnet()`](https://rdrr.io/pkg/glmnet/man/cv.glmnet.html)
+  and [`glmnet::glmnet()`](https://rdrr.io/pkg/glmnet/man/glmnet.html),
   respectively. See Example section.
 
 - parameter, control:
@@ -96,13 +95,13 @@ containing a list with the following elements:
 
 - reg_model:
 
-  them multinomial logistic regression model as an object of class
-  [glmnet::glmnet](https://glmnet.stanford.edu/reference/glmnet.html).
+  the multinomial logistic regression model as an object of class
+  [glmnet::glmnet](https://rdrr.io/pkg/glmnet/man/glmnet.html).
 
 - cv:
 
   only available if `lambda = NULL` was specified. Contains the results
-  for the cross-validation used determine lambda. We use by default
+  of the cross-validation used to determine lambda. We use by default
   `lambda.1se` to determine lambda.
 
 - all_rules:
@@ -114,13 +113,13 @@ containing a list with the following elements:
 
 ## Details
 
-RCAR+ extends RCAR from a binary classifier to a multi-label classifier
+RCAR+ extends RCAR from a binary classifier to a multiclass classifier
 using regularized multinomial logistic regression via glmnet.
 
 In arulesCBA, the class variable is always represented by a set of
 items. For a binary classification problem, we use an item and its
-compliment (typically called `<item label>=TRUE` and
-`<item label>=FALSE`). For a multi-label classification problem we use
+complement (typically called `<item label>=TRUE` and
+`<item label>=FALSE`). For a multiclass classification problem, we use
 one item for each possible class label (format `<class item>=<label>`).
 See
 [`prepareTransactions()`](http://michael.hahsler.net/arulesCBA/reference/prepareTransactions.md)
@@ -138,20 +137,20 @@ important to keep in mind when trying to interpret the rules used in the
 classifier.
 
 If lambda for regularization is not specified during training
-(`lambda = NULL`) then cross-validation is used to determine the largest
-value of lambda such that the error is within 1 standard error of the
-minimum (see
-[`glmnet::cv.glmnet()`](https://glmnet.stanford.edu/reference/cv.glmnet.html)
+(`lambda = NULL`), cross-validation determines the largest value of
+lambda whose error is within one standard error of the minimum (see
+[`glmnet::cv.glmnet()`](https://rdrr.io/pkg/glmnet/man/cv.glmnet.html)
 for how to perform cross-validation in parallel).
 
 For the final classifier, we only keep the rules that have a weight
-greater than 0 for at least one class label. The rules include as the
-weight the beta coefficients of the model.
+greater than zero for at least one class label. The rule weights are the
+model's beta coefficients.
 
 Prediction for a new transaction is performed in two steps:
 
-1.  Translate the transaction into a 0-1 coverage vector indicating what
-    class association rule's LHS covers the transaction.
+1.  Translate the transaction into a 0-1 coverage vector indicating
+    which class association rules have an LHS that covers the
+    transaction.
 
 2.  Calculate the predicted label given the multinomial logistic
     regression model.
@@ -191,7 +190,7 @@ classifier
 #> Description: RCAR+ based on RCAR (Azmi et al., 2019)
 #> 
 
-# inspect the rule base sorted by the larges class weight
+# inspect the rule base sorted by the largest class weight
 inspect(sort(classifier$rules, by = "weight"))
 #>     lhs                            rhs                    support confidence  coverage     lift count       weight weight.setosa weight.versicolor weight.virginica
 #> [1] {Petal.Length=[-Inf,2.45)}  => {Species=setosa}     0.3333333  1.0000000 0.3333333 3.000000    50 3.561421e+00  3.561421e+00         0.0000000     0.000000e+00

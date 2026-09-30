@@ -1,7 +1,7 @@
 # Classification Based on Association Rules Algorithm (CBA)
 
 Build a classifier based on association rules using the ranking, pruning
-and classification strategy of the CBA algorithm by Liu, et al. (1998).
+and classification strategy of the CBA algorithm by Liu et al. (1998).
 
 ## Usage
 
@@ -33,7 +33,7 @@ pruneCBA_M2(formula, rules, transactions, verbose = FALSE)
 - data:
 
   [arules::transactions](https://rdrr.io/pkg/arules/man/transactions-class.html)
-  containing the training data or a data.frame which. is automatically
+  containing the training data, or a data.frame that is automatically
   discretized and converted to transactions with
   [`prepareTransactions()`](http://michael.hahsler.net/arulesCBA/reference/prepareTransactions.md).
 
@@ -78,13 +78,13 @@ Returns an object of class CBA representing the trained classifier.
 
 ## Details
 
-Implementation the CBA algorithm with the M1 or M2 pruning strategy
-introduced by Liu, et al. (1998).
+Implements the CBA algorithm with the M1 or M2 pruning strategy
+introduced by Liu et al. (1998).
 
 Candidate classification association rules (CARs) are mined with the
 APRIORI algorithm but minimum support is only checked for the LHS (rule
 coverage) and not the whole rule. Rules are ranked by confidence,
-support and size. Then either the M1 or M2 algorithm are used to perform
+support and size. Then either the M1 or M2 algorithm is used to perform
 database coverage pruning and default rule pruning.
 
 ## References

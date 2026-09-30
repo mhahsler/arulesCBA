@@ -11,7 +11,7 @@ al., 1998."><meta property="og:image" content="http://michael.hahsler.net/arules
 
     <a class="navbar-brand me-2" href="../index.html">arulesCBA</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.9</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.10</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -99,7 +99,7 @@ thresholds, and the <code>maxlen</code> of rules.</p></dd>
     <p>Class association rules (CARs) are of the form</p>
 <p>$$P \Rightarrow c_i,$$</p>
 <p>where the LHS \(P\) is a pattern (i.e., an itemset) and \(c_i\) is a
-single items representing the class label.</p>
+single item representing the class label.</p>
 <p><strong>Mining parameters.</strong>
 Mining parameters for
 <code><a href="https://rdrr.io/pkg/arules/man/apriori.html" class="external-link">arules::apriori()</a></code> can be either specified as a list (or object
@@ -112,19 +112,18 @@ a minimum confidence of 0.5 and a <code>maxlen</code> (rule
 length including items in the LHS and RHS) of 5.</p>
 <p><strong>Balancing minimum support.</strong>
 Using a single minimum support threshold
-for a highly class imbalanced dataset will lead to the problem, that
-minority classes will only be presented in very few rules. To address this
-issue, <code>balanceSupport = TRUE</code> can be used to adjust minimum support
-for each class dependent on the prevalence of the class (i.e., the frequency
-of the \(c_i\) in the transactions) similar to the minimum class support
-suggested for CBA by Liu et al (2000) we use</p>
+for a highly imbalanced dataset can leave minority classes represented by
+very few rules. To address this issue, <code>balanceSupport = TRUE</code> adjusts the
+minimum support for each class according to its prevalence (i.e., the frequency
+of \(c_i\) in the transactions). Following the minimum class support
+suggested for CBA by Liu et al. (2000), we use</p>
 <p>$$minsupp_i = minsupp_t
   \frac{supp(c_i)}{max(supp(C))},$$</p>
 <p>where \(max(supp(C))\) is the support of the majority class. Therefore,
 the defined minimum support is used for the majority class and then minimum
-support is scaled down for classes which are less prevalent, giving them a
-chance to also produce a reasonable amount of rules. In addition, a named
-numerical vector with a support values for each class can be specified.</p>
+support is scaled down for less prevalent classes, giving them a
+chance to produce a reasonable number of rules. A named
+numeric vector with a support value for each class can also be specified.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
@@ -157,7 +156,7 @@ Science</em>, vol 1910. Springer, Berlin, Heidelberg.</p>
 <span class="r-in"><span><span class="va">iris.trans</span> <span class="op">&lt;-</span> <span class="fu"><a href="prepareTransactions.html">prepareTransactions</a></span><span class="op">(</span><span class="va">Species</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">iris</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># mine CARs with items for "Species" in the RHS.</span></span></span>
-<span class="r-in"><span><span class="co"># Note: mineCars uses a default a minimum coverage (lhs support) of 0.1, a</span></span></span>
+<span class="r-in"><span><span class="co"># Note: mineCARs uses a default minimum coverage (LHS support) of 0.1, a</span></span></span>
 <span class="r-in"><span><span class="co">#       minimum confidence of .5 and maxlen of 5</span></span></span>
 <span class="r-in"><span><span class="va">cars</span> <span class="op">&lt;-</span> <span class="fu">mineCARs</span><span class="op">(</span><span class="va">Species</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">iris.trans</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Apriori</span>

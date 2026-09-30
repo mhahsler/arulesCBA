@@ -13,7 +13,7 @@ directly create rules."><meta property="og:image" content="http://michael.hahsle
 
     <a class="navbar-brand me-2" href="../index.html">arulesCBA</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.9</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.10</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,8 +71,8 @@ Data frames are automatically discretized and converted to transactions with
 
 
 <dt id="arg-control">control<a class="anchor" aria-label="anchor" href="#arg-control"></a></dt>
-<dd><p>algorithmic control options for R/Weka Rule learners (see
-Details Section).</p></dd>
+<dd><p>Algorithmic control options for R/Weka rule learners (see
+the Details section).</p></dd>
 
 
 <dt id="arg-disc-method">disc.method<a class="anchor" aria-label="anchor" href="#arg-disc-method"></a></dt>
@@ -89,13 +89,13 @@ trained classifier.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>You need to install package <span class="pkg">RWeka</span> to use these classifiers.</p>
+    <p>You need to install the <span class="pkg">RWeka</span> package to use these classifiers.</p>
 <p>See R/Weka functions
 <code><a href="https://rdrr.io/pkg/RWeka/man/Weka_classifier_rules.html" class="external-link">RWeka::JRip()</a></code> (RIPPER),
 <code><a href="https://rdrr.io/pkg/RWeka/man/Weka_classifier_trees.html" class="external-link">RWeka::J48()</a></code> (C4.5 rules),
 <code><a href="https://rdrr.io/pkg/RWeka/man/Weka_classifier_rules.html" class="external-link">RWeka::PART()</a></code>
 for algorithm details and how control options can be passed on via
-<code>control</code>. An example is given in the Examples Section below.</p>
+<code>control</code>. An example is given in the Examples section below.</p>
 <p>Memory for <span class="pkg">RWeka</span> can be increased using the R options (e.g.,
 <code>options(java.parameters = "-Xmx1024m")</code>) before <span class="pkg">RWeka</span> or
 <span class="pkg">rJava</span> is loaded or any RWeka-based classifier in this package is used.</p>

@@ -32,8 +32,8 @@ C4.5_CBA(formula, data, control = NULL, disc.method = "mdlp")
 
 - control:
 
-  algorithmic control options for R/Weka Rule learners (see Details
-  Section).
+  Algorithmic control options for R/Weka rule learners (see the Details
+  section).
 
 - disc.method:
 
@@ -50,7 +50,7 @@ representing the trained classifier.
 
 ## Details
 
-You need to install package RWeka to use these classifiers.
+You need to install the RWeka package to use these classifiers.
 
 See R/Weka functions
 [`RWeka::JRip()`](https://rdrr.io/pkg/RWeka/man/Weka_classifier_rules.html)
@@ -59,7 +59,7 @@ See R/Weka functions
 (C4.5 rules),
 [`RWeka::PART()`](https://rdrr.io/pkg/RWeka/man/Weka_classifier_rules.html)
 for algorithm details and how control options can be passed on via
-`control`. An example is given in the Examples Section below.
+`control`. An example is given in the Examples section below.
 
 Memory for RWeka can be increased using the R options (e.g.,
 `options(java.parameters = "-Xmx1024m")`) before RWeka or rJava is

@@ -2,7 +2,7 @@
 
 Interface for the LUCS-KDD Software Library Java implementations of CMAR
 (Li, Han and Pei, 2001), PRM, and CPAR (Yin and Han, 2003). **Note:**
-The Java implementations is not part of arulesCBA and is only free for
+The Java implementations are not part of arulesCBA and are free only for
 **non-commercial use**.
 
 ## Usage
@@ -68,10 +68,10 @@ representing the trained classifier.
 
 ## Details
 
-**Requirement:** The code needs a **JDK (Java Software Development Kit)
-Version 1.8 (or higher)** installation. On some systems (Windows), you
-may need to set the `JAVA_HOME` environment variable so the system finds
-the compiler.
+**Requirement:** The code needs a **JDK (Java Development Kit) version
+1.8 (or higher)** installation. On some systems (Windows), you may need
+to set the `JAVA_HOME` environment variable so the system finds the
+compiler.
 
 **Memory:** The memory for Java can be increased via R options. For
 example: `options(java.parameters = "-Xmx1024m")`
@@ -116,16 +116,16 @@ data("iris")
 # build a classifier, inspect rules and make predictions
 cl <- CMAR(Species ~ ., iris, support = .2, confidence = .8, verbose = TRUE)
 #> LUCS-KDD: CMAR 
-#> Call: java  -cp /home/runner/work/_temp/Library/arulesCBA/LUCS_KDD/CMAR.jar runCMAR -N3 -F/tmp/RtmpgW9HBZ/file1b7b7f51ae65.num -S20 -C80 
+#> Call: java  -cp /home/runner/work/_temp/Library/arulesCBA/LUCS_KDD/CMAR.jar runCMAR -N3 -F/tmp/RtmpVdoInV/file1cd119951479.num -S20 -C80 
 #> 
 #>  [1] "SETTINGS"                                                                      
 #>  [2] "--------"                                                                      
-#>  [3] "Training file name            = /tmp/RtmpgW9HBZ/file1b7b7f51ae65.num"          
+#>  [3] "Training file name            = /tmp/RtmpVdoInV/file1cd119951479.num"          
 #>  [4] "Support (default 20%)         = 20.0"                                          
 #>  [5] "Confidence (default 80%)      = 80.0"                                          
 #>  [6] "Number of classes             = 3"                                             
 #>  [7] ""                                                                              
-#>  [8] "Reading input file: /tmp/RtmpgW9HBZ/file1b7b7f51ae65.num"                      
+#>  [8] "Reading input file: /tmp/RtmpVdoInV/file1cd119951479.num"                      
 #>  [9] "Number of records = 150"                                                       
 #> [10] "Number of columns = 15"                                                        
 #> [11] "Min support       = 30.0 (records)"                                            

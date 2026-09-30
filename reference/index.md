@@ -22,7 +22,7 @@ rules for classification.
 - [`mineCARs()`](http://michael.hahsler.net/arulesCBA/reference/mineCARs.md)
   : Mine Class Association Rules
 - [`transactions2DF()`](http://michael.hahsler.net/arulesCBA/reference/transactions2DF.md)
-  : Convert Transactions to a Data.Frame
+  : Convert Transactions to a Data Frame
 
 ## Classifiers
 
@@ -54,7 +54,7 @@ rule-learning algorithms.
 
 ## Prediction and Evaluation
 
-Predict class labels for ne objects and evaluate classifiers.
+Predict class labels for new objects and evaluate classifiers.
 
 - [`predict(`*`<CBA>`*`)`](http://michael.hahsler.net/arulesCBA/reference/predict.CBA.md)
   [`accuracy()`](http://michael.hahsler.net/arulesCBA/reference/predict.CBA.md)
@@ -72,7 +72,7 @@ default classes.
   [`transactionCoverage()`](http://michael.hahsler.net/arulesCBA/reference/CBA_helpers.md)
   [`uncoveredClassExamples()`](http://michael.hahsler.net/arulesCBA/reference/CBA_helpers.md)
   [`uncoveredMajorityClass()`](http://michael.hahsler.net/arulesCBA/reference/CBA_helpers.md)
-  : Helper Functions For Dealing with Classes
+  : Helper Functions for Dealing with Classes
 
 ## Data Sets
 

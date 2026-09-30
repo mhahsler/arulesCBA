@@ -14,15 +14,14 @@
 Source:
 [`inst/CITATION`](https://github.com/mhahsler/arulesCBA/blob/master/inst/CITATION)
 
-Hahsler M, Johnson I (2025). *arulesCBA: Classification Based on
-Association Rules*. R package version 1.2.9,
+Hahsler M, Johnson I (????). *arulesCBA: Classification Based on
+Association Rules*. R package version 1.2.10,
 <https://github.com/mhahsler/arulesCBA>.
 
     @Manual{,
       title = {arulesCBA: Classification Based on Association Rules},
       author = {Michael Hahsler and Ian Johnson},
-      year = {2025},
-      note = {R package version 1.2.9},
+      note = {R package version 1.2.10},
       url = {https://github.com/mhahsler/arulesCBA},
     }
 

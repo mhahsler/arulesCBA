@@ -1,5 +1,10 @@
 # Changelog
 
+## arulesCBA 1.2.10 (unreleased)
+
+- Modernized and added tests.
+- Corrected spelling and grammar.
+
 ## arulesCBA 1.2.9 (2025-11-04)
 
 CRAN release: 2025-11-14
@@ -11,21 +16,21 @@ CRAN release: 2025-11-14
 
 CRAN release: 2025-07-17
 
-- fixed link for bug reports (reported by Kurt Hornik).
-- fixed rowSums bug in pruneCBA_M1.
+- Fixed the bug report link (reported by Kurt Hornik).
+- Fixed a rowSums bug in pruneCBA_M1.
 
 ## arulesCBA 1.2.7 (2024-05-15)
 
 CRAN release: 2024-05-15
 
-- fixed some missing package anchors in the man pages.
+- Fixed missing package anchors in the help pages.
 
 ## arulesCBA 1.2.6 (2024-04-15)
 
 CRAN release: 2024-04-16
 
-- RCAR: Classifiers with a single rule now work
-- prepareTransactions gained parameter logical2factor.
+- RCAR: Classifiers with a single rule now work.
+- prepareTransactions gained the logical2factor parameter.
 - Updated man pages.
 
 ## arulesCBA 1.2.5 (2022-08-19)
@@ -39,21 +44,21 @@ CRAN release: 2022-08-19
 
 CRAN release: 2022-05-30
 
-- LUCS_KDD algorithms work now in Java headless mode.
-- Function rules() is now defunct. rules are now extracted using
-  \$rules. Reason: arules has now a rules function.
+- LUCS_KDD algorithms now work in Java headless mode.
+- The rules() function is now defunct. Rules are extracted using \$rules
+  because arules has a rules() function.
 - Improved package tests.
 - NAMESPACE is now managed by roxygen.
 - Improved man pages.
-- new helper function classes.
+- Added the classes() helper function.
 - CBA_ruleset now requires a default class.
 
 ## arulesCBA 1.2.3 (2022-05-27)
 
 CRAN release: 2022-05-27
 
-- LUCS_KDD jars come now preinstalled which fixes compilation issues.
-- Fixed RCAR for 0 rule case.
+- LUCS_KDD JARs are now bundled, fixing compilation issues.
+- Fixed RCAR for the zero-rule case.
 
 ## arulesCBA 1.2.1 (2021-11-20)
 
@@ -69,7 +74,7 @@ CRAN release: 2021-11-20
 - added transactions2DF to convert transactions to a data.frame.
 - RCAR is now faster (does not run glmnet again for the chosen lambda)
   and returns the whole regularization path.
-- prepareTransactions now automatically add a negative class item if
+- prepareTransactions now automatically adds a negative class item if
   needed.
 - moved the experimental algorithms wCBA and bCBA to Work.
 - R/Weka-based classifiers have now a default class.
@@ -126,5 +131,5 @@ CRAN release: 2018-04-23
   discretization.
 - added new convenience function mineCARs to mine class association
   rules.
-- the formula interface now parsed the right hand side to restrict the
-  used predictors.
+- the formula interface now parses the right-hand side to restrict the
+  predictors used.

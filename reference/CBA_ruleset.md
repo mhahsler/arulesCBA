@@ -37,19 +37,18 @@ CBA_ruleset(
 
 - default:
 
-  Default class. If not specified then objects that are not matched by
-  rules are classified as `NA`.
+  Default class. If not specified, objects that are not matched by rules
+  are classified as `NA`.
 
 - method:
 
-  Classification method `"first"` found rule or `"majority"`.
+  Classification method: `"first"` matching rule or `"majority"` vote.
 
 - weights:
 
-  Rule weights for the majority voting method. Either a quality measure
-  available in the classification rule set or a numeric vector of the
-  same length are the classification rule set can be specified. If
-  missing, then equal weights are used
+  Rule weights for the majority voting method. Specify either a quality
+  measure available in the classification rule set or a numeric vector
+  with one weight per rule. If missing, equal weights are used.
 
 - bias:
 
@@ -75,7 +74,8 @@ CBA_ruleset(
 
 ## Value
 
-A object of class `CBA` representing the trained classifier with fields:
+An object of class `CBA` representing the trained classifier with
+fields:
 
 - formula:
 
@@ -111,13 +111,13 @@ A object of class `CBA` representing the trained classifier with fields:
 
 - description:
 
-  description in human readable form.
+  description in human-readable form.
 
 `rules` returns the rule base.
 
 ## Details
 
-`CBA_ruleset()` creates a new object of class `CBA` using the provides
+`CBA_ruleset()` creates a new object of class `CBA` using the provided
 rules as the rule base. For method `"first"`, the user needs to make
 sure that the rules are predictive and sorted from most to least
 predictive.

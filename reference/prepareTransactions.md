@@ -1,7 +1,7 @@
 # Prepare Data for Associative Classification
 
-Converts data.frame into transactions suitable for classification based
-on association rules.
+Converts a data.frame into transactions suitable for classification
+based on association rules.
 
 ## Usage
 
@@ -23,7 +23,7 @@ prepareTransactions(
 
 - data:
 
-  a data.frame with the data.
+  A data.frame containing the data.
 
 - disc.method:
 
@@ -35,11 +35,12 @@ prepareTransactions(
 - logical2factor:
 
   logical; if `data` is a data.frame, should logical columns be recoded
-  as factor with TRUE/FALSE to generate positive and negative items?
+  as factors with TRUE/FALSE levels to generate positive and negative
+  items?
 
 - match:
 
-  typically `NULL`. Only used internally if data is a already a set of
+  Typically `NULL`. Used internally only if data is already a set of
   transactions.
 
 ## Value
@@ -60,10 +61,9 @@ classification, the following steps are performed:
 
 2.  Factors are converted into items, one item for each level.
 
-3.  Each logical is converted into an item.
+3.  Each logical variable is converted into an item.
 
-4.  If the class variable is a logical, then a negative class item is
-    added.
+4.  If the class variable is logical, a negative class item is added.
 
 Steps 1-3 are skipped if `data` is already a
 [arules::transactions](https://rdrr.io/pkg/arules/man/transactions-class.html)

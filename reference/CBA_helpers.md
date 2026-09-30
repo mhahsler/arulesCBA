@@ -1,4 +1,4 @@
-# Helper Functions For Dealing with Classes
+# Helper Functions for Dealing with Classes
 
 Helper functions to extract the response from transactions or rules,
 determine the class frequency, majority class, transaction coverage and
@@ -150,7 +150,7 @@ response(Species ~ ., cars)
 #> [13] setosa     setosa     setosa    
 #> Levels: setosa versicolor virginica
 
-# How many rules (using the first three rules) cover each transactions?
+# How many rules (using the first three rules) cover each transaction?
 transactionCoverage(iris.trans, cars[1:3])
 #>   [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 #>  [38] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1

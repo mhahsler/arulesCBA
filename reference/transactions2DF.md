@@ -1,6 +1,6 @@
-# Convert Transactions to a Data.Frame
+# Convert Transactions to a Data Frame
 
-Convert transactions back into data.frames by combining the items for
+Convert transactions back into data frames by combining the items for
 the same variable into a single column.
 
 ## Usage
@@ -13,7 +13,7 @@ transactions2DF(transactions, itemLabels = FALSE)
 
 - transactions:
 
-  an object of class
+  An object of class
   [arules::transactions](https://rdrr.io/pkg/arules/man/transactions-class.html).
 
 - itemLabels:

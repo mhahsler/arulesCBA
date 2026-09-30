@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="index.html">arulesCBA</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.9</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.10</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,9 +66,9 @@
 <li>
 <strong>CBA</strong>: Classification Based on Association Rules (<a href="#ref-Liu.Hsu.ea:1998">Liu et al. 1998</a>).</li>
 <li>
-<strong>CMAR</strong>: Classification based on Multiple Association Rule (<a href="#ref-Li.Han.ea:2001">Li et al. 2001</a>) via LUCS-KDD Software Library.</li>
+<strong>CMAR</strong>: Classification based on Multiple Association Rules (<a href="#ref-Li.Han.ea:2001">Li et al. 2001</a>) via the LUCS-KDD Software Library.</li>
 <li>
-<strong>CPAR</strong>: Classification based on Predictive Association Rules (<a href="#ref-Yin.Han:2003">Yin and Han 2003</a>) via LUCS-KDD Software Library.</li>
+<strong>CPAR</strong>: Classification based on Predictive Association Rules (<a href="#ref-Yin.Han:2003">Yin and Han 2003</a>) via the LUCS-KDD Software Library.</li>
 <li>
 <strong>C4.5</strong>: Rules extracted from a C4.5 decision tree (<a href="#ref-Quinlan:1993">Quinlan 1993</a>) via J48 in R/Weka.</li>
 <li>
@@ -76,13 +76,13 @@
 <li>
 <strong>PART</strong>: Rules from Partial Decision Trees (<a href="#ref-Frank.Witten:1998">Frank and Witten 1998</a>) via R/Weka.</li>
 <li>
-<strong>PRM</strong>: Predictive Rule Mining (<a href="#ref-Yin.Han:2003">Yin and Han 2003</a>) via LUCS-KDD Software Library.</li>
+<strong>PRM</strong>: Predictive Rule Mining (<a href="#ref-Yin.Han:2003">Yin and Han 2003</a>) via the LUCS-KDD Software Library.</li>
 <li>
 <strong>RCAR</strong>: Regularized Class Association Rules using Logistic Regression (<a href="#ref-Azmi.Runger.ea:2019">Azmi et al. 2019</a>).</li>
 <li>
 <strong>RIPPER</strong>: Repeated Incremental Pruning to Produce Error Reduction (<a href="#ref-Cohen:1995">Cohen 1995</a>) via R/Weka.</li>
 </ul>
-<p>The package also provides the infrastructure for associative classification (supervised discetization, mining class association rules (CARs)), and implements various association rule-based classification strategies (first match, majority voting, weighted voting, etc.). Some algorithms are interfaced by the R package R/Weka (<a href="#ref-Hornik.Buchta.ea:2009">Hornik et al. 2009</a>) and the LUCS-KDD Software Library (<a href="#ref-Coenen:2013">Coenen 2013</a>).</p>
+<p>The package also provides infrastructure for associative classification (supervised discretization and mining class association rules (CARs)) and implements various association rule-based classification strategies (first match, majority voting, weighted voting, etc.). Some algorithms are interfaced by the R package R/Weka (<a href="#ref-Hornik.Buchta.ea:2009">Hornik et al. 2009</a>) and the LUCS-KDD Software Library (<a href="#ref-Coenen:2013">Coenen 2013</a>).</p>
 <p>The following R packages use <code>arulesCBA</code>: <a href="https://CRAN.R-project.org/package=arules" class="external-link">arules</a>, <a href="https://CRAN.R-project.org/package=qCBA" class="external-link">qCBA</a>, <a href="https://CRAN.R-project.org/package=tidybins" class="external-link">tidybins</a></p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -112,7 +112,7 @@
 <span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="do">## Default Class: versicolor</span></span>
 <span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="do">## Classification method: first  </span></span>
 <span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="do">## Description: CBA algorithm (Liu et al., 1998)</span></span></code></pre></div>
-<p>Inspect the rulebase.</p>
+<p>Inspect the rule base.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/arules/man/inspect.html" class="external-link">inspect</a></span><span class="op">(</span><span class="va">classifier</span><span class="op">$</span><span class="va">rules</span>, linebreak <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="do">##     lhs                            rhs                  support confidence coverage lift count size coveredTransactions totalErrors</span></span>
