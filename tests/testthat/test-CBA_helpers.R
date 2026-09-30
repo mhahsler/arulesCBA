@@ -1,143 +1,58 @@
-library("testthat")
-library("arulesCBA")
+test_that("class helpers agree across data frames and transactions", {
+  data <- data.frame(
+    class = factor(c("a", "a", "b", "a"), levels = c("a", "b")),
+    predictor = factor(c("x", "y", "x", "y"))
+  )
+  transactions <- prepareTransactions(class ~ ., data)
 
-data("Zoo", package = "mlbench")
-dat <- Zoo
+  for (input in list(data, transactions)) {
+    expect_identical(classes(class ~ ., input), c("a", "b"))
+    expect_identical(as.character(response(class ~ ., input)),
+      as.character(data$class))
+    expect_equal(as.numeric(classFrequency(class ~ ., input,
+      type = "absolute")), c(3, 1))
+    expect_equal(as.numeric(classFrequency(class ~ ., input)), c(0.75, 0.25))
+    expect_identical(as.character(majorityClass(class ~ ., input)), "a")
+  }
+})
 
-context("Test binary class item")
-f <- `hair` ~ .
-cls <- c("TRUE", "FALSE")
+test_that("logical responses work with both conversion modes", {
+  data <- data.frame(
+    flag = c(TRUE, TRUE, FALSE, TRUE),
+    predictor = factor(c("a", "b", "a", "b"))
+  )
+  for (convert in c(TRUE, FALSE)) {
+    transactions <- prepareTransactions(flag ~ ., data,
+      logical2factor = convert)
+    expect_identical(classes(flag ~ ., transactions), c("TRUE", "FALSE"))
+    expect_identical(as.character(response(flag ~ ., transactions)),
+      as.character(data$flag))
+    expect_equal(as.numeric(classFrequency(flag ~ ., transactions,
+      type = "absolute")), c(3, 1))
+  }
+})
 
-r <- response(f, dat)
-expect_equal(length(r), nrow(dat))
-expect_equal(levels(r), cls)
+test_that("coverage helpers account for uncovered transactions", {
+  transactions <- prepareTransactions(Species ~ ., iris)
+  rules <- mineCARs(Species ~ ., transactions,
+    support = 0.1, confidence = 0.8, verbose = FALSE)
+  chosen <- head(rules, 3)
+  coverage <- transactionCoverage(transactions, chosen)
+  uncovered <- uncoveredClassExamples(Species ~ ., transactions, chosen)
 
-expect_equal(classes(f, dat), cls)
+  expect_length(coverage, nrow(iris))
+  expect_true(all(coverage >= 0 & coverage <= length(chosen)))
+  expect_equal(sum(uncovered), sum(coverage == 0))
+  expect_identical(
+    uncoveredMajorityClass(Species ~ ., transactions, chosen),
+    names(which.max(uncovered))
+  )
+})
 
-r <- classFrequency(f, dat)
-expect_equal(length(r), length(cls))
-
-r <- majorityClass(f, dat)
-expect_equal(length(r), 1L)
-expect_equal(levels(r), cls)
-
-
-# prepareTransactions
-trans <- prepareTransactions(f, dat)
-
-r <- response(f, trans)
-expect_equal(length(r), nrow(dat))
-expect_equal(levels(r), cls)
-
-expect_equal(classes(f, trans), cls)
-
-r <- classFrequency(f, trans)
-expect_equal(length(r), length(cls))
-
-r <- majorityClass(f, trans)
-expect_equal(length(r), 1L)
-expect_equal(levels(r), cls)
-
-# prepareTransactions without converting logical to factors
-trans <- prepareTransactions(f, dat, logical2factor = FALSE)
-
-r <- response(f, trans)
-expect_equal(length(r), nrow(dat))
-expect_equal(levels(r), cls)
-
-expect_equal(classes(f, trans), cls)
-
-r <- classFrequency(f, trans)
-expect_equal(length(r), length(cls))
-
-r <- majorityClass(f, trans)
-expect_equal(length(r), 1L)
-expect_equal(levels(r), cls)
-
-
-# raw transactions
-trans <- transactions(dat[, -13])
-
-expect_equal(classes(f, trans), cls)
-
-r <- response(f, trans)
-expect_equal(length(r), nrow(dat))
-expect_equal(levels(r), cls)
-
-r <- classFrequency(f, trans)
-expect_equal(length(r), length(cls))
-
-r <- majorityClass(f, trans)
-expect_equal(length(r), 1L)
-expect_equal(levels(r), cls)
-
-
-context("Test multivalue class item")
-f <- `type` ~ .
-cls <- levels(dat$type)
-
-expect_equal(classes(f, dat), cls)
-
-r <- response(f, dat)
-expect_equal(length(r), nrow(dat))
-expect_equal(levels(r), cls)
-
-r <- classFrequency(f, dat)
-expect_equal(length(r), length(cls))
-
-r <- majorityClass(f, dat)
-expect_equal(length(r), 1L)
-expect_equal(levels(r), cls)
-
-# trans version
-trans <- prepareTransactions(f, dat)
-
-expect_equal(classes(f, trans), cls)
-
-r <- response(f, trans)
-expect_equal(length(r), nrow(dat))
-expect_equal(levels(r), cls)
-
-r <- classFrequency(f, trans)
-expect_equal(length(r), length(cls))
-
-r <- majorityClass(f, trans)
-expect_equal(length(r), 1L)
-expect_equal(levels(r), cls)
-
-
-context("Test multivalue class item 2")
-data(iris)
-dat <- iris
-f <- Species ~ .
-cls <- c("setosa", "versicolor", "virginica")
-
-expect_equal(classes(f, dat), cls)
-
-r <- response(f, dat)
-expect_equal(length(r), nrow(dat))
-expect_equal(levels(r), cls)
-
-r <- classFrequency(f, dat)
-expect_equal(length(r), length(cls))
-
-r <- majorityClass(f, dat)
-expect_equal(length(r), 1L)
-expect_equal(levels(r), cls)
-
-
-# test on transactions
-trans <- prepareTransactions(f, dat)
-
-expect_equal(classes(f, trans), cls)
-
-r <- response(f, trans)
-expect_equal(length(r), nrow(dat))
-expect_equal(levels(r), cls)
-
-r <- classFrequency(f, trans)
-expect_equal(length(r), length(cls))
-
-r <- majorityClass(f, trans)
-expect_equal(length(r), 1L)
-expect_equal(levels(r), cls)
+test_that("accuracy validates factor levels", {
+  truth <- factor(c("a", "b", "a"), levels = c("a", "b"))
+  prediction <- factor(c("a", "a", "a"), levels = c("a", "b"))
+  expect_equal(accuracy(prediction, truth), 2 / 3)
+  expect_error(accuracy(factor(c("a", "a", "a")), truth),
+    "matching levels")
+})

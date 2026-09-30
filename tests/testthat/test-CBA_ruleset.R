@@ -1,33 +1,31 @@
-library("testthat")
-library("arulesCBA")
-data("iris")
+test_that("custom rule sets predict from transactions", {
+  train <- iris[c(1:40, 51:90, 101:140), ]
+  test <- iris[c(41:50, 91:100, 141:150), ]
 
-context("CBA_ruleset")
+  train_transactions <- prepareTransactions(Species ~ ., train)
+  rules <- mineCARs(Species ~ ., train_transactions,
+    support = 0.01, confidence = 0.8, verbose = FALSE)
+  expect_gt(length(rules), 0L)
 
-# Shuffle and split into training and test set (80/20 split)
-iris <- iris[sample(seq(nrow(iris))),]
+  classifier <- CBA_ruleset(Species ~ ., rules,
+    default = majorityClass(Species ~ ., train_transactions),
+    method = "majority", discretization = attr(train_transactions, "disc_info"))
 
-iris_train <- iris[1:(nrow(iris)*.8), ]
-iris_test <- iris[-(1:(nrow(iris)*.8)),]
+  expect_s3_class(classifier, "CBA")
+  expect_length(predict(classifier, test), nrow(test))
+  expect_identical(levels(predict(classifier, test)), levels(iris$Species))
+  expect_output(print(classifier), "CBA Classifier Object")
+})
 
-# Discretization, conversion to transactions and mining CARs
-iris_train_disc <- discretizeDF.supervised(Species ~ .,
-  data = iris_train, method = "mdlp")
-trans_train <- as(iris_train_disc, "transactions")
+test_that("custom rule sets validate the default class", {
+  transactions <- prepareTransactions(Species ~ ., iris)
+  rules <- mineCARs(Species ~ ., transactions,
+    support = 0.1, confidence = 0.8, verbose = FALSE)
 
-iris_test_disc <- discretizeDF(iris_test, iris_train_disc)
-trans_test <- as(iris_test_disc, "transactions")
-
-# build custom classifier
-rules <- mineCARs(Species ~ ., trans_train,
-  parameter = list(support = 0.01, confidence = 0.8), verbose = FALSE)
-
-classifier <- CBA_ruleset(Species ~ .,
-  rules = rules,
-  default = uncoveredMajorityClass(Species ~ ., trans_train, rules),
-  method = "majority")
-classifier
-
-predict(classifier, head(trans_test))
-
-
+  expect_error(CBA_ruleset(Species ~ ., rules, default = "unknown"),
+    "default does not uniquely partial match")
+  expect_identical(
+    as.character(CBA_ruleset(Species ~ ., rules, default = "set")$default),
+    "setosa"
+  )
+})

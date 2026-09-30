@@ -1,98 +1,86 @@
-library("testthat")
-library("arulesCBA")
-data("iris")
+test_that("core classifiers predict from data frames and transactions", {
+  classes <- list(CBA = CBA, FOIL = FOIL, RCAR = RCAR)
+  inputs <- list(data_frame = iris,
+    transactions = prepareTransactions(Species ~ ., iris))
 
-options(digits = 2)
+  for (name in names(classes)) {
+    for (input in inputs) {
+      classifier <- if (name == "RCAR")
+        classes[[name]](Species ~ ., input, lambda = 0.001)
+      else
+        classes[[name]](Species ~ ., input)
+      prediction <- predict(classifier, input)
 
-context("Test classifiers on data.frame")
+      expect_s3_class(classifier, "CBA")
+      expect_identical(levels(prediction), levels(iris$Species))
+      expect_length(prediction, nrow(iris))
+      expect_gt(accuracy(prediction, iris$Species), 0.7)
+    }
+  }
+})
 
-classifiers <- c(cba = CBA, foil = FOIL, rcar = RCAR)
-if ("RWeka" %in% utils::installed.packages()[, "Package"])
-  classifiers <-
-  append(classifiers,
-    c(ripper = RIPPER_CBA, part = PART_CBA, c45 = C4.5_CBA))
+test_that("core classifiers accept regular transactions", {
+  data("Groceries", package = "arules")
+  transactions <- head(Groceries, 200)
+  truth <- response(`bottled beer` ~ ., transactions)
 
-### use raw data
-dat <- iris
-f <- Species ~ .
-true <- response(f, dat)
+  for (name in c("CBA", "FOIL", "RCAR")) {
+    classifier <- switch(name,
+      CBA = CBA(`bottled beer` ~ ., transactions),
+      FOIL = FOIL(`bottled beer` ~ ., transactions),
+      RCAR = RCAR(`bottled beer` ~ ., transactions, lambda = 0.001))
+    prediction <- predict(classifier, transactions)
+    expect_length(prediction, length(transactions))
+    expect_identical(levels(prediction), levels(truth))
+  }
+})
 
-### train and in-sample testing
-for (cl in classifiers) {
-  res <- cl(f, dat)
-  res
+test_that("CBA and FOIL accept logical predictors", {
+  skip_if_not_installed("mlbench")
+  data("Zoo", package = "mlbench")
+  Zoo$legs <- Zoo$legs > 0
 
-  p <- predict(res, dat)
+  for (classifier_fn in list(CBA, FOIL)) {
+    classifier <- classifier_fn(type ~ ., Zoo)
+    prediction <- predict(classifier, Zoo)
+    expect_length(prediction, nrow(Zoo))
+    expect_identical(levels(prediction), levels(Zoo$type))
+  }
+})
 
-  expect_equal(length(p), nrow(dat))
-  expect_equal(levels(p), levels(true))
+test_that("RWeka classifier wrappers predict when Java is available", {
+  skip_if_not_installed("RWeka")
+  skip_if_not_installed("rJava")
 
-  accuracy(p, true)
-}
+  for (classifier_fn in list(RIPPER_CBA, PART_CBA, C4.5_CBA)) {
+    classifier <- classifier_fn(Species ~ ., iris)
+    prediction <- predict(classifier, head(iris, 5))
+    expect_s3_class(classifier, "CBA")
+    expect_length(prediction, 5L)
+    expect_identical(levels(prediction), levels(iris$Species))
+  }
+})
 
-context("Test classifiers on transactions")
-### use transactions
-dat <- prepareTransactions(f, iris)
+test_that("bundled LUCS-KDD classifiers predict from both input types", {
+  skip_if(!nzchar(Sys.which("java")), "Java is not available")
 
-for (cl in classifiers) {
-  res <- cl(f, dat)
-  res
+  package_dir <- system.file(package = "arulesCBA")
+  expect_true(file.exists(file.path(package_dir, "LUCS_KDD", "CMAR.jar")))
+  expect_true(file.exists(file.path(package_dir, "LUCS_KDD", "FOIL_CPAR_PRM.jar")))
 
-  p <- predict(res, dat)
+  classifiers <- list(CMAR = CMAR, CPAR = CPAR, PRM = PRM, FOIL2 = FOIL2)
+  inputs <- list(data_frame = iris,
+    transactions = prepareTransactions(Species ~ ., iris))
 
-  expect_equal(length(p), nrow(dat))
-  expect_equal(levels(p), levels(true))
+  for (name in names(classifiers)) {
+    for (input in inputs) {
+      classifier <- classifiers[[name]](Species ~ ., input)
+      prediction <- predict(classifier, head(input, 5))
 
-  accuracy(p, true)
-}
-
-context("Test classifiers on regular transactions")
-### use regular transactions
-# NOTE: this does not work with Weka-based classifiers.
-classifiers <- c(cba = CBA, foil = FOIL, rcar = RCAR)
-
-data(Groceries)
-dat <- sample(Groceries, 500)
-f <- `bottled beer` ~ .
-true <- response(f, dat)
-
-for (cl in classifiers) {
-  res <- cl(f, dat)
-  res
-
-  p <- predict(res, dat)
-
-  expect_equal(length(p), nrow(dat))
-  expect_equal(levels(p), levels(true))
-
-  accuracy(p, true)
-}
-
-context("Test classifiers on transactions with logical variables")
-## test transactions with logical variables
-#classifiers <- c(CBA, FOIL, RCAR)
-# RCAR is too slow
-classifiers <- c(CBA, FOIL)
-if ("RWeka" %in% utils::installed.packages()[, "Package"])
-  classifiers <-
-  append(classifiers, c(RIPPER_CBA, PART_CBA, C4.5_CBA))
-
-data(Zoo, package = "mlbench")
-Zoo$legs <- Zoo$legs > 0
-
-dat <- Zoo
-f <- type ~ .
-true <- response(f, dat)
-
-for (cl in classifiers) {
-  res <- cl(f, dat)
-  res
-
-  p <- predict(res, dat)
-
-  expect_equal(length(p), nrow(dat))
-  expect_equal(levels(p), levels(true))
-
-  accuracy(p, true)
-}
-
+      expect_s3_class(classifier, "CBA")
+      expect_gt(length(classifier$rules), 0L)
+      expect_length(prediction, 5L)
+      expect_identical(levels(prediction), levels(iris$Species))
+    }
+  }
+})

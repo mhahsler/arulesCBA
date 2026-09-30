@@ -1,5 +1,5 @@
 Package: arulesCBA
-Version: 1.2.9.1
+Version: 1.2.10
 Date: 2026-xx-xx
 Title: Classification Based on Association Rules
 Authors@R: c(
@@ -15,7 +15,8 @@ Description: Provides the infrastructure for association rule-based classificati
 Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>
 Depends: R (>= 4.0.0), Matrix (>= 1.4-0), arules (>= 1.7-4)
 Imports: methods, discretization (>= 1.0-1), glmnet (>= 3.0-0) 
-Suggests: testthat, mlbench, rJava, RWeka, knitr, rmarkdown
+Suggests: testthat (>= 3.0.0), mlbench, rJava, RWeka, knitr, rmarkdown
+Config/testthat/edition: 3
 VignetteBuilder: knitr
 SystemRequirements: Java (>= 8)
 License: GPL-3

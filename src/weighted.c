@@ -49,7 +49,8 @@ void populateMatches(int* matches_for_rule, int* false_matches_for_rule, int* lh
 }
 
 /*
-C Interface for R function for model building. Parameters are explained in the R implementation (../R/classifier.R)
+TODO: This routine is registered as R_weighted, but no R code in this package
+currently calls it. Decide whether to integrate it or remove it.
 */
 //rule_weights, rules.sorted@lhs@data@i, rules.sorted@lhs@data@p, rules.sorted@lhs@data@Dim, rules.sorted@rhs@data@i, rules.sorted@rhs@data@p, ds.mat@data@Dim, ds.mat@data@i, ds.mat@data@p, gamma, cost, length(levels(rightHand))
 SEXP weighted(SEXP ruleWeights, SEXP rulesLHS_I, SEXP rulesLHS_P, SEXP rulesRHS_I, SEXP DF_I, SEXP DF_P, SEXP DF_Dim, SEXP Gamma, SEXP Cost, SEXP numClasses, SEXP ClassWeights){

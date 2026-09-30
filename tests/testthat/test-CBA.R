@@ -1,41 +1,44 @@
-library("testthat")
-library("arulesCBA")
-data("iris")
+test_that("CBA trains and predicts with M1 and M2 pruning", {
+  for (pruning in c("M1", "M2")) {
+    classifier <- CBA(Species ~ ., iris, supp = 0.05, conf = 0.9,
+      pruning = pruning, verbose = FALSE)
 
-context("CBA")
+    expect_s3_class(classifier, "CBA")
+    expect_gt(length(classifier$rules), 0L)
+    prediction <- predict(classifier, iris)
+    expect_identical(levels(prediction), levels(iris$Species))
+    expect_length(prediction, nrow(iris))
+    expect_gt(accuracy(prediction, iris$Species), 0.8)
+  }
+})
 
-cba_classifier <- CBA(Species ~ ., iris, supp = 0.05, conf = 0.9, pruning = "M1")
-cba_classifier
+test_that("CBA falls back to the default class when no rules are mined", {
+  classifier <- CBA(Species ~ ., iris, supp = 1, conf = 0.9,
+    verbose = FALSE)
 
-expect_equal(length(cba_classifier$rules), 8L)
+  expect_length(classifier$rules, 0L)
+  expect_identical(as.character(classifier$default), "setosa")
+  expect_identical(
+    predict(classifier, head(iris, 5)),
+    factor(rep("setosa", 5), levels = levels(iris$Species))
+  )
+  expect_error(predict(classifier, head(iris), type = "score"),
+    "not yet implemented")
+})
 
-results <- predict(cba_classifier, iris)
-expect_equal(results[1], factor("setosa",
-  levels = c("setosa", "versicolor", "virginica")))
+test_that("CBA prediction methods return classes and scores", {
+  classifier <- CBA(Species ~ ., iris, supp = 0.05, conf = 0.9,
+    verbose = FALSE)
+  for (method in c("majority", "weighted")) {
+    classifier$method <- method
+    prediction <- predict(classifier, head(iris, 5))
+    scores <- predict(classifier, head(iris, 5), type = "score")
+    expect_identical(levels(prediction), levels(iris$Species))
+    expect_identical(dim(scores), c(5L, 3L))
+    expect_true(all(is.finite(scores)))
+  }
 
-results <- predict(cba_classifier, head(iris, n = 5))
-expect_equal(length(results), 5L)
-
-context("Prediction methods")
-
-cba_classifier$method <- "majority"
-results <- predict(cba_classifier, head(iris, n = 5))
-expect_equal(length(results), 5L)
-
-cba_classifier$method <- "weighted"
-results <- predict(cba_classifier, head(iris, n = 5))
-expect_equal(length(results), 5L)
-
-# FIXME: We need to check what the output of M2 should be
-cba_classifier_M2 <- CBA(Species ~ ., iris, supp = 0.05, conf = 0.9, pruning = "M2")
-# FIXME: there is a bug in totalError calculation in M2
-#expect_equal(length(cba_classifier_M2$rules), 8L)
-
-# Test 0 rules
-cba <- CBA(Species ~ ., iris, supp = 1, conf = 0.9, verbose = FALSE)
-expect_equal(cba$default, factor("setosa", levels = classes(Species ~ ., iris)))
-
-result <- predict(cba, head(iris, n = 5))
-expect_equal(result, factor(rep("setosa", 5), levels = classes(Species ~ ., iris)))
-
-
+  classifier$method <- "first"
+  expect_error(predict(classifier, head(iris), type = "score"),
+    "not supported")
+})

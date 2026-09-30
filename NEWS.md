@@ -1,5 +1,7 @@
-# arulesCBA 1.2.9.1 (unreleased)
+# arulesCBA 1.2.10 (unreleased)
 
+* Modernized and added tests.
+* Corrected spelling and grammar.
 
 # arulesCBA 1.2.9 (2025-11-04)
 
