@@ -35,7 +35,7 @@ are free only for non-commercial use."><meta property="og:image" content="http:/
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>Interface to the LUCS-KDD Implementations of CMAR, PRM and CPAR</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mhahsler/arulesCBA/blob/master/R/LUCS_KDD_CBA.R" class="external-link"><code>R/LUCS_KDD_CBA.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mhahsler/arulesCBA/blob/arulesCBA_1.2.10/R/LUCS_KDD_CBA.R" class="external-link"><code>R/LUCS_KDD_CBA.R</code></a></small>
       <div class="d-none name"><code>LUCS_KDD_CBA.Rd</code></div>
     </div>
 
@@ -152,16 +152,16 @@ Association Rules, SDM, 2003.
 <span class="r-in"><span><span class="co"># build a classifier, inspect rules and make predictions</span></span></span>
 <span class="r-in"><span><span class="va">cl</span> <span class="op">&lt;-</span> <span class="fu">CMAR</span><span class="op">(</span><span class="va">Species</span> <span class="op">~</span> <span class="va">.</span>, <span class="va">iris</span>, support <span class="op">=</span> <span class="fl">.2</span>, confidence <span class="op">=</span> <span class="fl">.8</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LUCS-KDD: CMAR </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Call: java  -cp /home/runner/work/_temp/Library/arulesCBA/LUCS_KDD/CMAR.jar runCMAR -N3 -F/tmp/RtmpVdoInV/file1cd119951479.num -S20 -C80 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call: java  -cp /home/runner/work/_temp/Library/arulesCBA/LUCS_KDD/CMAR.jar runCMAR -N3 -F/tmp/RtmpEmpLIa/file1bc36dd2251a.num -S20 -C80 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "SETTINGS"                                                                      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "--------"                                                                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "Training file name            = /tmp/RtmpVdoInV/file1cd119951479.num"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "Training file name            = /tmp/RtmpEmpLIa/file1bc36dd2251a.num"          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "Support (default 20%)         = 20.0"                                          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "Confidence (default 80%)      = 80.0"                                          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "Number of classes             = 3"                                             </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [7] ""                                                                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "Reading input file: /tmp/RtmpVdoInV/file1cd119951479.num"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "Reading input file: /tmp/RtmpEmpLIa/file1bc36dd2251a.num"                      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "Number of records = 150"                                                       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [10] "Number of columns = 15"                                                        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [11] "Min support       = 30.0 (records)"                                            </span>

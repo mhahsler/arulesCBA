@@ -2,6 +2,8 @@
 
 ## arulesCBA 1.2.10 (unreleased)
 
+CRAN release: 2026-10-01
+
 - Modernized and added tests.
 - Corrected spelling and grammar.
 

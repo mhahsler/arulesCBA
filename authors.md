@@ -12,7 +12,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/mhahsler/arulesCBA/blob/master/inst/CITATION)
+[`inst/CITATION`](https://github.com/mhahsler/arulesCBA/blob/arulesCBA_1.2.10/inst/CITATION)
 
 Hahsler M, Johnson I (????). *arulesCBA: Classification Based on
 Association Rules*. R package version 1.2.10,

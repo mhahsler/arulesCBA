@@ -35,7 +35,7 @@ classifier and can use support-balanced CARs."><meta property="og:image" content
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>Regularized Class Association Rules for Multi-class Problems (RCAR+)</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mhahsler/arulesCBA/blob/master/R/RCAR.R" class="external-link"><code>R/RCAR.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mhahsler/arulesCBA/blob/arulesCBA_1.2.10/R/RCAR.R" class="external-link"><code>R/RCAR.R</code></a></small>
       <div class="d-none name"><code>RCAR.Rd</code></div>
     </div>
 
@@ -92,7 +92,7 @@ penalty (default RCAR), and <code>alpha = 0</code> the ridge penalty.</p></dd>
 
 <dt id="arg-cv-glmnet-args-glmnet-args">cv.glmnet.args, glmnet.args<a class="anchor" aria-label="anchor" href="#arg-cv-glmnet-args-glmnet-args"></a></dt>
 <dd><p>A list of arguments passed on to
-<code><a href="https://rdrr.io/pkg/glmnet/man/cv.glmnet.html" class="external-link">glmnet::cv.glmnet()</a></code> and <code><a href="https://rdrr.io/pkg/glmnet/man/glmnet.html" class="external-link">glmnet::glmnet()</a></code>, respectively. See Example section.</p></dd>
+<code><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class="external-link">glmnet::cv.glmnet()</a></code> and <code><a href="https://glmnet.stanford.edu/reference/glmnet.html" class="external-link">glmnet::glmnet()</a></code>, respectively. See Example section.</p></dd>
 
 
 <dt id="arg-parameter-control">parameter, control<a class="anchor" aria-label="anchor" href="#arg-parameter-control"></a></dt>
@@ -126,7 +126,7 @@ classifier with the additional field <code>model</code> containing a list with t
 following elements:</p>
 <dl><dt>reg_model</dt>
 <dd><p>the multinomial logistic
-regression model as an object of class <a href="https://rdrr.io/pkg/glmnet/man/glmnet.html" class="external-link">glmnet::glmnet</a>.</p></dd>
+regression model as an object of class <a href="https://glmnet.stanford.edu/reference/glmnet.html" class="external-link">glmnet::glmnet</a>.</p></dd>
 
 <dt>cv</dt>
 <dd><p>only available if <code>lambda = NULL</code> was specified. Contains the
@@ -161,7 +161,7 @@ This is important to keep in mind when trying to interpret the rules used in
 the classifier.</p>
 <p>If lambda for regularization is not specified during training (<code>lambda = NULL</code>),
 cross-validation determines the largest value of lambda whose error is within
-one standard error of the minimum (see <code><a href="https://rdrr.io/pkg/glmnet/man/cv.glmnet.html" class="external-link">glmnet::cv.glmnet()</a></code> for how to perform
+one standard error of the minimum (see <code><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class="external-link">glmnet::cv.glmnet()</a></code> for how to perform
 cross-validation in parallel).</p>
 <p>For the final classifier, we only keep the rules that have a weight greater than
 zero for at least one class label. The rule weights are the model's beta coefficients.</p>

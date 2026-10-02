@@ -54,8 +54,9 @@ RCAR(
 - cv.glmnet.args, glmnet.args:
 
   A list of arguments passed on to
-  [`glmnet::cv.glmnet()`](https://rdrr.io/pkg/glmnet/man/cv.glmnet.html)
-  and [`glmnet::glmnet()`](https://rdrr.io/pkg/glmnet/man/glmnet.html),
+  [`glmnet::cv.glmnet()`](https://glmnet.stanford.edu/reference/cv.glmnet.html)
+  and
+  [`glmnet::glmnet()`](https://glmnet.stanford.edu/reference/glmnet.html),
   respectively. See Example section.
 
 - parameter, control:
@@ -96,7 +97,7 @@ containing a list with the following elements:
 - reg_model:
 
   the multinomial logistic regression model as an object of class
-  [glmnet::glmnet](https://rdrr.io/pkg/glmnet/man/glmnet.html).
+  [glmnet::glmnet](https://glmnet.stanford.edu/reference/glmnet.html).
 
 - cv:
 
@@ -139,7 +140,7 @@ classifier.
 If lambda for regularization is not specified during training
 (`lambda = NULL`), cross-validation determines the largest value of
 lambda whose error is within one standard error of the minimum (see
-[`glmnet::cv.glmnet()`](https://rdrr.io/pkg/glmnet/man/cv.glmnet.html)
+[`glmnet::cv.glmnet()`](https://glmnet.stanford.edu/reference/cv.glmnet.html)
 for how to perform cross-validation in parallel).
 
 For the final classifier, we only keep the rules that have a weight
